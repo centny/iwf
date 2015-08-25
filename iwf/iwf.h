@@ -16,4 +16,18 @@ FOUNDATION_EXPORT const unsigned char iwfVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <iwf/PublicHeader.h>
 
+//core
+#import <iwf/NSSLiteBuilder.h>
+#import <iwf/CoreMethod.h>
+#import <iwf/NSGImage.h>
+#import <iwf/NSLineString.h>
+#import <iwf/NSPart.h>
 
+//ext
+#import <iwf/ClassExt.h>
+
+//log
+#import <iwf/OcL.h>
+
+//def
+#import <iwf/GeneralDef.h>

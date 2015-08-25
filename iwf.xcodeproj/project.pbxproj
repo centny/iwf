@@ -10,6 +10,39 @@
 		C3E4EE7A1B8C3F3D00B275D8 /* iwf.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE791B8C3F3D00B275D8 /* iwf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3E4EE801B8C3F3D00B275D8 /* iwf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E4EE741B8C3F3D00B275D8 /* iwf.framework */; };
 		C3E4EE871B8C3F3D00B275D8 /* iwfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE861B8C3F3D00B275D8 /* iwfTests.swift */; };
+		C3E4EE9B1B8C3F8400B275D8 /* NSSLiteBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE911B8C3F8400B275D8 /* NSSLiteBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3E4EE9C1B8C3F8400B275D8 /* NSSLiteBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE921B8C3F8400B275D8 /* NSSLiteBuilder.m */; };
+		C3E4EE9D1B8C3F8400B275D8 /* NSSLiteBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE921B8C3F8400B275D8 /* NSSLiteBuilder.m */; };
+		C3E4EE9E1B8C3F8400B275D8 /* CoreMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE931B8C3F8400B275D8 /* CoreMethod.m */; };
+		C3E4EE9F1B8C3F8400B275D8 /* CoreMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE931B8C3F8400B275D8 /* CoreMethod.m */; };
+		C3E4EEA01B8C3F8400B275D8 /* NSGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE941B8C3F8400B275D8 /* NSGImage.m */; };
+		C3E4EEA11B8C3F8400B275D8 /* NSGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE941B8C3F8400B275D8 /* NSGImage.m */; };
+		C3E4EEA21B8C3F8400B275D8 /* NSLineString.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE951B8C3F8400B275D8 /* NSLineString.m */; };
+		C3E4EEA31B8C3F8400B275D8 /* NSLineString.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE951B8C3F8400B275D8 /* NSLineString.m */; };
+		C3E4EEA41B8C3F8400B275D8 /* NSPart.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE961B8C3F8400B275D8 /* NSPart.m */; };
+		C3E4EEA51B8C3F8400B275D8 /* NSPart.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE961B8C3F8400B275D8 /* NSPart.m */; };
+		C3E4EEA61B8C3F8400B275D8 /* CoreMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE971B8C3F8400B275D8 /* CoreMethod.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3E4EEA71B8C3F8400B275D8 /* NSGImage.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE981B8C3F8400B275D8 /* NSGImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3E4EEA81B8C3F8400B275D8 /* NSLineString.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE991B8C3F8400B275D8 /* NSLineString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3E4EEA91B8C3F8400B275D8 /* NSPart.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE9A1B8C3F8400B275D8 /* NSPart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3E4EEAB1B8C3FA100B275D8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E4EEAA1B8C3FA100B275D8 /* libsqlite3.dylib */; };
+		C3E4EEAC1B8C3FB400B275D8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E4EEAA1B8C3FA100B275D8 /* libsqlite3.dylib */; };
+		C3E4EEB01B8C407000B275D8 /* ClassExt.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEAE1B8C407000B275D8 /* ClassExt.m */; };
+		C3E4EEB11B8C407000B275D8 /* ClassExt.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEAE1B8C407000B275D8 /* ClassExt.m */; };
+		C3E4EEB21B8C407000B275D8 /* ClassExt.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EEAF1B8C407000B275D8 /* ClassExt.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3E4EEB51B8C409E00B275D8 /* GeneralDef.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EEB41B8C409E00B275D8 /* GeneralDef.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3E4EEBE1B8C414C00B275D8 /* FLogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEBC1B8C414C00B275D8 /* FLogWriter.swift */; };
+		C3E4EEBF1B8C414C00B275D8 /* FLogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEBC1B8C414C00B275D8 /* FLogWriter.swift */; };
+		C3E4EEC01B8C414C00B275D8 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEBD1B8C414C00B275D8 /* Log.swift */; };
+		C3E4EEC11B8C414C00B275D8 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEBD1B8C414C00B275D8 /* Log.swift */; };
+		C3E4EEC41B8C417800B275D8 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEC31B8C417800B275D8 /* Util.swift */; };
+		C3E4EEC51B8C417800B275D8 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEC31B8C417800B275D8 /* Util.swift */; };
+		C3E4EED01B8C4D7C00B275D8 /* OcL.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EECE1B8C4D7C00B275D8 /* OcL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3E4EED11B8C4D7C00B275D8 /* OcL.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EECF1B8C4D7C00B275D8 /* OcL.m */; };
+		C3E4EED21B8C4D7C00B275D8 /* OcL.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EECF1B8C4D7C00B275D8 /* OcL.m */; };
+		C3E4EED81B8C59ED00B275D8 /* LogTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EED41B8C59ED00B275D8 /* LogTest.swift */; };
+		C3E4EEDA1B8C59ED00B275D8 /* UtilTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EED71B8C59ED00B275D8 /* UtilTest.swift */; };
+		C3E4EEDC1B8C5A8100B275D8 /* OcLTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEDB1B8C5A8100B275D8 /* OcLTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +62,28 @@
 		C3E4EE7F1B8C3F3D00B275D8 /* iwfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iwfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E4EE851B8C3F3D00B275D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3E4EE861B8C3F3D00B275D8 /* iwfTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iwfTests.swift; sourceTree = "<group>"; };
+		C3E4EE911B8C3F8400B275D8 /* NSSLiteBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSSLiteBuilder.h; path = core/NSSLiteBuilder.h; sourceTree = "<group>"; };
+		C3E4EE921B8C3F8400B275D8 /* NSSLiteBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSSLiteBuilder.m; path = core/NSSLiteBuilder.m; sourceTree = "<group>"; };
+		C3E4EE931B8C3F8400B275D8 /* CoreMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreMethod.m; path = core/CoreMethod.m; sourceTree = "<group>"; };
+		C3E4EE941B8C3F8400B275D8 /* NSGImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSGImage.m; path = core/NSGImage.m; sourceTree = "<group>"; };
+		C3E4EE951B8C3F8400B275D8 /* NSLineString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSLineString.m; path = core/NSLineString.m; sourceTree = "<group>"; };
+		C3E4EE961B8C3F8400B275D8 /* NSPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSPart.m; path = core/NSPart.m; sourceTree = "<group>"; };
+		C3E4EE971B8C3F8400B275D8 /* CoreMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreMethod.h; path = core/CoreMethod.h; sourceTree = "<group>"; };
+		C3E4EE981B8C3F8400B275D8 /* NSGImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSGImage.h; path = core/NSGImage.h; sourceTree = "<group>"; };
+		C3E4EE991B8C3F8400B275D8 /* NSLineString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSLineString.h; path = core/NSLineString.h; sourceTree = "<group>"; };
+		C3E4EE9A1B8C3F8400B275D8 /* NSPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSPart.h; path = core/NSPart.h; sourceTree = "<group>"; };
+		C3E4EEAA1B8C3FA100B275D8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		C3E4EEAE1B8C407000B275D8 /* ClassExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassExt.m; path = ext/ClassExt.m; sourceTree = "<group>"; };
+		C3E4EEAF1B8C407000B275D8 /* ClassExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassExt.h; path = ext/ClassExt.h; sourceTree = "<group>"; };
+		C3E4EEB41B8C409E00B275D8 /* GeneralDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralDef.h; sourceTree = "<group>"; };
+		C3E4EEBC1B8C414C00B275D8 /* FLogWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FLogWriter.swift; path = log/FLogWriter.swift; sourceTree = "<group>"; };
+		C3E4EEBD1B8C414C00B275D8 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Log.swift; path = log/Log.swift; sourceTree = "<group>"; };
+		C3E4EEC31B8C417800B275D8 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		C3E4EECE1B8C4D7C00B275D8 /* OcL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OcL.h; path = log/OcL.h; sourceTree = "<group>"; };
+		C3E4EECF1B8C4D7C00B275D8 /* OcL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OcL.m; path = log/OcL.m; sourceTree = "<group>"; };
+		C3E4EED41B8C59ED00B275D8 /* LogTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogTest.swift; sourceTree = "<group>"; };
+		C3E4EED71B8C59ED00B275D8 /* UtilTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilTest.swift; sourceTree = "<group>"; };
+		C3E4EEDB1B8C5A8100B275D8 /* OcLTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OcLTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3E4EEAB1B8C3FA100B275D8 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3E4EEAC1B8C3FB400B275D8 /* libsqlite3.dylib in Frameworks */,
 				C3E4EE801B8C3F3D00B275D8 /* iwf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,6 +112,7 @@
 			children = (
 				C3E4EE761B8C3F3D00B275D8 /* iwf */,
 				C3E4EE831B8C3F3D00B275D8 /* iwfTests */,
+				C3E4EEAD1B8C3FBE00B275D8 /* libs */,
 				C3E4EE751B8C3F3D00B275D8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,7 +129,12 @@
 		C3E4EE761B8C3F3D00B275D8 /* iwf */ = {
 			isa = PBXGroup;
 			children = (
+				C3E4EE901B8C3F5E00B275D8 /* core */,
+				C3E4EEB31B8C407600B275D8 /* ext */,
+				C3E4EEB61B8C40F900B275D8 /* log */,
+				C3E4EEC21B8C417800B275D8 /* util */,
 				C3E4EE791B8C3F3D00B275D8 /* iwf.h */,
+				C3E4EEB41B8C409E00B275D8 /* GeneralDef.h */,
 				C3E4EE771B8C3F3D00B275D8 /* Supporting Files */,
 			);
 			path = iwf;
@@ -88,6 +151,8 @@
 		C3E4EE831B8C3F3D00B275D8 /* iwfTests */ = {
 			isa = PBXGroup;
 			children = (
+				C3E4EED31B8C59ED00B275D8 /* log */,
+				C3E4EED61B8C59ED00B275D8 /* util */,
 				C3E4EE861B8C3F3D00B275D8 /* iwfTests.swift */,
 				C3E4EE841B8C3F3D00B275D8 /* Supporting Files */,
 			);
@@ -102,6 +167,76 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C3E4EE901B8C3F5E00B275D8 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				C3E4EE911B8C3F8400B275D8 /* NSSLiteBuilder.h */,
+				C3E4EE921B8C3F8400B275D8 /* NSSLiteBuilder.m */,
+				C3E4EE971B8C3F8400B275D8 /* CoreMethod.h */,
+				C3E4EE931B8C3F8400B275D8 /* CoreMethod.m */,
+				C3E4EE981B8C3F8400B275D8 /* NSGImage.h */,
+				C3E4EE941B8C3F8400B275D8 /* NSGImage.m */,
+				C3E4EE991B8C3F8400B275D8 /* NSLineString.h */,
+				C3E4EE951B8C3F8400B275D8 /* NSLineString.m */,
+				C3E4EE9A1B8C3F8400B275D8 /* NSPart.h */,
+				C3E4EE961B8C3F8400B275D8 /* NSPart.m */,
+			);
+			name = core;
+			sourceTree = "<group>";
+		};
+		C3E4EEAD1B8C3FBE00B275D8 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				C3E4EEAA1B8C3FA100B275D8 /* libsqlite3.dylib */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		C3E4EEB31B8C407600B275D8 /* ext */ = {
+			isa = PBXGroup;
+			children = (
+				C3E4EEAF1B8C407000B275D8 /* ClassExt.h */,
+				C3E4EEAE1B8C407000B275D8 /* ClassExt.m */,
+			);
+			name = ext;
+			sourceTree = "<group>";
+		};
+		C3E4EEB61B8C40F900B275D8 /* log */ = {
+			isa = PBXGroup;
+			children = (
+				C3E4EEBC1B8C414C00B275D8 /* FLogWriter.swift */,
+				C3E4EEBD1B8C414C00B275D8 /* Log.swift */,
+				C3E4EECE1B8C4D7C00B275D8 /* OcL.h */,
+				C3E4EECF1B8C4D7C00B275D8 /* OcL.m */,
+			);
+			name = log;
+			sourceTree = "<group>";
+		};
+		C3E4EEC21B8C417800B275D8 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				C3E4EEC31B8C417800B275D8 /* Util.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		C3E4EED31B8C59ED00B275D8 /* log */ = {
+			isa = PBXGroup;
+			children = (
+				C3E4EED41B8C59ED00B275D8 /* LogTest.swift */,
+				C3E4EEDB1B8C5A8100B275D8 /* OcLTest.m */,
+			);
+			path = log;
+			sourceTree = "<group>";
+		};
+		C3E4EED61B8C59ED00B275D8 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				C3E4EED71B8C59ED00B275D8 /* UtilTest.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -109,7 +244,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3E4EEA61B8C3F8400B275D8 /* CoreMethod.h in Headers */,
 				C3E4EE7A1B8C3F3D00B275D8 /* iwf.h in Headers */,
+				C3E4EEA91B8C3F8400B275D8 /* NSPart.h in Headers */,
+				C3E4EE9B1B8C3F8400B275D8 /* NSSLiteBuilder.h in Headers */,
+				C3E4EEA81B8C3F8400B275D8 /* NSLineString.h in Headers */,
+				C3E4EEB21B8C407000B275D8 /* ClassExt.h in Headers */,
+				C3E4EEB51B8C409E00B275D8 /* GeneralDef.h in Headers */,
+				C3E4EED01B8C4D7C00B275D8 /* OcL.h in Headers */,
+				C3E4EEA71B8C3F8400B275D8 /* NSGImage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +352,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3E4EEBE1B8C414C00B275D8 /* FLogWriter.swift in Sources */,
+				C3E4EEC01B8C414C00B275D8 /* Log.swift in Sources */,
+				C3E4EEA01B8C3F8400B275D8 /* NSGImage.m in Sources */,
+				C3E4EEA21B8C3F8400B275D8 /* NSLineString.m in Sources */,
+				C3E4EE9C1B8C3F8400B275D8 /* NSSLiteBuilder.m in Sources */,
+				C3E4EEA41B8C3F8400B275D8 /* NSPart.m in Sources */,
+				C3E4EEC41B8C417800B275D8 /* Util.swift in Sources */,
+				C3E4EEB01B8C407000B275D8 /* ClassExt.m in Sources */,
+				C3E4EED11B8C4D7C00B275D8 /* OcL.m in Sources */,
+				C3E4EE9E1B8C3F8400B275D8 /* CoreMethod.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +369,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3E4EED21B8C4D7C00B275D8 /* OcL.m in Sources */,
+				C3E4EEDA1B8C59ED00B275D8 /* UtilTest.swift in Sources */,
+				C3E4EEC51B8C417800B275D8 /* Util.swift in Sources */,
+				C3E4EEB11B8C407000B275D8 /* ClassExt.m in Sources */,
+				C3E4EEC11B8C414C00B275D8 /* Log.swift in Sources */,
+				C3E4EEBF1B8C414C00B275D8 /* FLogWriter.swift in Sources */,
+				C3E4EEDC1B8C5A8100B275D8 /* OcLTest.m in Sources */,
+				C3E4EEA11B8C3F8400B275D8 /* NSGImage.m in Sources */,
+				C3E4EED81B8C59ED00B275D8 /* LogTest.swift in Sources */,
+				C3E4EE9D1B8C3F8400B275D8 /* NSSLiteBuilder.m in Sources */,
+				C3E4EE9F1B8C3F8400B275D8 /* CoreMethod.m in Sources */,
+				C3E4EEA51B8C3F8400B275D8 /* NSPart.m in Sources */,
+				C3E4EEA31B8C3F8400B275D8 /* NSLineString.m in Sources */,
 				C3E4EE871B8C3F3D00B275D8 /* iwfTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +490,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEFINES_MODULE = YES;
+				DEPLOYMENT_LOCATION = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -339,6 +506,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEFINES_MODULE = YES;
+				DEPLOYMENT_LOCATION = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -399,6 +567,7 @@
 				C3E4EE8C1B8C3F3D00B275D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C3E4EE8D1B8C3F3D00B275D8 /* Build configuration list for PBXNativeTarget "iwfTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +576,7 @@
 				C3E4EE8F1B8C3F3D00B275D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
