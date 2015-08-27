@@ -7,16 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3373D061B8F33E60006A4A0 /* iwf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3373CFF1B8F334E0006A4A0 /* iwf.framework */; };
 		C3E4EEEC1B8C5F5100B275D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEEB1B8C5F5100B275D8 /* AppDelegate.swift */; };
 		C3E4EEEE1B8C5F5100B275D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEED1B8C5F5100B275D8 /* ViewController.swift */; };
 		C3E4EEF11B8C5F5100B275D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3E4EEEF1B8C5F5100B275D8 /* Main.storyboard */; };
 		C3E4EEF31B8C5F5100B275D8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3E4EEF21B8C5F5100B275D8 /* Images.xcassets */; };
 		C3E4EEF61B8C5F5100B275D8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3E4EEF41B8C5F5100B275D8 /* LaunchScreen.xib */; };
 		C3E4EF021B8C5F5100B275D8 /* iwf_testTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EF011B8C5F5100B275D8 /* iwf_testTests.swift */; };
-		C3E4EF171B8C5F9400B275D8 /* iwf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E4EF111B8C5F5C00B275D8 /* iwf.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C3373CFE1B8F334E0006A4A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3373CF91B8F334E0006A4A0 /* iwf.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C3E4EE741B8C3F3D00B275D8;
+			remoteInfo = iwf;
+		};
+		C3373D001B8F334E0006A4A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3373CF91B8F334E0006A4A0 /* iwf.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C3E4EE7F1B8C3F3D00B275D8;
+			remoteInfo = iwfTests;
+		};
 		C3E4EEFC1B8C5F5100B275D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C3E4EEDE1B8C5F5100B275D8 /* Project object */;
@@ -24,23 +38,11 @@
 			remoteGlobalIDString = C3E4EEE51B8C5F5100B275D8;
 			remoteInfo = "iwf-test";
 		};
-		C3E4EF101B8C5F5C00B275D8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C3E4EF0B1B8C5F5C00B275D8 /* iwf.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C33425021B86FB990094A006;
-			remoteInfo = iwf;
-		};
-		C3E4EF121B8C5F5C00B275D8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C3E4EF0B1B8C5F5C00B275D8 /* iwf.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C334250D1B86FB9A0094A006;
-			remoteInfo = iwfTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C3373CF91B8F334E0006A4A0 /* iwf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iwf.xcodeproj; path = ../iwf.xcodeproj; sourceTree = "<group>"; };
+		C3373D021B8F339C0006A4A0 /* iwf-test-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iwf-test-Bridging-Header.h"; sourceTree = "<group>"; };
 		C3E4EEE61B8C5F5100B275D8 /* iwf-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iwf-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E4EEEA1B8C5F5100B275D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3E4EEEB1B8C5F5100B275D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,7 +53,6 @@
 		C3E4EEFB1B8C5F5100B275D8 /* iwf-testTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iwf-testTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E4EF001B8C5F5100B275D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3E4EF011B8C5F5100B275D8 /* iwf_testTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iwf_testTests.swift; sourceTree = "<group>"; };
-		C3E4EF0B1B8C5F5C00B275D8 /* iwf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iwf.xcodeproj; path = ../../iwf_b/iwf.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3E4EF171B8C5F9400B275D8 /* iwf.framework in Frameworks */,
+				C3373D061B8F33E60006A4A0 /* iwf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,10 +74,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C3373CFA1B8F334E0006A4A0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C3373CFF1B8F334E0006A4A0 /* iwf.framework */,
+				C3373D011B8F334E0006A4A0 /* iwfTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C3E4EEDD1B8C5F5100B275D8 = {
 			isa = PBXGroup;
 			children = (
-				C3E4EF0B1B8C5F5C00B275D8 /* iwf.xcodeproj */,
+				C3373CF91B8F334E0006A4A0 /* iwf.xcodeproj */,
 				C3E4EEE81B8C5F5100B275D8 /* iwf-test */,
 				C3E4EEFE1B8C5F5100B275D8 /* iwf-testTests */,
 				C3E4EEE71B8C5F5100B275D8 /* Products */,
@@ -101,6 +111,7 @@
 				C3E4EEF21B8C5F5100B275D8 /* Images.xcassets */,
 				C3E4EEF41B8C5F5100B275D8 /* LaunchScreen.xib */,
 				C3E4EEE91B8C5F5100B275D8 /* Supporting Files */,
+				C3373D021B8F339C0006A4A0 /* iwf-test-Bridging-Header.h */,
 			);
 			path = "iwf-test";
 			sourceTree = "<group>";
@@ -128,15 +139,6 @@
 				C3E4EF001B8C5F5100B275D8 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		C3E4EF0C1B8C5F5C00B275D8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C3E4EF111B8C5F5C00B275D8 /* iwf.framework */,
-				C3E4EF131B8C5F5C00B275D8 /* iwfTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,8 +210,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = C3E4EF0C1B8C5F5C00B275D8 /* Products */;
-					ProjectRef = C3E4EF0B1B8C5F5C00B275D8 /* iwf.xcodeproj */;
+					ProductGroup = C3373CFA1B8F334E0006A4A0 /* Products */;
+					ProjectRef = C3373CF91B8F334E0006A4A0 /* iwf.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -221,18 +223,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		C3E4EF111B8C5F5C00B275D8 /* iwf.framework */ = {
+		C3373CFF1B8F334E0006A4A0 /* iwf.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = iwf.framework;
-			remoteRef = C3E4EF101B8C5F5C00B275D8 /* PBXContainerItemProxy */;
+			remoteRef = C3373CFE1B8F334E0006A4A0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C3E4EF131B8C5F5C00B275D8 /* iwfTests.xctest */ = {
+		C3373D011B8F334E0006A4A0 /* iwfTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = iwfTests.xctest;
-			remoteRef = C3E4EF121B8C5F5C00B275D8 /* PBXContainerItemProxy */;
+			remoteRef = C3373D001B8F334E0006A4A0 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -392,9 +394,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "iwf-test/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "iwf-test/iwf-test-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -402,9 +407,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "iwf-test/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "iwf-test/iwf-test-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -10,7 +10,9 @@
 
 @class NSSLiteBuilder;
 typedef void (^ SQLiteQueryCallback)(NSSLiteBuilder *builder, NSMutableDictionary *row);
-//
+/*
+ 
+ */
 @interface NSSLiteBuilder : NSObject
 @property(nonatomic, retain) NSString		*emsg;
 + (id)builderWithDb:(NSString *)spath;

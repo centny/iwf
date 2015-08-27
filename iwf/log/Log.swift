@@ -8,10 +8,10 @@
 
 import UIKit
 
-let LOG_D=10
-let LOG_I=20
-let LOG_W=30
-let LOG_E=40
+public let LOG_D:Int=10
+public let LOG_I:Int=20
+public let LOG_W:Int=30
+public let LOG_E:Int=40
 
 public protocol Log {
     func D(format: String, _ args: CVarArgType...)
@@ -25,7 +25,7 @@ public protocol LogWriter{
 }
 
 
-public class LogImpl:NSObject,Log {
+public class LogImpl:NSObject, Log {
     var file:String
     var line:Int
     var function:String
@@ -108,10 +108,10 @@ public class LogImpl:NSObject,Log {
     }
 }
 
-var LOG_LEVEL=LOG_D
+public var LOG_LEVEL:Int=LOG_D
 var LOG_LONGF=false
 var log_writer_:LogWriter?
 
-public func L(file:String=__FILE__,line:Int=__LINE__,function:String=__FUNCTION__)->Log{
-    return LogImpl(file: file, line: line, function: function)
+public func L (file:String=__FILE__,line:Int=__LINE__,function:String=__FUNCTION__)->Log{
+    return LogImpl(file: file, line:line, function: function)
 }

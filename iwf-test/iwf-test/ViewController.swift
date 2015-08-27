@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         L().D("debug info->%@", "ssxx");
+        FPis.new();
         // Do any additional setup after loading the view, typically from a nib.
     }
 

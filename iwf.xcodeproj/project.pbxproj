@@ -7,20 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3373CD91B8EA5E80006A4A0 /* URLRequester.h in Headers */ = {isa = PBXBuildFile; fileRef = C3373CD71B8EA5E80006A4A0 /* URLRequester.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3373CDA1B8EA5E80006A4A0 /* URLRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373CD81B8EA5E80006A4A0 /* URLRequester.m */; };
+		C3373CDE1B8EAFF50006A4A0 /* FPis.h in Headers */ = {isa = PBXBuildFile; fileRef = C3373CDC1B8EAFF50006A4A0 /* FPis.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3373CDF1B8EAFF50006A4A0 /* FPis.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373CDD1B8EAFF50006A4A0 /* FPis.m */; };
+		C3373CE31B8EE30E0006A4A0 /* MultipartStream.h in Headers */ = {isa = PBXBuildFile; fileRef = C3373CE11B8EE30E0006A4A0 /* MultipartStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3373CE41B8EE30E0006A4A0 /* MultipartStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373CE21B8EE30E0006A4A0 /* MultipartStream.m */; };
+		C3373CF41B8F26390006A4A0 /* NSInputStreamWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C3373CF21B8F26390006A4A0 /* NSInputStreamWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3373CF51B8F26390006A4A0 /* NSInputStreamWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373CF31B8F26390006A4A0 /* NSInputStreamWrapper.m */; };
+		C3373D071B8F36470006A4A0 /* FPisTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373CED1B8F026B0006A4A0 /* FPisTest.m */; };
+		C3373D081B8F36470006A4A0 /* LogTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EED41B8C59ED00B275D8 /* LogTest.swift */; };
+		C3373D091B8F36470006A4A0 /* OcLTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEDB1B8C5A8100B275D8 /* OcLTest.m */; };
+		C3373D0A1B8F36470006A4A0 /* UtilTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EED71B8C59ED00B275D8 /* UtilTest.swift */; };
+		C3373D0B1B8F36470006A4A0 /* iwfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE861B8C3F3D00B275D8 /* iwfTests.swift */; };
+		C3373D0D1B8F40FC0006A4A0 /* MultipartStreamTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373D0C1B8F40FC0006A4A0 /* MultipartStreamTest.m */; };
 		C3E4EE7A1B8C3F3D00B275D8 /* iwf.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE791B8C3F3D00B275D8 /* iwf.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C3E4EE801B8C3F3D00B275D8 /* iwf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E4EE741B8C3F3D00B275D8 /* iwf.framework */; };
-		C3E4EE871B8C3F3D00B275D8 /* iwfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE861B8C3F3D00B275D8 /* iwfTests.swift */; };
 		C3E4EE9B1B8C3F8400B275D8 /* NSSLiteBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE911B8C3F8400B275D8 /* NSSLiteBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3E4EE9C1B8C3F8400B275D8 /* NSSLiteBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE921B8C3F8400B275D8 /* NSSLiteBuilder.m */; };
-		C3E4EE9D1B8C3F8400B275D8 /* NSSLiteBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE921B8C3F8400B275D8 /* NSSLiteBuilder.m */; };
 		C3E4EE9E1B8C3F8400B275D8 /* CoreMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE931B8C3F8400B275D8 /* CoreMethod.m */; };
-		C3E4EE9F1B8C3F8400B275D8 /* CoreMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE931B8C3F8400B275D8 /* CoreMethod.m */; };
 		C3E4EEA01B8C3F8400B275D8 /* NSGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE941B8C3F8400B275D8 /* NSGImage.m */; };
-		C3E4EEA11B8C3F8400B275D8 /* NSGImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE941B8C3F8400B275D8 /* NSGImage.m */; };
 		C3E4EEA21B8C3F8400B275D8 /* NSLineString.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE951B8C3F8400B275D8 /* NSLineString.m */; };
-		C3E4EEA31B8C3F8400B275D8 /* NSLineString.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE951B8C3F8400B275D8 /* NSLineString.m */; };
 		C3E4EEA41B8C3F8400B275D8 /* NSPart.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE961B8C3F8400B275D8 /* NSPart.m */; };
-		C3E4EEA51B8C3F8400B275D8 /* NSPart.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE961B8C3F8400B275D8 /* NSPart.m */; };
 		C3E4EEA61B8C3F8400B275D8 /* CoreMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE971B8C3F8400B275D8 /* CoreMethod.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3E4EEA71B8C3F8400B275D8 /* NSGImage.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE981B8C3F8400B275D8 /* NSGImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3E4EEA81B8C3F8400B275D8 /* NSLineString.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE991B8C3F8400B275D8 /* NSLineString.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -28,21 +35,13 @@
 		C3E4EEAB1B8C3FA100B275D8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E4EEAA1B8C3FA100B275D8 /* libsqlite3.dylib */; };
 		C3E4EEAC1B8C3FB400B275D8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E4EEAA1B8C3FA100B275D8 /* libsqlite3.dylib */; };
 		C3E4EEB01B8C407000B275D8 /* ClassExt.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEAE1B8C407000B275D8 /* ClassExt.m */; };
-		C3E4EEB11B8C407000B275D8 /* ClassExt.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEAE1B8C407000B275D8 /* ClassExt.m */; };
 		C3E4EEB21B8C407000B275D8 /* ClassExt.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EEAF1B8C407000B275D8 /* ClassExt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3E4EEB51B8C409E00B275D8 /* GeneralDef.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EEB41B8C409E00B275D8 /* GeneralDef.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3E4EEBE1B8C414C00B275D8 /* FLogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEBC1B8C414C00B275D8 /* FLogWriter.swift */; };
-		C3E4EEBF1B8C414C00B275D8 /* FLogWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEBC1B8C414C00B275D8 /* FLogWriter.swift */; };
 		C3E4EEC01B8C414C00B275D8 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEBD1B8C414C00B275D8 /* Log.swift */; };
-		C3E4EEC11B8C414C00B275D8 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEBD1B8C414C00B275D8 /* Log.swift */; };
 		C3E4EEC41B8C417800B275D8 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEC31B8C417800B275D8 /* Util.swift */; };
-		C3E4EEC51B8C417800B275D8 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEC31B8C417800B275D8 /* Util.swift */; };
 		C3E4EED01B8C4D7C00B275D8 /* OcL.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EECE1B8C4D7C00B275D8 /* OcL.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3E4EED11B8C4D7C00B275D8 /* OcL.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EECF1B8C4D7C00B275D8 /* OcL.m */; };
-		C3E4EED21B8C4D7C00B275D8 /* OcL.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EECF1B8C4D7C00B275D8 /* OcL.m */; };
-		C3E4EED81B8C59ED00B275D8 /* LogTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EED41B8C59ED00B275D8 /* LogTest.swift */; };
-		C3E4EEDA1B8C59ED00B275D8 /* UtilTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EED71B8C59ED00B275D8 /* UtilTest.swift */; };
-		C3E4EEDC1B8C5A8100B275D8 /* OcLTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEDB1B8C5A8100B275D8 /* OcLTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +55,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C3373CD71B8EA5E80006A4A0 /* URLRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLRequester.h; path = net/http/URLRequester.h; sourceTree = "<group>"; };
+		C3373CD81B8EA5E80006A4A0 /* URLRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLRequester.m; path = net/http/URLRequester.m; sourceTree = "<group>"; };
+		C3373CDC1B8EAFF50006A4A0 /* FPis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPis.h; path = net/http/FPis.h; sourceTree = "<group>"; };
+		C3373CDD1B8EAFF50006A4A0 /* FPis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPis.m; path = net/http/FPis.m; sourceTree = "<group>"; };
+		C3373CE11B8EE30E0006A4A0 /* MultipartStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultipartStream.h; path = net/http/MultipartStream.h; sourceTree = "<group>"; };
+		C3373CE21B8EE30E0006A4A0 /* MultipartStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartStream.m; path = net/http/MultipartStream.m; sourceTree = "<group>"; };
+		C3373CED1B8F026B0006A4A0 /* FPisTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPisTest.m; path = net/http/FPisTest.m; sourceTree = "<group>"; };
+		C3373CF21B8F26390006A4A0 /* NSInputStreamWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSInputStreamWrapper.h; path = io/NSInputStreamWrapper.h; sourceTree = "<group>"; };
+		C3373CF31B8F26390006A4A0 /* NSInputStreamWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSInputStreamWrapper.m; path = io/NSInputStreamWrapper.m; sourceTree = "<group>"; };
+		C3373D0C1B8F40FC0006A4A0 /* MultipartStreamTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartStreamTest.m; path = net/http/MultipartStreamTest.m; sourceTree = "<group>"; };
 		C3E4EE741B8C3F3D00B275D8 /* iwf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iwf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E4EE781B8C3F3D00B275D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3E4EE791B8C3F3D00B275D8 /* iwf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iwf.h; sourceTree = "<group>"; };
@@ -100,13 +109,59 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3E4EEAC1B8C3FB400B275D8 /* libsqlite3.dylib in Frameworks */,
-				C3E4EE801B8C3F3D00B275D8 /* iwf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C3373CD51B8EA57A0006A4A0 /* net */ = {
+			isa = PBXGroup;
+			children = (
+				C3373CD61B8EA5860006A4A0 /* http */,
+			);
+			name = net;
+			sourceTree = "<group>";
+		};
+		C3373CD61B8EA5860006A4A0 /* http */ = {
+			isa = PBXGroup;
+			children = (
+				C3373CD71B8EA5E80006A4A0 /* URLRequester.h */,
+				C3373CD81B8EA5E80006A4A0 /* URLRequester.m */,
+				C3373CDC1B8EAFF50006A4A0 /* FPis.h */,
+				C3373CDD1B8EAFF50006A4A0 /* FPis.m */,
+				C3373CE11B8EE30E0006A4A0 /* MultipartStream.h */,
+				C3373CE21B8EE30E0006A4A0 /* MultipartStream.m */,
+			);
+			name = http;
+			sourceTree = "<group>";
+		};
+		C3373CEB1B8F02340006A4A0 /* net */ = {
+			isa = PBXGroup;
+			children = (
+				C3373CEC1B8F023A0006A4A0 /* http */,
+			);
+			name = net;
+			sourceTree = "<group>";
+		};
+		C3373CEC1B8F023A0006A4A0 /* http */ = {
+			isa = PBXGroup;
+			children = (
+				C3373CED1B8F026B0006A4A0 /* FPisTest.m */,
+				C3373D0C1B8F40FC0006A4A0 /* MultipartStreamTest.m */,
+			);
+			name = http;
+			sourceTree = "<group>";
+		};
+		C3373CF11B8F260C0006A4A0 /* io */ = {
+			isa = PBXGroup;
+			children = (
+				C3373CF21B8F26390006A4A0 /* NSInputStreamWrapper.h */,
+				C3373CF31B8F26390006A4A0 /* NSInputStreamWrapper.m */,
+			);
+			name = io;
+			sourceTree = "<group>";
+		};
 		C3E4EE6A1B8C3F3D00B275D8 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +184,8 @@
 		C3E4EE761B8C3F3D00B275D8 /* iwf */ = {
 			isa = PBXGroup;
 			children = (
+				C3373CF11B8F260C0006A4A0 /* io */,
+				C3373CD51B8EA57A0006A4A0 /* net */,
 				C3E4EE901B8C3F5E00B275D8 /* core */,
 				C3E4EEB31B8C407600B275D8 /* ext */,
 				C3E4EEB61B8C40F900B275D8 /* log */,
@@ -151,6 +208,7 @@
 		C3E4EE831B8C3F3D00B275D8 /* iwfTests */ = {
 			isa = PBXGroup;
 			children = (
+				C3373CEB1B8F02340006A4A0 /* net */,
 				C3E4EED31B8C59ED00B275D8 /* log */,
 				C3E4EED61B8C59ED00B275D8 /* util */,
 				C3E4EE861B8C3F3D00B275D8 /* iwfTests.swift */,
@@ -251,7 +309,11 @@
 				C3E4EEA81B8C3F8400B275D8 /* NSLineString.h in Headers */,
 				C3E4EEB21B8C407000B275D8 /* ClassExt.h in Headers */,
 				C3E4EEB51B8C409E00B275D8 /* GeneralDef.h in Headers */,
+				C3373CD91B8EA5E80006A4A0 /* URLRequester.h in Headers */,
+				C3373CDE1B8EAFF50006A4A0 /* FPis.h in Headers */,
 				C3E4EED01B8C4D7C00B275D8 /* OcL.h in Headers */,
+				C3373CE31B8EE30E0006A4A0 /* MultipartStream.h in Headers */,
+				C3373CF41B8F26390006A4A0 /* NSInputStreamWrapper.h in Headers */,
 				C3E4EEA71B8C3F8400B275D8 /* NSGImage.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,11 +415,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3E4EEBE1B8C414C00B275D8 /* FLogWriter.swift in Sources */,
+				C3373CDA1B8EA5E80006A4A0 /* URLRequester.m in Sources */,
 				C3E4EEC01B8C414C00B275D8 /* Log.swift in Sources */,
+				C3373CE41B8EE30E0006A4A0 /* MultipartStream.m in Sources */,
 				C3E4EEA01B8C3F8400B275D8 /* NSGImage.m in Sources */,
 				C3E4EEA21B8C3F8400B275D8 /* NSLineString.m in Sources */,
 				C3E4EE9C1B8C3F8400B275D8 /* NSSLiteBuilder.m in Sources */,
 				C3E4EEA41B8C3F8400B275D8 /* NSPart.m in Sources */,
+				C3373CDF1B8EAFF50006A4A0 /* FPis.m in Sources */,
+				C3373CF51B8F26390006A4A0 /* NSInputStreamWrapper.m in Sources */,
 				C3E4EEC41B8C417800B275D8 /* Util.swift in Sources */,
 				C3E4EEB01B8C407000B275D8 /* ClassExt.m in Sources */,
 				C3E4EED11B8C4D7C00B275D8 /* OcL.m in Sources */,
@@ -369,20 +435,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3E4EED21B8C4D7C00B275D8 /* OcL.m in Sources */,
-				C3E4EEDA1B8C59ED00B275D8 /* UtilTest.swift in Sources */,
-				C3E4EEC51B8C417800B275D8 /* Util.swift in Sources */,
-				C3E4EEB11B8C407000B275D8 /* ClassExt.m in Sources */,
-				C3E4EEC11B8C414C00B275D8 /* Log.swift in Sources */,
-				C3E4EEBF1B8C414C00B275D8 /* FLogWriter.swift in Sources */,
-				C3E4EEDC1B8C5A8100B275D8 /* OcLTest.m in Sources */,
-				C3E4EEA11B8C3F8400B275D8 /* NSGImage.m in Sources */,
-				C3E4EED81B8C59ED00B275D8 /* LogTest.swift in Sources */,
-				C3E4EE9D1B8C3F8400B275D8 /* NSSLiteBuilder.m in Sources */,
-				C3E4EE9F1B8C3F8400B275D8 /* CoreMethod.m in Sources */,
-				C3E4EEA51B8C3F8400B275D8 /* NSPart.m in Sources */,
-				C3E4EEA31B8C3F8400B275D8 /* NSLineString.m in Sources */,
-				C3E4EE871B8C3F3D00B275D8 /* iwfTests.swift in Sources */,
+				C3373D071B8F36470006A4A0 /* FPisTest.m in Sources */,
+				C3373D081B8F36470006A4A0 /* LogTest.swift in Sources */,
+				C3373D091B8F36470006A4A0 /* OcLTest.m in Sources */,
+				C3373D0A1B8F36470006A4A0 /* UtilTest.swift in Sources */,
+				C3373D0D1B8F40FC0006A4A0 /* MultipartStreamTest.m in Sources */,
+				C3373D0B1B8F36470006A4A0 /* iwfTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

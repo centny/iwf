@@ -32,7 +32,7 @@
     NSWLog(@"warn->%@", @"W");
     NSELog(@"error->%@", @"E");
     SetLongf(true);
-    SetLevel(LOG_W);
+    SetLevel(LOG_W_);
     NSDLog(@"debug->%@", @"D");
     NSILog(@"info->%@", @"I");
     NSWLog(@"warn->%@", @"W");

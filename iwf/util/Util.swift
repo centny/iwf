@@ -10,10 +10,10 @@ import UIKit
 
 public class Util: NSObject {
     //read file as home directory.
-    class func readf(path:String)->String?{
-        return readf_(NSHomeDirectory()+path)
+    class public func readf(path:String)->String?{
+        return readf_(NSHomeDirectory()+"/"+path)
     }
-    class func readf_(path:String)->String?{
+    class public func readf_(path:String)->String?{
         var data=NSData(contentsOfFile:path)
         if data==nil {
             return nil
@@ -22,13 +22,13 @@ public class Util: NSObject {
         }
     }
     //write data to path as home directory.
-    class func writef(path:String,str:String)->Bool{
-        return writef_(NSHomeDirectory()+path, data: str.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
+    class public func writef(path:String,str:String)->Bool{
+        return writef_(NSHomeDirectory()+"/"+path, data: str.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
     }
-    class func writef(path:String,data:NSData)->Bool{
-        return writef_(NSHomeDirectory()+path, data: data)
+    class public func writef(path:String,data:NSData)->Bool{
+        return writef_(NSHomeDirectory()+"/"+path, data: data)
     }
-    class func writef_(path:String,data:NSData)->Bool{
+    class public func writef_(path:String,data:NSData)->Bool{
         var idx = path.rangeOfString("/", options: NSStringCompareOptions.BackwardsSearch, range: nil, locale: nil)
         if (idx != nil){
             var fp = path.substringToIndex(idx!.startIndex)
@@ -36,7 +36,22 @@ public class Util: NSObject {
         }
         return data.writeToFile(path, atomically: true)
     }
-    class func fpath(path:String)->(path:String,name:String) {
+    class public func fsize(path:String)->Int64{
+        return fsize_(NSHomeDirectory()+"/"+path)
+    }
+    class public func fsize_(path:String)->Int64{
+        var attrs:NSDictionary? = NSFileManager.defaultManager().attributesOfItemAtPath(path, error: nil)
+        var fs:AnyObject? = attrs?.valueForKey("NSFileSize")
+        if fs==nil{
+            return 0
+        }else{
+            return fs!.longLongValue
+        }
+    }
+    class public func homef(path:String)->String {
+        return NSHomeDirectory()+"/"+path
+    }
+    class public func fpath(path:String)->(path:String,name:String) {
         var idx = path.rangeOfString("/", options: NSStringCompareOptions.BackwardsSearch, range: nil, locale: nil)
         if idx == nil{
             return (".",path)

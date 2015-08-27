@@ -14,3 +14,7 @@ FOUNDATION_EXPORT NSString *DocumentDirectory();
 
 typedef void (^ CommonEvent)(id sender,id data, id msg);
 
+
+NSUInteger dataccpy(void *buf,NSUInteger boff, NSData* data,NSUInteger doff,NSUInteger len);
+
+void PrintStream(NSInputStream *is);
