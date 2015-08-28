@@ -21,6 +21,7 @@
 		C3373D0A1B8F36470006A4A0 /* UtilTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EED71B8C59ED00B275D8 /* UtilTest.swift */; };
 		C3373D0B1B8F36470006A4A0 /* iwfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE861B8C3F3D00B275D8 /* iwfTests.swift */; };
 		C3373D0D1B8F40FC0006A4A0 /* MultipartStreamTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373D0C1B8F40FC0006A4A0 /* MultipartStreamTest.m */; };
+		C3C1FCF91B8FF44B00A64957 /* iwf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E4EE741B8C3F3D00B275D8 /* iwf.framework */; };
 		C3E4EE7A1B8C3F3D00B275D8 /* iwf.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE791B8C3F3D00B275D8 /* iwf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3E4EE9B1B8C3F8400B275D8 /* NSSLiteBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE911B8C3F8400B275D8 /* NSSLiteBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3E4EE9C1B8C3F8400B275D8 /* NSSLiteBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE921B8C3F8400B275D8 /* NSSLiteBuilder.m */; };
@@ -108,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3C1FCF91B8FF44B00A64957 /* iwf.framework in Frameworks */,
 				C3E4EEAC1B8C3FB400B275D8 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import <iwf/iwf.h>
+#import <iwf/iwf-Swift.h>
 
 @interface MultipartStreamTest : XCTestCase
 
