@@ -10,10 +10,10 @@ import UIKit
 
 public class Util: NSObject {
     //read file as home directory.
-    class public func readf(path:String)->String?{
-        return readf_(NSHomeDirectory()+"/"+path)
-    }
     class public func readf_(path:String)->String?{
+        return readf(NSHomeDirectory()+"/"+path)
+    }
+    class public func readf(path:String)->String?{
         var data=NSData(contentsOfFile:path)
         if data==nil {
             return nil
@@ -22,24 +22,27 @@ public class Util: NSObject {
         }
     }
     //write data to path as home directory.
-    class public func writef(path:String,str:String)->Bool{
-        return writef_(NSHomeDirectory()+"/"+path, data: str.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
-    }
-    class public func writef(path:String,data:NSData)->Bool{
-        return writef_(NSHomeDirectory()+"/"+path, data: data)
+    class public func writef_(path:String,str:String)->Bool{
+        return writef(NSHomeDirectory()+"/"+path, data: str.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
     }
     class public func writef_(path:String,data:NSData)->Bool{
-        var idx = path.rangeOfString("/", options: NSStringCompareOptions.BackwardsSearch, range: nil, locale: nil)
-        if (idx != nil){
-            var fp = path.substringToIndex(idx!.startIndex)
-            NSFileManager.defaultManager().createDirectoryAtPath(fp, withIntermediateDirectories: true, attributes: nil, error: nil)
+        return writef(NSHomeDirectory()+"/"+path, data: data)
+    }
+    class public func writef(path:String,str:String)->Bool{
+        return writef(path, data: str.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
+    }
+    class public func writef(path:String,data:NSData)->Bool{
+        var floder=path.stringByDeletingLastPathComponent
+        var fm=NSFileManager.defaultManager()
+        if !fm.fileExistsAtPath(floder){
+            fm.createDirectoryAtPath(floder, withIntermediateDirectories: true, attributes: nil, error: nil)
         }
         return data.writeToFile(path, atomically: true)
     }
-    class public func fsize(path:String)->Int64{
-        return fsize_(NSHomeDirectory()+"/"+path)
-    }
     class public func fsize_(path:String)->Int64{
+        return fsize(NSHomeDirectory()+"/"+path)
+    }
+    class public func fsize(path:String)->Int64{
         var attrs:NSDictionary? = NSFileManager.defaultManager().attributesOfItemAtPath(path, error: nil)
         var fs:AnyObject? = attrs?.valueForKey("NSFileSize")
         if fs==nil{
@@ -51,13 +54,10 @@ public class Util: NSObject {
     class public func homef(path:String)->String {
         return NSHomeDirectory()+"/"+path
     }
+    class public func fext(path:String)->String {
+        return path.pathExtension
+    }
     class public func fpath(path:String)->(path:String,name:String) {
-        var idx = path.rangeOfString("/", options: NSStringCompareOptions.BackwardsSearch, range: nil, locale: nil)
-        if idx == nil{
-            return (".",path)
-        }else{
-            let tidx = idx!.startIndex
-            return (path.substringToIndex(tidx),path.substringFromIndex(tidx.successor()))
-        }
+        return (path.stringByDeletingLastPathComponent,path.lastPathComponent)
     }
 }

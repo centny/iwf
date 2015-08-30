@@ -43,7 +43,7 @@ class LogTest: XCTestCase {
         println("----->")
         println("----->")
         println("----->")
-        let xx:String = Util.readf("/log/t.log")!
+        let xx:String = Util.readf_("/log/t.log")!
         println(xx)
     }
     

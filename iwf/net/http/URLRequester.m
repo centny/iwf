@@ -8,16 +8,16 @@
 
 #import "URLRequester.h"
 #import "ClassExt.h"
-#import "../../iwf.h"
-
-/**
- *    the http requester.
- *    @author Centny
- */
-@interface URLRequester ()
-@property(nonatomic) NSMutableURLRequest	*request;
-@property(nonatomic) NSURLConnection		*connection;
-@end
+//#import "FPis.h"
+#import <iwf/iwf.h>
+#import <iwf/iwf-Swift.h>
+//
+const NSString* HC_C=@"C"; //cache only.
+const NSString* HC_CN=@"CN"; //cache first.
+const NSString* HC_N=@"N"; //normal http cache.
+const NSString* HC_I=@"I"; //image cache.
+const NSString* HC_NO=@"NO"; //image cache.
+const NSString* HC_KEY=@"_hc_";
 
 @implementation URLRequester
 - (id)init
@@ -28,11 +28,14 @@
         self.encoding	= NSUTF8StringEncoding;
         self.method		= @"GET";
         _timeout		= URL_TIME_OUT;
+        _clength        = 0;
         _res_d			= [NSMutableData data];
         _args			= [NSMutableDictionary dictionary];
-        _files			= [NSMutableDictionary dictionary];
         _req_h			= [NSMutableDictionary dictionary];
         _res_h			= [NSMutableDictionary dictionary];
+        _policy         = [NSString stringWithFormat:@"%@",HC_N];
+        _policy_        = NSURLRequestUseProtocolCachePolicy;
+        _multipart      = [[MultipartBuilder alloc]initWithBound:nuuid()];
     }
     
     return self;
@@ -46,7 +49,6 @@
         return @"";
     }
 }
-
 - (NSInteger)statusCode
 {
     return self.response.statusCode;
@@ -71,7 +73,6 @@
 {
     [self.req_h setObject:value forKey:key];
 }
-
 - (NSString *)codingData:(NSStringEncoding)coding
 {
     if (self.res_d) {
@@ -98,41 +99,32 @@
             }
         }
         NSDLog(@"GET %@",self.url);
-        self.request = [self createRequest:self.url method:self.method];
+        _request = [self createRequest];
     } else {
-        NSRange rg = [self.url rangeOfString:@"?"];
-        
-        if (rg.length) {
-            NSString *query = [self.url substringFromIndex:rg.location + 1];
-            self.url = [self.url substringToIndex:rg.location];
-            [self addURLArgs:query];
-        }
-        
-        self.request = [self createRequest:self.url method:self.method];
-        NSDLog(@"POST %@,%@", self.url, [self.args stringByURLQuery]);
+        NSDLog(@"POST %@->%@", self.url, [self.args stringByURLQuery]);
+        _request = [self createRequest];
         if(self.streamBody){
             self.request.HTTPBodyStream=self.streamBody;
         }else if(self.body){
             self.request.HTTPBody=self.body;
         }else{
-            if(self.files.count){
-                
+            NSInputStream* is=[self.multipart build];
+            if(is){
+                [self.request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@",self.multipart.bound] forHTTPHeaderField:@"Content-Type"];
+//                self.request.HTTPBodyStream=[[NSInputStream alloc]initWithData:toData(is)];
+                self.request.HTTPBodyStream=is;
             }else{
                 [self.request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-                [self.request setHTTPBody:[[self.args stringByURLQuery]dataUsingEncoding:self.encoding]];
+                self.request.HTTPBody=[[self.args stringByURLQuery]dataUsingEncoding:self.encoding];
             }
-        }
-        
-        if (self.setting_r) {
-            self.setting_r(self, self.request);
         }
     }
     
     for (NSString *key in [self.req_h allKeys]) {
-        [self.request setValue:[self.req_h objectForKey:key] forHTTPHeaderField:key];
+        [self.request setValue:[[self.req_h objectForKey:key]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forHTTPHeaderField:key];
     }
-    
-    self.connection = [[NSURLConnection alloc]initWithRequest:self.request delegate:self startImmediately:YES];
+    [self onReqStart:self.request];
+    _connection = [[NSURLConnection alloc]initWithRequest:self.request delegate:self startImmediately:YES];
 }
 
 - (void)cancel
@@ -140,15 +132,46 @@
     [self.connection cancel];
 }
 
-- (NSMutableURLRequest *)createRequest:(NSString *)url method:(NSString *)method
+- (NSURL*)parsePolicy
 {
-    NSURL				*URL;
+    NSURL *url = [NSURL URLWithString:[self.url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSMutableDictionary *args=[NSMutableDictionary dictionaryBy:url.query arySeparator:@"&" kvSeparator:@"="];
+    if([args objectForKey:HC_KEY]){
+        self.policy=[args objectForKey:HC_KEY];
+        [args removeObjectForKey:HC_KEY];
+        NSString* burl=[[self.url componentsSeparatedByString:@"?"]objectAtIndex:0];
+        NSString* bargs=[args stringByURLQuery];
+        if(bargs.length){
+            self.url=[NSString stringWithFormat:@"%@?%@",burl,bargs];
+        }else{
+            self.url=burl;
+        }
+        url= [NSURL URLWithString:self.url];
+    }
+    if([self.args objectForKey:HC_KEY]){
+        self.policy=[self.args objectForKey:HC_KEY];
+        [self.args removeObjectForKey:HC_KEY];
+    }
+    if([HC_C isEqualToString:self.policy]){
+        _policy_ = NSURLRequestReturnCacheDataDontLoad;
+    }else if ([HC_CN isEqualToString:self.policy]){
+        _policy_ = NSURLRequestReturnCacheDataElseLoad;
+    }else if ([HC_NO isEqualToString:self.policy]){
+        _policy_ = NSURLRequestReloadIgnoringLocalCacheData;
+    }else if([HC_I isEqualToString:self.policy]){
+        _policy_ = NSURLRequestReturnCacheDataElseLoad;
+    }else{
+        _policy_ = NSURLRequestUseProtocolCachePolicy;
+    }
+    return url;
+}
+
+- (NSMutableURLRequest *)createRequest
+{
+    NSURL				*url = [self parsePolicy];
     NSMutableURLRequest *request;
-    
-    URL		= [NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    request = [[NSMutableURLRequest alloc] initWithURL:URL cachePolicy:NSURLRequestReloadRevalidatingCacheData timeoutInterval:self.timeout];
-    
-    [request setHTTPMethod:method];
+    request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:self.policy_ timeoutInterval:self.timeout];
+    [request setHTTPMethod:self.method];
     return request;
 }
 
@@ -156,119 +179,63 @@
 {
     _response = (NSHTTPURLResponse *)response;
     [((NSMutableDictionary *)self.res_h)addEntriesFromDictionary :[self.response allHeaderFields]];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NO_NETWORK_NOTICE object:self userInfo:[NSDictionary dictionaryWithObjectsAndKeys:self.response, @"response", self, @"requester", @"response", @"type", nil]];
+    NSObject* cl=[self.res_h objectForKey:@"Content-Length"];
+    if(cl&& [cl isKindOfClass:[NSString class]]){
+        _clength = [((NSString*)cl)longLongValue];
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     [((NSMutableData *)self.res_d)appendData : data];
+    [self onReqProcDown:self.res_d total:self.clength];
 }
 
+- (void)connection:(NSURLConnection *)connection   didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite{
+    [self onReqProcUp:bytesWritten totalBytesWritten:totalBytesWritten totalBytesExpected:totalBytesExpectedToWrite];
+}
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(onRequestCompleted:success:)]) {
-        [self.delegate onRequestCompleted:self success:nil];
-    }
-    
-    if (self.completed) {
-        self.completed(self, nil);
-    }
-    
-//    [[NSNotificationCenter defaultCenter] postNotificationName:NO_NETWORK_NOTICE object:self userInfo:[NSDictionary dictionaryWithObjectsAndKeys:self.response, @"response", self, @"requester", @"finish", @"type", nil]];
+    [self onReqCompleted:self.res_d err:nil];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(onRequestCompleted:success:)]) {
-        [self.delegate onRequestCompleted:self success:error];
+    NSDLog(@"%@ %@ err:%@", self.method,self.url,error);
+    [self onReqCompleted:self.res_d err:error];
+}
+
+- (void)onReqCompleted:(NSData*)data err:(NSError*)err{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onReqCompleted:data:err:)]) {
+        [self.delegate onReqCompleted:self data:data err:err];
     }
-    
     if (self.completed) {
-        self.completed(self, error);
+        self.completed(self,data,err);
     }
 }
-
-- (void)dealloc
-{
-    self.completed = nil;
+- (void)onReqStart:(NSMutableURLRequest*) request{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onReqStart:request:)]) {
+        [self.delegate onReqStart:self request:request];
+    }
+    if (self.onstart) {
+        self.onstart(self,request);
+    }
 }
-
-//////
-
-+ (void)doGet:(NSString *)url
-{
-    [self doGet:url completed:nil];
+- (void)onReqProcUp:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpected:(NSInteger)totalBytesExpected{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onReqProcUp:bytesWritten:totalBytesWritten:totalBytesExpected:)]) {
+        [self.delegate onReqProcUp:self bytesWritten:bytesWritten totalBytesWritten:totalBytesWritten totalBytesExpected:totalBytesExpected];
+    }
+    if (self.onup) {
+        self.onup(self,bytesWritten,totalBytesWritten,totalBytesExpected);
+    }
 }
-
-+ (void)doGet:(NSString *)url completed:(URLReqCompleted)finished
-{
-    URLRequester *req = [[URLRequester alloc]init];
-    
-    req.url			= url;
-    req.method		= @"GET";
-    req.completed	= finished;
-    [req start];
+- (void)onReqProcDown:(NSData*)recv total:(NSInteger)total{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onReqProcDown:recv:total:)]) {
+        [self.delegate onReqProcDown:self recv:recv total:total];
+    }
+    if (self.ondown) {
+        self.ondown(self,recv,total);
+    }
 }
-
-+ (void)doPost:(NSString *)url
-{
-    [self doPost:url completed:nil];
-}
-
-+ (void)doPost:(NSString *)url args:(NSString *)args
-{
-    [self doPost:url args:args completed:nil];
-}
-
-+ (void)doPost:(NSString *)url dict:(NSDictionary *)dict
-{
-    [self doPost:url dict:dict completed:nil];
-}
-
-+ (void)doPost:(NSString *)url completed:(URLReqCompleted)finished
-{
-    URLRequester *req = [[URLRequester alloc]init];
-    
-    req.url			= url;
-    req.method		= @"POST";
-    req.completed	= finished;
-    [req start];
-}
-
-+ (void)doPost:(NSString *)url args:(NSString *)args completed:(URLReqCompleted)finished
-{
-    URLRequester *req = [[URLRequester alloc]init];
-    
-    req.url		= url;
-    req.method	= @"POST";
-    [req addURLArgs:args];
-    req.completed = finished;
-    [req start];
-}
-
-+ (void)doPost:(NSString *)url dict:(NSDictionary *)dict completed:(URLReqCompleted)finished
-{
-    URLRequester *req = [[URLRequester alloc]init];
-    
-    req.url		= url;
-    req.method	= @"POST";
-    [req addDictArgs:dict];
-    req.completed = finished;
-    [req start];
-}
-
-+ (void)doPost:(NSString *)url dict:(NSDictionary *)dict sreq:(URLReqSetRequest)sreq completed:(URLReqCompleted)finished
-{
-    URLRequester *req = [[URLRequester alloc]init];
-    
-    req.url		= url;
-    req.method	= @"POST";
-    [req addDictArgs:dict];
-    req.setting_r	= sreq;
-    req.completed	= finished;
-    [req start];
-}
-
 @end
 

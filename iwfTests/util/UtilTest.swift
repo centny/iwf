@@ -23,22 +23,17 @@ class UtilTest: XCTestCase {
     }
 
     func testReadf() {
-        var res = Util.writef("/xd/t.txt", str:"abc")
+        var res = Util.writef_("/xd/t.txt", str:"abc")
         XCTAssert(res, "writer error")
-        var a = Util.readf("/ss/t.xt")
+        var a = Util.readf_("/ss/t.xt")
         println(a)
-        var b = Util.readf("/xd/t.txt")
+        var b = Util.readf_("/xd/t.txt")
         if b==nil{
             XCTAssert(false, "data is nil")
         }else{
             let x:String=b!
             println(x)
         }
-    }
-    
-    func testUuid(){
-//        CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
-//        NSString *uuid = (NSString *)CFUUIDCreateString (kCFAllocatorDefault,uuidRef);
     }
 
 }

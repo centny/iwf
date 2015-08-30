@@ -34,7 +34,10 @@ FOUNDATION_EXPORT const unsigned char iwfVersionString[];
 
 //io
 #import <iwf/NSInputStreamWrapper.h>
+#import <iwf/NSDataInputStream.h>
 
 //net/http
 #import <iwf/FPis.h>
-#import <iwf/MultipartStream.h>
+#import <iwf/MultipartBuilder.h>
+#import <iwf/URLRequester.h>
+#import <iwf/H.h>

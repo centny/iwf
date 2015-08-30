@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3313B561B902C4A007B5709 /* H.h in Headers */ = {isa = PBXBuildFile; fileRef = C3313B541B902C4A007B5709 /* H.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3313B571B902C4A007B5709 /* H.m in Sources */ = {isa = PBXBuildFile; fileRef = C3313B551B902C4A007B5709 /* H.m */; };
+		C3313B5C1B903237007B5709 /* HTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3313B5B1B903237007B5709 /* HTest.m */; };
+		C3313B5E1B90328B007B5709 /* URLRequesterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3313B5D1B90328B007B5709 /* URLRequesterTest.m */; };
 		C3373CD91B8EA5E80006A4A0 /* URLRequester.h in Headers */ = {isa = PBXBuildFile; fileRef = C3373CD71B8EA5E80006A4A0 /* URLRequester.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3373CDA1B8EA5E80006A4A0 /* URLRequester.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373CD81B8EA5E80006A4A0 /* URLRequester.m */; };
 		C3373CDE1B8EAFF50006A4A0 /* FPis.h in Headers */ = {isa = PBXBuildFile; fileRef = C3373CDC1B8EAFF50006A4A0 /* FPis.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3373CDF1B8EAFF50006A4A0 /* FPis.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373CDD1B8EAFF50006A4A0 /* FPis.m */; };
-		C3373CE31B8EE30E0006A4A0 /* MultipartStream.h in Headers */ = {isa = PBXBuildFile; fileRef = C3373CE11B8EE30E0006A4A0 /* MultipartStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C3373CE41B8EE30E0006A4A0 /* MultipartStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373CE21B8EE30E0006A4A0 /* MultipartStream.m */; };
+		C3373CE31B8EE30E0006A4A0 /* MultipartBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = C3373CE11B8EE30E0006A4A0 /* MultipartBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3373CE41B8EE30E0006A4A0 /* MultipartBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373CE21B8EE30E0006A4A0 /* MultipartBuilder.m */; };
 		C3373CF41B8F26390006A4A0 /* NSInputStreamWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C3373CF21B8F26390006A4A0 /* NSInputStreamWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3373CF51B8F26390006A4A0 /* NSInputStreamWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373CF31B8F26390006A4A0 /* NSInputStreamWrapper.m */; };
 		C3373D071B8F36470006A4A0 /* FPisTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373CED1B8F026B0006A4A0 /* FPisTest.m */; };
@@ -20,7 +24,11 @@
 		C3373D091B8F36470006A4A0 /* OcLTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEDB1B8C5A8100B275D8 /* OcLTest.m */; };
 		C3373D0A1B8F36470006A4A0 /* UtilTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EED71B8C59ED00B275D8 /* UtilTest.swift */; };
 		C3373D0B1B8F36470006A4A0 /* iwfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EE861B8C3F3D00B275D8 /* iwfTests.swift */; };
-		C3373D0D1B8F40FC0006A4A0 /* MultipartStreamTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373D0C1B8F40FC0006A4A0 /* MultipartStreamTest.m */; };
+		C3373D0D1B8F40FC0006A4A0 /* MultipartBuilderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373D0C1B8F40FC0006A4A0 /* MultipartBuilderTest.m */; };
+		C3466ABC1B90033100C302E7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3466ABB1B90033100C302E7 /* MobileCoreServices.framework */; };
+		C3466ABE1B90041700C302E7 /* iwfocTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3466ABD1B90041700C302E7 /* iwfocTest.m */; };
+		C35D94E01B9310B5002C41F1 /* NSDataInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = C35D94DE1B9310B5002C41F1 /* NSDataInputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C35D94E11B9310B5002C41F1 /* NSDataInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C35D94DF1B9310B5002C41F1 /* NSDataInputStream.m */; };
 		C3C1FCF91B8FF44B00A64957 /* iwf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E4EE741B8C3F3D00B275D8 /* iwf.framework */; };
 		C3E4EE7A1B8C3F3D00B275D8 /* iwf.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE791B8C3F3D00B275D8 /* iwf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3E4EE9B1B8C3F8400B275D8 /* NSSLiteBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE911B8C3F8400B275D8 /* NSSLiteBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -56,16 +64,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C3313B541B902C4A007B5709 /* H.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = H.h; path = net/http/H.h; sourceTree = "<group>"; };
+		C3313B551B902C4A007B5709 /* H.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = H.m; path = net/http/H.m; sourceTree = "<group>"; };
+		C3313B5B1B903237007B5709 /* HTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTest.m; path = net/http/HTest.m; sourceTree = "<group>"; };
+		C3313B5D1B90328B007B5709 /* URLRequesterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLRequesterTest.m; path = net/http/URLRequesterTest.m; sourceTree = "<group>"; };
+		C3313B5F1B903341007B5709 /* Var.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Var.h; path = net/http/Var.h; sourceTree = "<group>"; };
 		C3373CD71B8EA5E80006A4A0 /* URLRequester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = URLRequester.h; path = net/http/URLRequester.h; sourceTree = "<group>"; };
 		C3373CD81B8EA5E80006A4A0 /* URLRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLRequester.m; path = net/http/URLRequester.m; sourceTree = "<group>"; };
 		C3373CDC1B8EAFF50006A4A0 /* FPis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPis.h; path = net/http/FPis.h; sourceTree = "<group>"; };
 		C3373CDD1B8EAFF50006A4A0 /* FPis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPis.m; path = net/http/FPis.m; sourceTree = "<group>"; };
-		C3373CE11B8EE30E0006A4A0 /* MultipartStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultipartStream.h; path = net/http/MultipartStream.h; sourceTree = "<group>"; };
-		C3373CE21B8EE30E0006A4A0 /* MultipartStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartStream.m; path = net/http/MultipartStream.m; sourceTree = "<group>"; };
+		C3373CE11B8EE30E0006A4A0 /* MultipartBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultipartBuilder.h; path = net/http/MultipartBuilder.h; sourceTree = "<group>"; };
+		C3373CE21B8EE30E0006A4A0 /* MultipartBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartBuilder.m; path = net/http/MultipartBuilder.m; sourceTree = "<group>"; };
 		C3373CED1B8F026B0006A4A0 /* FPisTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPisTest.m; path = net/http/FPisTest.m; sourceTree = "<group>"; };
 		C3373CF21B8F26390006A4A0 /* NSInputStreamWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSInputStreamWrapper.h; path = io/NSInputStreamWrapper.h; sourceTree = "<group>"; };
 		C3373CF31B8F26390006A4A0 /* NSInputStreamWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSInputStreamWrapper.m; path = io/NSInputStreamWrapper.m; sourceTree = "<group>"; };
-		C3373D0C1B8F40FC0006A4A0 /* MultipartStreamTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartStreamTest.m; path = net/http/MultipartStreamTest.m; sourceTree = "<group>"; };
+		C3373D0C1B8F40FC0006A4A0 /* MultipartBuilderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartBuilderTest.m; path = net/http/MultipartBuilderTest.m; sourceTree = "<group>"; };
+		C3466ABB1B90033100C302E7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		C3466ABD1B90041700C302E7 /* iwfocTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iwfocTest.m; sourceTree = "<group>"; };
+		C35D94DE1B9310B5002C41F1 /* NSDataInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDataInputStream.h; path = io/NSDataInputStream.h; sourceTree = "<group>"; };
+		C35D94DF1B9310B5002C41F1 /* NSDataInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDataInputStream.m; path = io/NSDataInputStream.m; sourceTree = "<group>"; };
 		C3E4EE741B8C3F3D00B275D8 /* iwf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iwf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3E4EE781B8C3F3D00B275D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3E4EE791B8C3F3D00B275D8 /* iwf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iwf.h; sourceTree = "<group>"; };
@@ -101,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3466ABC1B90033100C302E7 /* MobileCoreServices.framework in Frameworks */,
 				C3E4EEAB1B8C3FA100B275D8 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,8 +150,10 @@
 				C3373CD81B8EA5E80006A4A0 /* URLRequester.m */,
 				C3373CDC1B8EAFF50006A4A0 /* FPis.h */,
 				C3373CDD1B8EAFF50006A4A0 /* FPis.m */,
-				C3373CE11B8EE30E0006A4A0 /* MultipartStream.h */,
-				C3373CE21B8EE30E0006A4A0 /* MultipartStream.m */,
+				C3373CE11B8EE30E0006A4A0 /* MultipartBuilder.h */,
+				C3373CE21B8EE30E0006A4A0 /* MultipartBuilder.m */,
+				C3313B541B902C4A007B5709 /* H.h */,
+				C3313B551B902C4A007B5709 /* H.m */,
 			);
 			name = http;
 			sourceTree = "<group>";
@@ -150,7 +170,10 @@
 			isa = PBXGroup;
 			children = (
 				C3373CED1B8F026B0006A4A0 /* FPisTest.m */,
-				C3373D0C1B8F40FC0006A4A0 /* MultipartStreamTest.m */,
+				C3373D0C1B8F40FC0006A4A0 /* MultipartBuilderTest.m */,
+				C3313B5B1B903237007B5709 /* HTest.m */,
+				C3313B5D1B90328B007B5709 /* URLRequesterTest.m */,
+				C3313B5F1B903341007B5709 /* Var.h */,
 			);
 			name = http;
 			sourceTree = "<group>";
@@ -160,6 +183,8 @@
 			children = (
 				C3373CF21B8F26390006A4A0 /* NSInputStreamWrapper.h */,
 				C3373CF31B8F26390006A4A0 /* NSInputStreamWrapper.m */,
+				C35D94DE1B9310B5002C41F1 /* NSDataInputStream.h */,
+				C35D94DF1B9310B5002C41F1 /* NSDataInputStream.m */,
 			);
 			name = io;
 			sourceTree = "<group>";
@@ -214,6 +239,7 @@
 				C3E4EED31B8C59ED00B275D8 /* log */,
 				C3E4EED61B8C59ED00B275D8 /* util */,
 				C3E4EE861B8C3F3D00B275D8 /* iwfTests.swift */,
+				C3466ABD1B90041700C302E7 /* iwfocTest.m */,
 				C3E4EE841B8C3F3D00B275D8 /* Supporting Files */,
 			);
 			path = iwfTests;
@@ -248,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				C3E4EEAA1B8C3FA100B275D8 /* libsqlite3.dylib */,
+				C3466ABB1B90033100C302E7 /* MobileCoreServices.framework */,
 			);
 			name = libs;
 			sourceTree = "<group>";
@@ -314,9 +341,11 @@
 				C3373CD91B8EA5E80006A4A0 /* URLRequester.h in Headers */,
 				C3373CDE1B8EAFF50006A4A0 /* FPis.h in Headers */,
 				C3E4EED01B8C4D7C00B275D8 /* OcL.h in Headers */,
-				C3373CE31B8EE30E0006A4A0 /* MultipartStream.h in Headers */,
+				C3373CE31B8EE30E0006A4A0 /* MultipartBuilder.h in Headers */,
 				C3373CF41B8F26390006A4A0 /* NSInputStreamWrapper.h in Headers */,
+				C3313B561B902C4A007B5709 /* H.h in Headers */,
 				C3E4EEA71B8C3F8400B275D8 /* NSGImage.h in Headers */,
+				C35D94E01B9310B5002C41F1 /* NSDataInputStream.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,8 +448,9 @@
 				C3E4EEBE1B8C414C00B275D8 /* FLogWriter.swift in Sources */,
 				C3373CDA1B8EA5E80006A4A0 /* URLRequester.m in Sources */,
 				C3E4EEC01B8C414C00B275D8 /* Log.swift in Sources */,
-				C3373CE41B8EE30E0006A4A0 /* MultipartStream.m in Sources */,
+				C3373CE41B8EE30E0006A4A0 /* MultipartBuilder.m in Sources */,
 				C3E4EEA01B8C3F8400B275D8 /* NSGImage.m in Sources */,
+				C35D94E11B9310B5002C41F1 /* NSDataInputStream.m in Sources */,
 				C3E4EEA21B8C3F8400B275D8 /* NSLineString.m in Sources */,
 				C3E4EE9C1B8C3F8400B275D8 /* NSSLiteBuilder.m in Sources */,
 				C3E4EEA41B8C3F8400B275D8 /* NSPart.m in Sources */,
@@ -428,6 +458,7 @@
 				C3373CF51B8F26390006A4A0 /* NSInputStreamWrapper.m in Sources */,
 				C3E4EEC41B8C417800B275D8 /* Util.swift in Sources */,
 				C3E4EEB01B8C407000B275D8 /* ClassExt.m in Sources */,
+				C3313B571B902C4A007B5709 /* H.m in Sources */,
 				C3E4EED11B8C4D7C00B275D8 /* OcL.m in Sources */,
 				C3E4EE9E1B8C3F8400B275D8 /* CoreMethod.m in Sources */,
 			);
@@ -439,10 +470,13 @@
 			files = (
 				C3373D071B8F36470006A4A0 /* FPisTest.m in Sources */,
 				C3373D081B8F36470006A4A0 /* LogTest.swift in Sources */,
+				C3313B5C1B903237007B5709 /* HTest.m in Sources */,
 				C3373D091B8F36470006A4A0 /* OcLTest.m in Sources */,
 				C3373D0A1B8F36470006A4A0 /* UtilTest.swift in Sources */,
-				C3373D0D1B8F40FC0006A4A0 /* MultipartStreamTest.m in Sources */,
+				C3313B5E1B90328B007B5709 /* URLRequesterTest.m in Sources */,
+				C3373D0D1B8F40FC0006A4A0 /* MultipartBuilderTest.m in Sources */,
 				C3373D0B1B8F36470006A4A0 /* iwfTests.swift in Sources */,
+				C3466ABE1B90041700C302E7 /* iwfocTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

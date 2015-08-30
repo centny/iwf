@@ -8,13 +8,24 @@
 
 #import <Foundation/Foundation.h>
 //
-#define URL_TIME_OUT		15
-#define NO_NETWORK_NOTICE	@"NO_NETWORK"
+#define URL_TIME_OUT		10
+//#define NO_NETWORK_NOTICE	@"NO_NETWORK"
 
-@class URLRequester;
+//
+FOUNDATION_EXPORT NSString* HC_C; //cache only.
+FOUNDATION_EXPORT NSString* HC_CN; //cache first.
+FOUNDATION_EXPORT NSString* HC_N; //normal http cache.
+FOUNDATION_EXPORT NSString* HC_I; //image cache.
+FOUNDATION_EXPORT NSString* HC_NO; //no cache.
+//
+FOUNDATION_EXPORT NSString* HC_KEY; //http cache arguments key.
+//
+@class URLRequester,MultipartBuilder;
 
-typedef void (^ URLReqCompleted)(URLRequester *req, NSObject *msg);
-typedef void (^ URLReqSetRequest)(URLRequester *req, NSMutableURLRequest *request);
+typedef void (^ URLReqCompleted)(URLRequester *req, NSData* data, NSError *err);
+typedef void (^ URLReqStart)(URLRequester *req, NSMutableURLRequest *request);
+typedef void (^ URLReqProcUp)(URLRequester *req, NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpected);
+typedef void (^ URLReqProcDown)(URLRequester *req, NSData * recv, NSInteger total);
 
 /**
  *    the URL request delegate.
@@ -27,7 +38,10 @@ typedef void (^ URLReqSetRequest)(URLRequester *req, NSMutableURLRequest *reques
  *    @param req the requester instance.
  *    @param msg nil is request success,or failed.
  */
-- (void)onRequestCompleted:(URLRequester *)req success:(NSObject *)msg;
+- (void)onReqCompleted:(URLRequester*)req data:(NSData*)data err:(NSError*)err;
+- (void)onReqStart:(URLRequester*)req request:(NSMutableURLRequest*) request;
+- (void)onReqProcUp:(URLRequester*)req bytesWritten:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpected:(NSInteger)totalBytesExpected;
+- (void)onReqProcDown:(URLRequester*)req recv:(NSData*)recv total:(NSInteger)total;
 @end
 
 /**
@@ -36,12 +50,16 @@ typedef void (^ URLReqSetRequest)(URLRequester *req, NSMutableURLRequest *reques
  */
 @interface URLRequester : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 //
-@property(nonatomic) NSStringEncoding				encoding;	// default is UTF-8.
-@property(nonatomic) NSString						*url;		// target URL.
-@property(nonatomic) NSString						*method;	// default is GET.
+@property(nonatomic, readonly) NSMutableURLRequest	*request;
+@property(nonatomic, readonly) NSURLConnection		*connection;
+//
+@property(nonatomic, assign) NSStringEncoding		encoding;	// default is UTF-8.
+@property(nonatomic, retain) NSString				*url;		// target URL.
+@property(nonatomic, retain) NSString				*method;	// default is GET.
+//@property(nonatomic, retain) NSString               *req_t;     // the request content type.
+@property(nonatomic, readonly) MultipartBuilder     *multipart;
 @property(nonatomic) long							timeout;
 @property(nonatomic, readonly) NSMutableDictionary	*args;		// request arguments.
-@property(nonatomic, readonly) NSMutableDictionary	*files;		// request files.
 @property(nonatomic, readonly) NSMutableDictionary	*req_h;		// request header fields.
 //
 @property(nonatomic, readonly) NSDictionary			*res_h;		// response header fields.
@@ -49,12 +67,18 @@ typedef void (^ URLReqSetRequest)(URLRequester *req, NSMutableURLRequest *reques
 @property(nonatomic, readonly) NSHTTPURLResponse	*response;	//
 @property(nonatomic, readonly) NSString				*sdata;		// response string data by encoding.
 @property(nonatomic, readonly) NSInteger			statusCode;
+@property(nonatomic, readonly) NSInteger			clength;
+@property(nonatomic, copy)     NSString             *policy;
+@property(nonatomic, readonly) NSURLRequestCachePolicy policy_;
 //
 @property(nonatomic, retain) NSData* body;
 @property(nonatomic, retain) NSInputStream *streamBody;
 @property(nonatomic, assign) id <URLRequesterDelegate>	delegate;
 @property(nonatomic, copy) URLReqCompleted				completed;
-@property(nonatomic, copy) URLReqSetRequest			setting_r;	// call it before start.
+@property(nonatomic, copy) URLReqStart                  onstart;	// call it before start.
+@property(nonatomic, copy) URLReqProcUp                 onup;
+@property(nonatomic, copy) URLReqProcDown               ondown;
+
 //
 
 //
@@ -66,16 +90,9 @@ typedef void (^ URLReqSetRequest)(URLRequester *req, NSMutableURLRequest *reques
 - (NSString *)codingData:(NSStringEncoding)coding;
 - (void)start;
 - (void)cancel;
-
-//
-+ (void)doGet:(NSString *)url;
-+ (void)doGet:(NSString *)url completed:(URLReqCompleted)finished;
-+ (void)doPost:(NSString *)url;
-+ (void)doPost:(NSString *)url args:(NSString *)args;
-+ (void)doPost:(NSString *)url dict:(NSDictionary *)dict;
-+ (void)doPost:(NSString *)url completed:(URLReqCompleted)finished;
-+ (void)doPost:(NSString *)url args:(NSString *)args completed:(URLReqCompleted)finished;
-+ (void)doPost:(NSString *)url dict:(NSDictionary *)dict completed:(URLReqCompleted)finished;
-+ (void)doPost:(NSString *)url dict:(NSDictionary *)dict sreq:(URLReqSetRequest)sreq completed:(URLReqCompleted)finished;
+///
+- (void)onReqCompleted:(NSData*)data err:(NSError*)err;
+- (void)onReqStart:(NSMutableURLRequest*) request;
+- (void)onReqProcUp:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpected:(NSInteger)totalBytesExpected;
+- (void)onReqProcDown:(NSData*)recv total:(NSInteger)total;
 @end
-
