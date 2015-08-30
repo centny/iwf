@@ -25,16 +25,26 @@
     }
     return self;
 }
+//- (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode{
+//    if(aStream==self.base&&eventCode==NSStreamEventEndEncountered){
+//        return;
+//    }
+//    [super stream:aStream handleEvent:eventCode];
+//}
 - (NSInteger)read:(uint8_t *)buffer maxLength:(NSUInteger)len{
     NSInteger rlen=0;
     if(self.readed_b<self.data_b.length-1){
         rlen=dataccpy(buffer, 0, self.data_b, self.readed_b, len);
         self.readed_b+=rlen;
+        buffer[rlen]=0;
+        printf("%s",buffer);
         return rlen;
     }
     if(self.base_having&&self.base&&self.base.hasBytesAvailable){
         rlen = [self.base read:buffer maxLength:len];
         if(rlen>0){
+            buffer[rlen]=0;
+            printf("%s",buffer);
             return rlen;
         }
         self.base_having=false;
@@ -42,6 +52,8 @@
     if(self.readed_e<self.data_e.length-1){
         rlen=dataccpy(buffer, 0, self.data_e, self.readed_e, len);
         self.readed_e+=rlen;
+        buffer[rlen]=0;
+        printf("%s",buffer);
         return rlen;
     }
     return -1;

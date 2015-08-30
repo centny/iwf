@@ -14,6 +14,7 @@
 @property(nonatomic,retain)NSString *bound;
 @property(nonatomic,readonly)NSMutableDictionary *datas;
 //
+@property(nonatomic,retain)NSData*   data;
 @property(nonatomic,retain)NSString* path;
 @property(nonatomic,retain)NSString* type;
 @property(nonatomic,retain)NSString* name;
@@ -21,11 +22,10 @@
 @property(nonatomic,assign)long      clength;//the content length.
 //
 - (instancetype)initWithBound:(NSString*)bound;
-- (instancetype)initWithBound:(NSString*)bound args:(NSDictionary*)args;
-- (instancetype)initWithBound:(NSString*)bound args:(NSDictionary*)args name:(NSString*)name path:(NSString*)path;
 - (void)addArgs:(NSDictionary*)args;
 - (void)buildPath:(NSString*)path name:(NSString*)name;
+- (void)buildData:(NSData*)data name:(NSString*)name filename:(NSString*)filename type:(NSString*)type;
 - (NSInputStream*)build;
 
-+ (MultipartBuilder*)builderWith:(NSDictionary*)args name:(NSString*)name path:(NSString*)path;
++ (MultipartBuilder*)builder;
 @end

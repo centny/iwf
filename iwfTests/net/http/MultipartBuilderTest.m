@@ -20,7 +20,8 @@
 - (void)testMultipartBuilder {
     XCTAssertTrue([Util writef_:@"a.txt" str:@"xxxx"],@"creat file rror");
     NSString* fp_a=[Util homef:@"a.txt"];
-    MultipartBuilder *mb=[[MultipartBuilder alloc]initWithBound:@"^*^" args:nil name:@"file" path:fp_a];
+    MultipartBuilder *mb=[[MultipartBuilder alloc]initWithBound:@"^*^"];
+    [mb buildPath:fp_a name:@"file"];
     [mb addArgs:[NSDictionary dictionaryBy:@"a=1&b=12" arySeparator:@"&" kvSeparator:@"="]];
 //    MultipartStream* ms=[[MultipartStream alloc]initWithBound:@"$$abc$$"];
 //    [ms addPis:[[FPis alloc]initWithPath:fp_a name:@"file_a" filename:@"测试a.txt" type:nil length:fs_a]];

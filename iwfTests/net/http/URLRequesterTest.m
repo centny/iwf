@@ -180,7 +180,7 @@
 //    RunLoopv(self);
     NSLog(@"Used:%ld",[[NSURLCache sharedURLCache]currentMemoryUsage]);
 }
-- (void)doupf:(NSString*)hc{
+- (void)doupf1:(NSString*)hc{
     URLRequester *req=[[URLRequester alloc]init];
     req.url=[NSString stringWithFormat:@"%@/rec_f?_hc_=%@",TS_SRV,hc];
     [Util writef_:@"t.txt" str:@"testing"];
@@ -206,10 +206,38 @@
     req.method=@"POST";
     [req start];
 }
+- (void)doupf2:(NSString*)hc{
+    URLRequester *req=[[URLRequester alloc]init];
+    req.url=[NSString stringWithFormat:@"%@/rec_f?_hc_=%@",TS_SRV,hc];
+    [Util writef_:@"t.txt" str:@"testing"];
+    [req.multipart buildData:[NSData dataWithContentsOfFile:[Util homef:@"t.txt"]] name:@"file" filename:@"t.txx" type:@"plain/text"];
+    [req.multipart addArgs:[NSDictionary dictionaryBy:@"a=1&b=12&c=这是中文" arySeparator:@"&" kvSeparator:@"="]];
+//    PrintStream([req.multipart build]);
+    req.completed=^(URLRequester *req, NSData *data, NSError *err) {
+        NSString* dok=[req codingData:NSUTF8StringEncoding];
+        NSLog(@"onReqCompleted->%ld,%@",req.statusCode,dok);
+        XCTAssert([dok isEqual:@"OK"],"response error");
+        XCTAssert(req.statusCode==200,"response code is not 200");
+        _ec++;
+    };
+    req.onstart=^(URLRequester *req, NSMutableURLRequest *request){
+        NSLog(@"onReqStart");
+    };
+    req.onup=^(URLRequester *req, NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpected){
+        NSLog(@"onReqProcUp->%ld",bytesWritten);
+    };
+    req.ondown=^(URLRequester *req, NSData * recv, NSInteger total){
+        NSLog(@"onReqProcDown->%ld,%ld",recv.length,total);
+    };
+    req.delegate=self;
+    req.method=@"POST";
+    [req start];
+}
 - (void)testUpF{
-    self.excepted=1;
+    self.excepted=2;
     self.ec=0;
-    [self doupf:HC_NO];
+    [self doupf1:HC_NO];
+    [self doupf2:HC_NO];
     XCTAssert(RunLoopx(self),@"timeout");
 }
 - (void)onReqCompleted:(URLRequester*)req data:(NSData*)data err:(NSError*)err{
