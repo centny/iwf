@@ -9,12 +9,15 @@
 import UIKit
 import iwf
 
-class ViewController: UIViewController {
-
+class ViewController: UINavigationController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         L().D("debug info->%@", "ssxx");
-        FPis.new();
+//        var root=NavRootVCtl.new();
+//        var nav=UINavigationController(rootViewController: root)
+//        nav.view.frame=CGRectMake(0, 0, 320, 460);
+//        self.view .addSubview(nav.view)
         // Do any additional setup after loading the view, typically from a nib.
     }
 

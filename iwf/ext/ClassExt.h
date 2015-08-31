@@ -152,6 +152,8 @@
 //////////////////////////////////////////////
 // create the color view.
 + (id)viewWithColor:(UIColor *)color frame:(CGRect)frame;
+//+ (id)viewWithXib:(NSString*)name owner:(id)owner;
++ (id)loadFromXib;
 @end
 ////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////UIGestureRecognizer./////////////////////////////////////////////
@@ -176,3 +178,31 @@
 @end
 // #endif	/* ifndef Centny_ClassExt_h */
 
+
+@interface NSData (JSON)
+-(id)toJsonObject:(NSError**)err;
++(NSData*)dataWithJsonObject:(id)obj err:(NSError**)err;
+@end
+
+@interface NSDictionary (JSON)
+-(NSData*)toJson:(NSError**)err;
+@end
+
+@interface NSMutableDictionary (JSON)
+-(NSData*)toJson:(NSError**)err;
+@end
+
+
+@interface NSArray (JSON)
+-(NSData*)toJson:(NSError**)err;
+@end
+
+@interface NSMutableArray (JSON)
+-(NSData*)toJson:(NSError**)err;
+@end
+
+@interface UIImageView (HTTP)
+@property(nonatomic,readonly)NSError* err;//the error when load fail.
+@property(nonatomic,retain)  UIImage* loading;
+@property(nonatomic,retain)  NSString* url;
+@end

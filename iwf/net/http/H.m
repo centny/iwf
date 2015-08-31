@@ -19,14 +19,18 @@
 
 + (void)doGet:(NSString *)url completed:(URLReqCompleted)finished
 {
+    [H doGet:url args:nil completed:finished];
+}
++ (void)doGet:(NSString *)url args:(NSDictionary *)args completed:(URLReqCompleted)finished{
     URLRequester *req = [[URLRequester alloc]init];
-    
+    if(args){
+        [req addDictArgs:args];
+    }
     req.url			= url;
     req.method		= @"GET";
     req.completed	= finished;
     [req start];
 }
-
 + (void)doPost:(NSString *)url
 {
     [H doPost:url completed:nil];

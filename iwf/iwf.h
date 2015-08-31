@@ -37,7 +37,24 @@ FOUNDATION_EXPORT const unsigned char iwfVersionString[];
 #import <iwf/NSDataInputStream.h>
 
 //net/http
-#import <iwf/FPis.h>
 #import <iwf/MultipartBuilder.h>
 #import <iwf/URLRequester.h>
 #import <iwf/H.h>
+
+//ui
+
+#import <iwf/UILineView.h>
+#import <iwf/UIBoundsImageView.h>
+#import <iwf/UIPushTreeView.h>
+#import <iwf/UITableExtView.h>
+#import <iwf/UITreeView.h>
+#import <iwf/NSRefreshProxy.h>
+#import <iwf/LineDrawer.h>
+#import <iwf/UIRefreshView.h>
+#import <iwf/UIFocusImageView.h>
+#import <iwf/UICustomPageControl.h>
+#import <iwf/UIBorderView.h>
+#import <iwf/UIStarView.h>
+#import <iwf/UIPlaceHolderTextView.h>
+#import <iwf/UIWebExtView.h>
+#import <iwf/UIRefreshViewDelegate.h>

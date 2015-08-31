@@ -13,6 +13,7 @@
 //
 + (void)doGet:(NSString *)url;
 + (void)doGet:(NSString *)url completed:(URLReqCompleted)finished;
++ (void)doGet:(NSString *)url args:(NSDictionary *)args completed:(URLReqCompleted)finished;
 + (void)doPost:(NSString *)url;
 + (void)doPost:(NSString *)url args:(NSString *)args;
 + (void)doPost:(NSString *)url dict:(NSDictionary *)dict;
