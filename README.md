@@ -35,4 +35,6 @@ example: all usage exampe on `iwf-test/iwf-test/vctl`
 
 ### Useful Class
 
+* `NSGImage` to get/set image RGBA value by x/y position.
+
 
