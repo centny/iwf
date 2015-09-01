@@ -17,7 +17,6 @@
 		C3373CE41B8EE30E0006A4A0 /* MultipartBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373CE21B8EE30E0006A4A0 /* MultipartBuilder.m */; };
 		C3373CF41B8F26390006A4A0 /* NSInputStreamWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = C3373CF21B8F26390006A4A0 /* NSInputStreamWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3373CF51B8F26390006A4A0 /* NSInputStreamWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373CF31B8F26390006A4A0 /* NSInputStreamWrapper.m */; };
-		C3373D071B8F36470006A4A0 /* FPisTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3373CED1B8F026B0006A4A0 /* FPisTest.m */; };
 		C3373D081B8F36470006A4A0 /* LogTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EED41B8C59ED00B275D8 /* LogTest.swift */; };
 		C3373D091B8F36470006A4A0 /* OcLTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EEDB1B8C5A8100B275D8 /* OcLTest.m */; };
 		C3373D0A1B8F36470006A4A0 /* UtilTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E4EED71B8C59ED00B275D8 /* UtilTest.swift */; };
@@ -101,7 +100,6 @@
 		C3373CD81B8EA5E80006A4A0 /* URLRequester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = URLRequester.m; path = net/http/URLRequester.m; sourceTree = "<group>"; };
 		C3373CE11B8EE30E0006A4A0 /* MultipartBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MultipartBuilder.h; path = net/http/MultipartBuilder.h; sourceTree = "<group>"; };
 		C3373CE21B8EE30E0006A4A0 /* MultipartBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartBuilder.m; path = net/http/MultipartBuilder.m; sourceTree = "<group>"; };
-		C3373CED1B8F026B0006A4A0 /* FPisTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPisTest.m; path = net/http/FPisTest.m; sourceTree = "<group>"; };
 		C3373CF21B8F26390006A4A0 /* NSInputStreamWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSInputStreamWrapper.h; path = io/NSInputStreamWrapper.h; sourceTree = "<group>"; };
 		C3373CF31B8F26390006A4A0 /* NSInputStreamWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSInputStreamWrapper.m; path = io/NSInputStreamWrapper.m; sourceTree = "<group>"; };
 		C3373D0C1B8F40FC0006A4A0 /* MultipartBuilderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MultipartBuilderTest.m; path = net/http/MultipartBuilderTest.m; sourceTree = "<group>"; };
@@ -224,7 +222,6 @@
 		C3373CEC1B8F023A0006A4A0 /* http */ = {
 			isa = PBXGroup;
 			children = (
-				C3373CED1B8F026B0006A4A0 /* FPisTest.m */,
 				C3373D0C1B8F40FC0006A4A0 /* MultipartBuilderTest.m */,
 				C3313B5B1B903237007B5709 /* HTest.m */,
 				C3313B5D1B90328B007B5709 /* URLRequesterTest.m */,
@@ -597,7 +594,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3373D071B8F36470006A4A0 /* FPisTest.m in Sources */,
 				C3373D081B8F36470006A4A0 /* LogTest.swift in Sources */,
 				C3313B5C1B903237007B5709 /* HTest.m in Sources */,
 				C3373D091B8F36470006A4A0 /* OcLTest.m in Sources */,

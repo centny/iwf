@@ -10,6 +10,7 @@
 
 #define KP_FV_PC_NORMAL @"PC_NORMAL" //page control normal image.
 #define KP_FV_PC_HIGHTED @"PC_HIGHTED" //page control highted image.
+#define KP_FV_PC_AUTOPLAY @"PC_AUTOPLAY" //page control autoplay delay
 #define KP_FV_PC_FRAME @"PC_FRAME" //page control frame.
 #define FV_PAGEC_H 15
 //
@@ -38,7 +39,8 @@
 @property(nonatomic, assign) BOOL									limitScroll;
 @property(nonatomic, readonly) UIScrollView							*scroll;
 @property(nonatomic, readonly) UIPageControl						*page;
-@property(nonatomic, assign) IBOutlet id <UIFocusViewDelegate>               delegate;
+@property(nonatomic, assign) IBOutlet id <UIFocusViewDelegate>      delegate;
+@property(nonatomic, assign) int                                    autoplay;
 - (void)scrollNext;
 - (void)setValue:(id)value forKeyPath:(NSString *)keyPath;
 - (void)showViews:(NSArray*)views;

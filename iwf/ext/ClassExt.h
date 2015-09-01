@@ -180,6 +180,7 @@
 
 
 @interface NSData (JSON)
+-(NSString*)UTF8String;
 -(id)toJsonObject:(NSError**)err;
 +(NSData*)dataWithJsonObject:(id)obj err:(NSError**)err;
 @end

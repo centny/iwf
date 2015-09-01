@@ -84,6 +84,13 @@
 	[self updatePage];
 }
 
+-(void)setAutoplay:(int)autoplay{
+    _autoplay=autoplay;
+    if(autoplay>0){
+        [self performSelector:@selector(autoPlayNext) withObject:nil afterDelay:self.autoplay];
+    }
+}
+
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
 	self.pageIdx = scroll.contentOffset.x / ssize.width;
@@ -170,6 +177,12 @@
     }
     return self;
 }
+- (void)autoPlayNext{
+    if(self.autoplay>0){
+        [self scrollNext];
+        [self performSelector:@selector(autoPlayNext) withObject:nil afterDelay:self.autoplay];
+    }
+}
 - (void)scrollNext
 {
 	[UIView animateWithDuration:0.4 animations:^{
@@ -188,6 +201,8 @@
     }else if([KP_FV_PC_FRAME isEqualToString:keyPath]){
         self.page.frame=[value CGRectValue];
         return;
+    }else if([KP_FV_PC_AUTOPLAY isEqualToString:keyPath]){
+        self.autoplay=[value intValue];
     }
     [super setValue:value forKey:keyPath];
 }
@@ -201,14 +216,17 @@
     NSMutableArray* ary=[NSMutableArray array];
     UIImageView *iv;
     iv=[[UIImageView alloc]initWithFrame:frame];
+    iv.image=[UIImage imageNamed:loading];
     iv.url=[urls objectAtIndex:urls.count-1];
     [ary addObject:iv];
     for (NSString* url in urls) {
         iv=[[UIImageView alloc]initWithFrame:frame];
+        iv.image=[UIImage imageNamed:loading];
         iv.url=url;
         [ary addObject:iv];
     }
     iv=[[UIImageView alloc]initWithFrame:frame];
+    iv.image=[UIImage imageNamed:loading];
     iv.url=[urls objectAtIndex:0];
     [ary addObject:iv];
     return ary;

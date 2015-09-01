@@ -28,6 +28,8 @@
     fv.page.currentPageIndicatorTintColor=[UIColor greenColor];
     fv.page.pageIndicatorTintColor=[UIColor whiteColor];
     fv.delegate=self;
+    //setting auto play delay to 5s.
+    fv.autoplay=5;
     [self.view addSubview:fv];
 }
 

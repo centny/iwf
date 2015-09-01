@@ -12,14 +12,32 @@
 
 //////
 
-+ (void)doGet:(NSString *)url
-{
-    [H doGet:url completed:nil];
-}
-
 + (void)doGet:(NSString *)url completed:(URLReqCompleted)finished
 {
     [H doGet:url args:nil completed:finished];
+}
++ (void)doGet:(NSString *)url json:(URLReqJsonCompleted)finished{
+    [H doGet:url completed:^(URLRequester *req, NSData *data, NSError *err) {
+        NSDictionary* dict=nil;
+        if(err==nil){
+            dict=[data toJsonObject:&err];
+        }
+        finished(req,data,dict,err);
+    }];
+}
++ (void)doGet:(URLReqCompleted)finished url:(NSString*)format,...{
+    va_list args;
+    va_start(args, format);
+    NSString *url=[[NSString alloc]initWithFormat:format arguments:args];
+    va_end(args);
+    [H doGet:url completed:finished];
+}
++ (void)doGetj:(URLReqJsonCompleted)finished url:(NSString*)format,...{
+    va_list args;
+    va_start(args, format);
+    NSString *url=[[NSString alloc]initWithFormat:format arguments:args];
+    va_end(args);
+    [H doGet:url json:finished];
 }
 + (void)doGet:(NSString *)url args:(NSDictionary *)args completed:(URLReqCompleted)finished{
     URLRequester *req = [[URLRequester alloc]init];
@@ -31,35 +49,36 @@
     req.completed	= finished;
     [req start];
 }
-+ (void)doPost:(NSString *)url
-{
-    [H doPost:url completed:nil];
++ (void)doGet:(NSString *)url args:(NSDictionary *)args json:(URLReqJsonCompleted)finished{
+    [H doGet:url args:args completed:^(URLRequester *req, NSData *data, NSError *err) {
+        NSDictionary* dict=nil;
+        if(err==nil){
+            dict=[data toJsonObject:&err];
+        }
+        finished(req,data,dict,err);
+    }];
 }
-
-+ (void)doPost:(NSString *)url args:(NSString *)args
-{
-    [H doPost:url args:args completed:nil];
-}
-
-+ (void)doPost:(NSString *)url dict:(NSDictionary *)dict
-{
-    [H doPost:url dict:dict completed:nil];
-}
-
 + (void)doPost:(NSString *)url completed:(URLReqCompleted)finished
 {
     URLRequester *req = [[URLRequester alloc]init];
-    
     req.url			= url;
     req.method		= @"POST";
     req.completed	= finished;
     [req start];
 }
++ (void)doPost:(NSString *)url json:(URLReqJsonCompleted)finished{
+    [H doPost:url completed:^(URLRequester *req, NSData *data, NSError *err) {
+        NSDictionary* dict=nil;
+        if(err==nil){
+            dict=[data toJsonObject:&err];
+        }
+        finished(req,data,dict,err);
+    }];
+}
 
-+ (void)doPost:(NSString *)url args:(NSString *)args completed:(URLReqCompleted)finished
++ (void)doPost:(NSString *)url sargs:(NSString *)args completed:(URLReqCompleted)finished
 {
     URLRequester *req = [[URLRequester alloc]init];
-    
     req.url		= url;
     req.method	= @"POST";
     [req addURLArgs:args];
@@ -67,27 +86,57 @@
     [req start];
 }
 
-+ (void)doPost:(NSString *)url dict:(NSDictionary *)dict completed:(URLReqCompleted)finished
++ (void)doPost:(NSString *)url sargs:(NSString *)args json:(URLReqJsonCompleted)finished{
+    [H doPost:url sargs:args completed:^(URLRequester *req, NSData *data, NSError *err) {
+        NSDictionary* dict=nil;
+        if(err==nil){
+            dict=[data toJsonObject:&err];
+        }
+        finished(req,data,dict,err);
+    }];
+}
++ (void)doPost:(NSString *)url json:(URLReqJsonCompleted)finished sargs:(NSString*)format,...{
+    va_list args;
+    va_start(args, format);
+    NSString *targs=[[NSString alloc]initWithFormat:format arguments:args];
+    va_end(args);
+    [H doPost:url sargs:targs json:finished];
+}
++ (void)doPost:(NSString *)url dargs:(NSDictionary *)args completed:(URLReqCompleted)finished
 {
     URLRequester *req = [[URLRequester alloc]init];
-    
     req.url		= url;
     req.method	= @"POST";
-    [req addDictArgs:dict];
+    [req addDictArgs:args];
     req.completed = finished;
     [req start];
 }
-
-+ (void)doPost:(NSString *)url dict:(NSDictionary *)dict sreq:(URLReqStart)sreq completed:(URLReqCompleted)finished
++ (void)doPost:(NSString *)url dargs:(NSDictionary *)dargs json:(URLReqJsonCompleted)finished{
+    [H doPost:url dargs:dargs completed:^(URLRequester *req, NSData *data, NSError *err) {
+        NSDictionary* dict=nil;
+        if(err==nil){
+            dict=[data toJsonObject:&err];
+        }
+        finished(req,data,dict,err);
+    }];
+}
++ (void)doPost:(NSString *)url dargs:(NSDictionary *)args sreq:(URLReqStart)sreq completed:(URLReqCompleted)finished
 {
     URLRequester *req = [[URLRequester alloc]init];
-    
     req.url		= url;
     req.method	= @"POST";
-    [req addDictArgs:dict];
+    [req addDictArgs:args];
     req.onstart	= sreq;
     req.completed	= finished;
     [req start];
 }
-
++ (void)doPost:(NSString *)url dargs:(NSDictionary *)dargs sreq:(URLReqStart)sreq json:(URLReqJsonCompleted)finished{
+    [H doPost:url dargs:dargs sreq:sreq completed:^(URLRequester *req, NSData *data, NSError *err) {
+        NSDictionary* dict=nil;
+        if(err==nil){
+            dict=[data toJsonObject:&err];
+        }
+        finished(req,data,dict,err);
+    }];
+}
 @end

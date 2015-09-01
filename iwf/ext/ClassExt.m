@@ -512,6 +512,9 @@
 @end
 
 @implementation NSData (JSON)
+-(NSString*)UTF8String{
+    return [[NSString alloc]initWithData:self encoding:NSUTF8StringEncoding];
+}
 -(id)toJsonObject:(NSError**)err{
     return [NSJSONSerialization JSONObjectWithData:self options:NSJSONReadingAllowFragments error:err];
 }
