@@ -9,6 +9,8 @@
 #import "CoreMethod.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <CoreFoundation/CoreFoundation.h>
+#import <UIKit/UIKit.h>
+#import "../ext/ClassExt.h"
 
 NSString *DocumentDirectory()
 {
@@ -85,3 +87,14 @@ BOOL RunLoopv_(NSObject<NSBoolable> *mark,float delay,float timeout){
     }
     return true;
 }
+//
+//NSArray* MakeImgViews(CGRect frame, NSArray* urls,NSString* loading){
+//    NSMutableArray* views=[NSMutableArray array];
+//    for (NSString* url in urls) {
+//        UIImageView *iv=[[UIImageView alloc]initWithFrame:frame];
+//        iv.image=[UIImage imageNamed:loading];
+//        iv.url=url;
+//        [views addObject:iv];
+//    }
+//    return views;
+//}

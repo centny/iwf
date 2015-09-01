@@ -51,8 +51,8 @@ FOUNDATION_EXPORT const unsigned char iwfVersionString[];
 #import <iwf/NSRefreshProxy.h>
 #import <iwf/LineDrawer.h>
 #import <iwf/UIRefreshView.h>
-#import <iwf/UIFocusImageView.h>
-#import <iwf/UICustomPageControl.h>
+#import <iwf/UIFocusView.h>
+//#import <iwf/UIImgPageControl.h>
 #import <iwf/UIBorderView.h>
 #import <iwf/UIStarView.h>
 #import <iwf/UIPlaceHolderTextView.h>

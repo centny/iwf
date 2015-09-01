@@ -36,10 +36,9 @@
 		C3DBA9731B93F1AD008E51C5 /* UIBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DBA9551B93F1AD008E51C5 /* UIBorderView.m */; };
 		C3DBA9741B93F1AD008E51C5 /* UIBoundsImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = C3DBA9561B93F1AD008E51C5 /* UIBoundsImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3DBA9751B93F1AD008E51C5 /* UIBoundsImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DBA9571B93F1AD008E51C5 /* UIBoundsImageView.m */; };
-		C3DBA9761B93F1AD008E51C5 /* UICustomPageControl.h in Headers */ = {isa = PBXBuildFile; fileRef = C3DBA9581B93F1AD008E51C5 /* UICustomPageControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C3DBA9771B93F1AD008E51C5 /* UICustomPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DBA9591B93F1AD008E51C5 /* UICustomPageControl.m */; };
-		C3DBA9781B93F1AD008E51C5 /* UIFocusImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = C3DBA95A1B93F1AD008E51C5 /* UIFocusImageView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C3DBA9791B93F1AD008E51C5 /* UIFocusImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DBA95B1B93F1AD008E51C5 /* UIFocusImageView.m */; };
+		C3DBA9771B93F1AD008E51C5 /* UIImgPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DBA9591B93F1AD008E51C5 /* UIImgPageControl.m */; };
+		C3DBA9781B93F1AD008E51C5 /* UIFocusView.h in Headers */ = {isa = PBXBuildFile; fileRef = C3DBA95A1B93F1AD008E51C5 /* UIFocusView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3DBA9791B93F1AD008E51C5 /* UIFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DBA95B1B93F1AD008E51C5 /* UIFocusView.m */; };
 		C3DBA97A1B93F1AD008E51C5 /* UILineView.h in Headers */ = {isa = PBXBuildFile; fileRef = C3DBA95C1B93F1AD008E51C5 /* UILineView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3DBA97B1B93F1AD008E51C5 /* UILineView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DBA95D1B93F1AD008E51C5 /* UILineView.m */; };
 		C3DBA97C1B93F1AD008E51C5 /* UIPlaceHolderTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = C3DBA95E1B93F1AD008E51C5 /* UIPlaceHolderTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -118,10 +117,10 @@
 		C3DBA9551B93F1AD008E51C5 /* UIBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBorderView.m; sourceTree = "<group>"; };
 		C3DBA9561B93F1AD008E51C5 /* UIBoundsImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBoundsImageView.h; sourceTree = "<group>"; };
 		C3DBA9571B93F1AD008E51C5 /* UIBoundsImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBoundsImageView.m; sourceTree = "<group>"; };
-		C3DBA9581B93F1AD008E51C5 /* UICustomPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICustomPageControl.h; sourceTree = "<group>"; };
-		C3DBA9591B93F1AD008E51C5 /* UICustomPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICustomPageControl.m; sourceTree = "<group>"; };
-		C3DBA95A1B93F1AD008E51C5 /* UIFocusImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFocusImageView.h; sourceTree = "<group>"; };
-		C3DBA95B1B93F1AD008E51C5 /* UIFocusImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFocusImageView.m; sourceTree = "<group>"; };
+		C3DBA9581B93F1AD008E51C5 /* UIImgPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImgPageControl.h; sourceTree = "<group>"; };
+		C3DBA9591B93F1AD008E51C5 /* UIImgPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImgPageControl.m; sourceTree = "<group>"; };
+		C3DBA95A1B93F1AD008E51C5 /* UIFocusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFocusView.h; sourceTree = "<group>"; };
+		C3DBA95B1B93F1AD008E51C5 /* UIFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFocusView.m; sourceTree = "<group>"; };
 		C3DBA95C1B93F1AD008E51C5 /* UILineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILineView.h; sourceTree = "<group>"; };
 		C3DBA95D1B93F1AD008E51C5 /* UILineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UILineView.m; sourceTree = "<group>"; };
 		C3DBA95E1B93F1AD008E51C5 /* UIPlaceHolderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlaceHolderTextView.h; sourceTree = "<group>"; };
@@ -256,10 +255,10 @@
 				C3DBA9551B93F1AD008E51C5 /* UIBorderView.m */,
 				C3DBA9561B93F1AD008E51C5 /* UIBoundsImageView.h */,
 				C3DBA9571B93F1AD008E51C5 /* UIBoundsImageView.m */,
-				C3DBA9581B93F1AD008E51C5 /* UICustomPageControl.h */,
-				C3DBA9591B93F1AD008E51C5 /* UICustomPageControl.m */,
-				C3DBA95A1B93F1AD008E51C5 /* UIFocusImageView.h */,
-				C3DBA95B1B93F1AD008E51C5 /* UIFocusImageView.m */,
+				C3DBA9581B93F1AD008E51C5 /* UIImgPageControl.h */,
+				C3DBA9591B93F1AD008E51C5 /* UIImgPageControl.m */,
+				C3DBA95A1B93F1AD008E51C5 /* UIFocusView.h */,
+				C3DBA95B1B93F1AD008E51C5 /* UIFocusView.m */,
 				C3DBA95C1B93F1AD008E51C5 /* UILineView.h */,
 				C3DBA95D1B93F1AD008E51C5 /* UILineView.m */,
 				C3DBA95E1B93F1AD008E51C5 /* UIPlaceHolderTextView.h */,
@@ -450,8 +449,7 @@
 				C3DBA9701B93F1AD008E51C5 /* NSRefreshProxy.h in Headers */,
 				C3DBA96E1B93F1AD008E51C5 /* LineDrawer.h in Headers */,
 				C3DBA9801B93F1AD008E51C5 /* UIRefreshView.h in Headers */,
-				C3DBA9781B93F1AD008E51C5 /* UIFocusImageView.h in Headers */,
-				C3DBA9761B93F1AD008E51C5 /* UICustomPageControl.h in Headers */,
+				C3DBA9781B93F1AD008E51C5 /* UIFocusView.h in Headers */,
 				C3DBA9721B93F1AD008E51C5 /* UIBorderView.h in Headers */,
 				C3DBA9831B93F1AD008E51C5 /* UIStarView.h in Headers */,
 				C3DBA97C1B93F1AD008E51C5 /* UIPlaceHolderTextView.h in Headers */,
@@ -568,9 +566,9 @@
 				C3DBA9731B93F1AD008E51C5 /* UIBorderView.m in Sources */,
 				C3DBA9751B93F1AD008E51C5 /* UIBoundsImageView.m in Sources */,
 				C3E4EEBE1B8C414C00B275D8 /* FLogWriter.swift in Sources */,
-				C3DBA9771B93F1AD008E51C5 /* UICustomPageControl.m in Sources */,
+				C3DBA9771B93F1AD008E51C5 /* UIImgPageControl.m in Sources */,
 				C3373CDA1B8EA5E80006A4A0 /* URLRequester.m in Sources */,
-				C3DBA9791B93F1AD008E51C5 /* UIFocusImageView.m in Sources */,
+				C3DBA9791B93F1AD008E51C5 /* UIFocusView.m in Sources */,
 				C3E4EEC01B8C414C00B275D8 /* Log.swift in Sources */,
 				C3373CE41B8EE30E0006A4A0 /* MultipartBuilder.m in Sources */,
 				C3DBA96F1B93F1AD008E51C5 /* LineDrawer.m in Sources */,

@@ -17,6 +17,7 @@
 #import "TableExtVCtl.h"
 #import "LeftPushEffectVCtl.h"
 #import "CellAnimationVCtl.h"
+#import "FocusViewVCtl.h"
 @interface NavRootVCtl ()
 
 @end
@@ -74,6 +75,11 @@
     CellAnimationVCtl *cvct=[[CellAnimationVCtl alloc]init];
     [self.navigationController pushViewController:cvct animated:YES];
 //    [cvct release];
+}
+-(void)testFocus:(id)sender{
+    FocusViewVCtl* cvct=[[FocusViewVCtl alloc]initWithNibName:@"FocusViewVCtl" bundle:nil];
+    [self.navigationController pushViewController:cvct animated:YES];
+    //    [cvct release];
 }
 -(void)loadView{
     UIScrollView *_sv=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, 460)];
@@ -139,6 +145,11 @@
     btn.frame=CGRectMake((FRAM_W(self.view)-200)/2, 410, 200, 30);
     [btn setTitle:@"CAV" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(testCAV:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    btn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btn.frame=CGRectMake((FRAM_W(self.view)-200)/2, 460, 200, 30);
+    [btn setTitle:@"Focus" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(testFocus:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
 }
 

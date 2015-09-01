@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 // define some core method for log.
 
 @protocol NSBoolable <NSObject>
@@ -36,3 +37,6 @@ FOUNDATION_EXPORT BOOL RunLoopv_(NSObject<NSBoolable> *mark,float delay,float ti
 
 #define RunLoopv(mark) RunLoopv_(mark,0.5,5)
 #define RunLoopx(mark) RunLoopv_(mark,0.5,500)
+
+
+//FOUNDATION_EXPORT NSArray* MakeImgViews(CGRect frame, NSArray* urls,NSString* loading);
