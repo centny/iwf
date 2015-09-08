@@ -361,14 +361,14 @@
     return view;
 }
 
-//+ (id)viewWithXib:(NSString*)name owner:(id)owner{
-//    NSArray* ary=[[NSBundle mainBundle]loadNibNamed:name owner:owner options:nil];
-//    if(ary&&ary.count){
-//        return [ary objectAtIndex:0];
-//    }else{
-//        return nil;
-//    }
-//}
++ (id)viewWithXib:(NSString*)name{
+    NSArray* ary=[[NSBundle mainBundle]loadNibNamed:name owner:nil options:nil];
+    if(ary&&ary.count){
+        return [ary objectAtIndex:0];
+    }else{
+        return nil;
+    }
+}
 + (id)loadFromXib{
     NSString *xn = NSStringFromClass([self class]);
     NSArray *ary=[[NSBundle mainBundle]loadNibNamed:xn owner:nil options:nil];

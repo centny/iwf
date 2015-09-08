@@ -24,8 +24,9 @@
 @interface UITableExtView : UITableView <UITableViewDelegate>{
 }
 @property(nonatomic, readonly) UIView						*refreshView;
-@property(nonatomic, retain) id <UIRefreshViewDelegate>		rdelegate;
-@property(nonatomic, retain) id <UITableExtViewDelegate>	tdelegate;
+@property(nonatomic, retain) IBOutlet id <UIRefreshViewDelegate>		rdelegate;
+@property(nonatomic, retain) IBOutlet id <UITableExtViewDelegate>	tdelegate;
+- (id)initWithCoder:(NSCoder *)aDecoder;
 // the general initial method,it will using the default UIRefreshView as it refresh view.
 - (id)initWithFrame:(CGRect)frame;
 // the general initial method with using the custom refresh view
@@ -35,4 +36,15 @@
 - (void)refreshCompleted:(void (^)(BOOL))finished;
 // reload
 - (void)reloadData;
+@end
+
+@interface UITableViewXibCell : UITableViewCell
+@property(nonatomic,readonly) id xview;
+- (id)initWithClass:(Class)cls reuseIdentifier:(NSString *)reuseIdentifier;
+- (id)initWithXib:(NSString*)xib reuseIdentifier:(NSString *)reuseIdentifier;
+@end
+
+@interface UITableView (RESUSE_CELL)
+- (id)newOrReuseCellWithXib:(NSString*)xib;
+- (id)newOrReuseCellWithClass:(Class)cls;
 @end

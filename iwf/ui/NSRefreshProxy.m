@@ -40,34 +40,34 @@
     }
     return effected;
 }
-
-- (BOOL)effectDidRefresh:(UIScrollView *)scrollView
-{
-    BOOL effected = NO;
-    
-    switch (_refreshDirection) {
-        case DD_UP:
-            effected = (scrollView.contentOffset.y - _refreshBeginPoint.y) == 0;
-            break;
-            
-        case DD_DOWN:
-            effected = (_refreshBeginPoint.y - scrollView.contentOffset.y) == 0;
-            break;
-            
-        case DD_LEFT:
-            effected = (scrollView.contentOffset.x - _refreshBeginPoint.x) == 0;
-            break;
-            
-        case DD_RIGHT:
-            effected = (_refreshBeginPoint.x - scrollView.contentOffset.x) == 0;
-            break;
-            
-        default:
-            effected = NO;
-            break;
-    }
-    return effected;
-}
+//
+//- (BOOL)effectDidRefresh:(UIScrollView *)scrollView
+//{
+//    BOOL effected = NO;
+//    
+//    switch (_refreshDirection) {
+//        case DD_UP:
+//            effected = (scrollView.contentOffset.y - _refreshBeginPoint.y) == 0;
+//            break;
+//            
+//        case DD_DOWN:
+//            effected = (_refreshBeginPoint.y - scrollView.contentOffset.y) == 0;
+//            break;
+//            
+//        case DD_LEFT:
+//            effected = (scrollView.contentOffset.x - _refreshBeginPoint.x) == 0;
+//            break;
+//            
+//        case DD_RIGHT:
+//            effected = (_refreshBeginPoint.x - scrollView.contentOffset.x) == 0;
+//            break;
+//            
+//        default:
+//            effected = NO;
+//            break;
+//    }
+//    return effected;
+//}
 
 - (UIEdgeInsets)insetByRefreshing:(UIEdgeInsets)ninset refreshing:(BOOL)refreshing
 {
@@ -115,12 +115,6 @@
             [_rdelegate onCanRelHand:scrollView];
         }
     }
-    
-    if ([self effectDidRefresh:scrollView]) {
-        if ([_rdelegate respondsToSelector:@selector(onDidRefresh:)]) {
-            [_rdelegate onDidRefresh:scrollView];
-        }
-    }
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView isNeedRefresh:(BOOL (^)(void))isNeedRefresh onRefresh:(void (^)(void))onRefresh
@@ -152,6 +146,9 @@
         scrollView.contentInset = [self insetByRefreshing:scrollView.contentInset refreshing:NO];
     } completion:^(BOOL f) {
         self.refreshing=NO;
+        if ([_rdelegate respondsToSelector:@selector(onDidRefresh:)]) {
+            [_rdelegate onDidRefresh:scrollView];
+        }
         if(finished){
             finished(f);
         }

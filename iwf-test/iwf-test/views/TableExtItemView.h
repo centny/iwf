@@ -17,7 +17,7 @@
 -(IBAction)clkText:(id)sender;
 @end
 
-@interface TableExtItemViewCell:UITableViewCell
-@property(nonatomic,readonly) TableExtItemView* iview;
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
-@end
+//@interface TableExtItemViewCell:UITableViewCell
+//@property(nonatomic,readonly) TableExtItemView* iview;
+//- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
+//@end

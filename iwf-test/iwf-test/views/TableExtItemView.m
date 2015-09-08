@@ -17,14 +17,14 @@
 }
 @end
 
-@implementation TableExtItemViewCell
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    if(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]){
-        _iview=[TableExtItemView loadFromXib];
-        _iview.backgroundColor=[UIColor clearColor];
-        [self addSubview:_iview];
-        self.backgroundColor=[UIColor clearColor];
-    }
-    return self;
-}
-@end
+//@implementation TableExtItemViewCell
+//- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+//    if(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]){
+//        _iview=[TableExtItemView loadFromXib];
+//        _iview.backgroundColor=[UIColor clearColor];
+//        [self addSubview:_iview];
+//        self.backgroundColor=[UIColor clearColor];
+//    }
+//    return self;
+//}
+//@end

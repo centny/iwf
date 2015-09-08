@@ -15,6 +15,7 @@
 #import "WebViewVCtl.h"
 #import "TreeVCtl.h"
 #import "TableExtVCtl.h"
+#import "TableExtXibVCtl.h"
 #import "LeftPushEffectVCtl.h"
 #import "CellAnimationVCtl.h"
 #import "FocusViewVCtl.h"
@@ -65,6 +66,11 @@
     TableExtVCtl *cvct=[[TableExtVCtl alloc]init];
     [self.navigationController pushViewController:cvct animated:YES];
 //    [cvct release];
+}
+-(void)testTableExtXib:(id)sender{
+    TablExtXibVCtl *cvct=[[TablExtXibVCtl alloc]initWithNibName:@"TableExtXibVCtl" bundle:nil];
+    [self.navigationController pushViewController:cvct animated:YES];
+    //    [cvct release];
 }
 -(void)testLPE:(id)sender{
     LeftPushEffectVCtl *cvct=[[LeftPushEffectVCtl alloc]init];
@@ -147,9 +153,14 @@
     [btn addTarget:self action:@selector(testCAV:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
     btn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    btn.frame=CGRectMake((FRAM_W(self.view)-200)/2, 460, 200, 30);
+    btn.frame=CGRectMake((FRAM_W(self.view)-200)/2, 450, 200, 30);
     [btn setTitle:@"Focus" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(testFocus:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    btn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btn.frame=CGRectMake((FRAM_W(self.view)-200)/2, 490, 200, 30);
+    [btn setTitle:@"Table Ext Xib" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(testTableExtXib:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
 }
 

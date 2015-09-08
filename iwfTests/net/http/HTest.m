@@ -50,7 +50,9 @@
     //
     [H doGetj:completed url:@"%@/res_j?a=1&b=12&_hc_=%@",TS_SRV,HC_N];
     //
-    NSDictionary* args=[@"a=1&b=12&_hc_=N" dictionaryByURLQuery];
+//    NSDictionary* args=[@"a=1&b=12&_hc_=N" dictionaryByURLQuery];
+    NSMutableDictionary* args=[NSMutableDictionary dictionary];
+    [args setObject:@"1" forKey:@"a"];
     [H doGet:[NSString stringWithFormat:@"%@/res_j",TS_SRV] args:args json:completed];
     //
     XCTAssert(RunLoopx(self), @"Timeout");
@@ -79,6 +81,17 @@
         
     } json:completed];
     XCTAssert(RunLoopx(self), @"Timeout");
+}
+
+- (void)testJson{
+    NSMutableDictionary* a=[NSMutableDictionary dictionary];
+    NSMutableDictionary* b=[NSMutableDictionary dictionary];
+    [b setObject:@"1" forKey:@"x1"];
+    [b setObject:@"2" forKey:@"x2"];
+    [a setObject:b forKey:@"data"];
+    NSDLog(@"%@", [[a toJson:nil]UTF8String]);
+    NSDLog(@"%@", [a valueForKeyPath:@"data.x1"]);
+    NSDLog(@"%@", [a valueForKeyPath:@"data.x2"]);
 }
 
 @end

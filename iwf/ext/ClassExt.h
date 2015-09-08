@@ -152,7 +152,7 @@
 //////////////////////////////////////////////
 // create the color view.
 + (id)viewWithColor:(UIColor *)color frame:(CGRect)frame;
-//+ (id)viewWithXib:(NSString*)name owner:(id)owner;
++ (id)viewWithXib:(NSString*)name;
 + (id)loadFromXib;
 @end
 ////////////////////////////////////////////////////////////////////////////////////////////////
