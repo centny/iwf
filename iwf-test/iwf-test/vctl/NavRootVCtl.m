@@ -19,6 +19,8 @@
 #import "LeftPushEffectVCtl.h"
 #import "CellAnimationVCtl.h"
 #import "FocusViewVCtl.h"
+#import "HttpCancelVCtl.h"
+#import "AutoLayoutVCtl.h"
 @interface NavRootVCtl ()
 
 @end
@@ -84,6 +86,16 @@
 }
 -(void)testFocus:(id)sender{
     FocusViewVCtl* cvct=[[FocusViewVCtl alloc]initWithNibName:@"FocusViewVCtl" bundle:nil];
+    [self.navigationController pushViewController:cvct animated:YES];
+    //    [cvct release];
+}
+-(void)testHttpCancel:(id)sender{
+    HttpCancelVCtl* cvct=[[HttpCancelVCtl alloc]init];
+    [self.navigationController pushViewController:cvct animated:YES];
+    //    [cvct release];
+}
+-(void)testAutoLayout:(id)sender{
+    AutoLayoutVCtl* cvct=[[AutoLayoutVCtl alloc]initWithNibName:nil bundle:nil];
     [self.navigationController pushViewController:cvct animated:YES];
     //    [cvct release];
 }
@@ -161,6 +173,16 @@
     btn.frame=CGRectMake((FRAM_W(self.view)-200)/2, 490, 200, 30);
     [btn setTitle:@"Table Ext Xib" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(testTableExtXib:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    btn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btn.frame=CGRectMake((FRAM_W(self.view)-200)/2, 530, 200, 30);
+    [btn setTitle:@"HttpCancel" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(testHttpCancel:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    btn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btn.frame=CGRectMake((FRAM_W(self.view)-200)/2, 570, 200, 30);
+    [btn setTitle:@"AutoLayout" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(testAutoLayout:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
 }
 

@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C3373D061B8F33E60006A4A0 /* iwf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3373CFF1B8F334E0006A4A0 /* iwf.framework */; };
+		C3862DAE1B9E942400D34A5B /* HttpCancelVCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = C3862DAD1B9E942400D34A5B /* HttpCancelVCtl.m */; };
+		C3862DB41B9EE5C400D34A5B /* AutoLayoutVCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = C3862DB21B9EE5C400D34A5B /* AutoLayoutVCtl.m */; };
+		C3862DB51B9EE5C400D34A5B /* AutoLayoutVCtl.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3862DB31B9EE5C400D34A5B /* AutoLayoutVCtl.xib */; };
+		C3862DB61BA00FE300D34A5B /* iwf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3373CFF1B8F334E0006A4A0 /* iwf.framework */; };
+		C3862DB71BA00FE300D34A5B /* iwf.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C3373CFF1B8F334E0006A4A0 /* iwf.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C3C00C1D1B960FAF00D77F6C /* TableExtXibVCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = C3C00C1B1B960FAF00D77F6C /* TableExtXibVCtl.m */; };
 		C3C00C1E1B960FAF00D77F6C /* TableExtXibVCtl.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3C00C1C1B960FAF00D77F6C /* TableExtXibVCtl.xib */; };
 		C3DBA9B91B93FB61008E51C5 /* BoundsImageVCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DBA99B1B93FB61008E51C5 /* BoundsImageVCtl.m */; };
@@ -82,6 +86,13 @@
 			remoteGlobalIDString = C3E4EE7F1B8C3F3D00B275D8;
 			remoteInfo = iwfTests;
 		};
+		C3862DB81BA00FE300D34A5B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3373CF91B8F334E0006A4A0 /* iwf.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C3E4EE731B8C3F3D00B275D8;
+			remoteInfo = iwf;
+		};
 		C3E4EEFC1B8C5F5100B275D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C3E4EEDE1B8C5F5100B275D8 /* Project object */;
@@ -91,9 +102,28 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C3862DBA1BA00FE300D34A5B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C3862DB71BA00FE300D34A5B /* iwf.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		C3373CF91B8F334E0006A4A0 /* iwf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iwf.xcodeproj; path = ../iwf.xcodeproj; sourceTree = "<group>"; };
 		C3373D021B8F339C0006A4A0 /* iwf-test-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iwf-test-Bridging-Header.h"; sourceTree = "<group>"; };
+		C3862DAC1B9E942400D34A5B /* HttpCancelVCtl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpCancelVCtl.h; sourceTree = "<group>"; };
+		C3862DAD1B9E942400D34A5B /* HttpCancelVCtl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpCancelVCtl.m; sourceTree = "<group>"; };
+		C3862DB11B9EE5C400D34A5B /* AutoLayoutVCtl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoLayoutVCtl.h; sourceTree = "<group>"; };
+		C3862DB21B9EE5C400D34A5B /* AutoLayoutVCtl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoLayoutVCtl.m; sourceTree = "<group>"; };
+		C3862DB31B9EE5C400D34A5B /* AutoLayoutVCtl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoLayoutVCtl.xib; sourceTree = "<group>"; };
 		C3C00C1A1B960FAF00D77F6C /* TableExtXibVCtl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableExtXibVCtl.h; sourceTree = "<group>"; };
 		C3C00C1B1B960FAF00D77F6C /* TableExtXibVCtl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableExtXibVCtl.m; sourceTree = "<group>"; };
 		C3C00C1C1B960FAF00D77F6C /* TableExtXibVCtl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableExtXibVCtl.xib; sourceTree = "<group>"; };
@@ -155,7 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C3373D061B8F33E60006A4A0 /* iwf.framework in Frameworks */,
+				C3862DB61BA00FE300D34A5B /* iwf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +257,11 @@
 				C3C00C1A1B960FAF00D77F6C /* TableExtXibVCtl.h */,
 				C3C00C1B1B960FAF00D77F6C /* TableExtXibVCtl.m */,
 				C3C00C1C1B960FAF00D77F6C /* TableExtXibVCtl.xib */,
+				C3862DAC1B9E942400D34A5B /* HttpCancelVCtl.h */,
+				C3862DAD1B9E942400D34A5B /* HttpCancelVCtl.m */,
+				C3862DB11B9EE5C400D34A5B /* AutoLayoutVCtl.h */,
+				C3862DB21B9EE5C400D34A5B /* AutoLayoutVCtl.m */,
+				C3862DB31B9EE5C400D34A5B /* AutoLayoutVCtl.xib */,
 			);
 			path = vctl;
 			sourceTree = "<group>";
@@ -322,10 +357,12 @@
 				C3E4EEE21B8C5F5100B275D8 /* Sources */,
 				C3E4EEE31B8C5F5100B275D8 /* Frameworks */,
 				C3E4EEE41B8C5F5100B275D8 /* Resources */,
+				C3862DBA1BA00FE300D34A5B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C3862DB91BA00FE300D34A5B /* PBXTargetDependency */,
 			);
 			name = "iwf-test";
 			productName = "iwf-test";
@@ -424,6 +461,7 @@
 				C3FB0A101B945B470084C3A1 /* TableExtItemView.xib in Resources */,
 				C3FB0A181B9545B50084C3A1 /* FocusViewVCtl.xib in Resources */,
 				C3FB09FE1B9423D00084C3A1 /* Child-20.json in Resources */,
+				C3862DB51B9EE5C400D34A5B /* AutoLayoutVCtl.xib in Resources */,
 				C3FB09FF1B9423D00084C3A1 /* Child-21.json in Resources */,
 				C3FB0A001B9423D00084C3A1 /* Commodities.json in Resources */,
 				C3FB0A011B9423D00084C3A1 /* Parent.json in Resources */,
@@ -475,6 +513,8 @@
 				C3DBA9F21B93FF4A008E51C5 /* JSONKit.m in Sources */,
 				C3E4EEEE1B8C5F5100B275D8 /* ViewController.swift in Sources */,
 				C3FB0A171B9545B50084C3A1 /* FocusViewVCtl.m in Sources */,
+				C3862DB41B9EE5C400D34A5B /* AutoLayoutVCtl.m in Sources */,
+				C3862DAE1B9E942400D34A5B /* HttpCancelVCtl.m in Sources */,
 				C3E4EEEC1B8C5F5100B275D8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +542,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C3862DB91BA00FE300D34A5B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = iwf;
+			targetProxy = C3862DB81BA00FE300D34A5B /* PBXContainerItemProxy */;
+		};
 		C3E4EEFD1B8C5F5100B275D8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C3E4EEE51B8C5F5100B275D8 /* iwf-test */;
@@ -609,6 +654,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = "iwf-test/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -623,6 +670,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = "iwf-test/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

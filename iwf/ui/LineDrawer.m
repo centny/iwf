@@ -83,7 +83,7 @@
 	CGContextSetLineWidth(ctx, _lineSize);
 
 	if (_lineDash) {
-		CGContextSetLineDash(ctx, _lineDashPhase, _lineDashLengths, _lineDashLenCount);
+		CGContextSetLineDash(ctx, _lineDashPhase, (const CGFloat*)_lineDashLengths, _lineDashLenCount);
 	}
 
 	for (CGTwoPoint *tp in _lines) {
