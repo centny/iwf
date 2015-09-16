@@ -11,6 +11,7 @@
 #import "ForTestActionVCtl.h"
 #import <iwf/iwf.h>
 
+//implementation NSBoolable
 @interface ForTestActionVCtlTest : XCTestCase<NSBoolable>
 @property(nonatomic,retain) ForTestActionVCtl* vctl;
 @property (readonly) BOOL boolValue;
@@ -25,11 +26,14 @@
 }
 
 - (void)load{
+    //new the view controller.
     self.vctl=[[ForTestActionVCtl alloc]initWithNibName:nil bundle:[NSBundle bundleForClass:[ForTestActionVCtl class]]];
     UINavigationController* nv=(UINavigationController*)[[[UIApplication sharedApplication]keyWindow]rootViewController];
+    //adding to UINavigationController
     [nv pushViewController:self.vctl animated:YES];
 }
 - (BOOL)boolValue{
+    //checking if view controller is loaded.
     return [@"values" isEqualToString:self.vctl.lb1.text];
 }
 - (void)tearDown {
@@ -38,7 +42,10 @@
 }
 
 - (void)testSetValue {
+    //it will run main thrad loop many times for waiting the view contoller is loaded.
     XCTAssert(RunLoopv(self),@"time out");
+    //
+    //do some test case.
     self.vctl.txt1.text=@"val1";
     [self.vctl performSelectorOnMainThread:@selector(clkBtn1:) withObject:self.vctl.btn1 waitUntilDone:YES];
     XCTAssertEqualObjects(self.vctl.txt1.text, @"val1", @"label valus is not equal text field");
