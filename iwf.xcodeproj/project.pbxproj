@@ -472,7 +472,6 @@
 				C3E4EE701B8C3F3D00B275D8 /* Frameworks */,
 				C3E4EE711B8C3F3D00B275D8 /* Headers */,
 				C3E4EE721B8C3F3D00B275D8 /* Resources */,
-				C3817E141BA6CD8600AACB7C /* Export build vars */,
 			);
 			buildRules = (
 			);
@@ -490,6 +489,7 @@
 				C3E4EE7B1B8C3F3D00B275D8 /* Sources */,
 				C3E4EE7C1B8C3F3D00B275D8 /* Frameworks */,
 				C3E4EE7D1B8C3F3D00B275D8 /* Resources */,
+				C32193921BA9499900EB2594 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -555,14 +555,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C3817E141BA6CD8600AACB7C /* Export build vars */ = {
+		C32193921BA9499900EB2594 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Export build vars";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
