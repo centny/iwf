@@ -19,8 +19,16 @@ typedef void (^ URLReqJsonCompleted)(URLRequester *req,NSData* data, NSDictionar
 + (void)doGet:(NSString *)url args:(NSDictionary *)args completed:(URLReqCompleted)finished;
 + (void)doGet:(NSString *)url args:(NSDictionary *)args json:(URLReqJsonCompleted)finished;
 //
+//post
 + (void)doPost:(NSString *)url completed:(URLReqCompleted)finished;
 + (void)doPost:(NSString *)url json:(URLReqJsonCompleted)finished;
+//post data.
++ (void)doPost:(NSString *)url data:(NSData*)data completed:(URLReqCompleted)finished;
++ (void)doPost:(NSString *)url data:(NSData*)data json:(URLReqJsonCompleted)finished;
+//post stream.
++ (void)doPost:(NSString *)url stream:(NSInputStream*)stream completed:(URLReqCompleted)finished;
++ (void)doPost:(NSString *)url stream:(NSInputStream*)stream json:(URLReqJsonCompleted)finished;
+//post application/x-www-form-urlencoded
 + (void)doPost:(NSString *)url sargs:(NSString *)args completed:(URLReqCompleted)finished;
 + (void)doPost:(NSString *)url sargs:(NSString *)args json:(URLReqJsonCompleted)finished;
 + (void)doPost:(NSString *)url json:(URLReqJsonCompleted)finished sargs:(NSString*)format,...;

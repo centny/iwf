@@ -20,7 +20,7 @@ class FLogWriter :LogWriter{
     }
     func write(data:String){
         if self.console>0{
-            println(data)
+            print(data)
         }
         let tdata=data+"\n"
         let tbuf=self.buf

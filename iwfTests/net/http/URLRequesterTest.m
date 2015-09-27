@@ -33,7 +33,7 @@
 
 - (void)doget1:(NSString*)hc{
     URLRequester *req=[[URLRequester alloc]init];
-    req.url=[NSString stringWithFormat:@"%@/g_args?a=1&b=12&_hc_=%@",TS_SRV,hc];
+    req.url=[NSString stringWithFormat:@"%@/g_args?a=1&b=12&_hc_=%@&",TS_SRV,hc];
     [req addArgBy:@"c" value:@"这是中文"];
     req.completed=^(URLRequester *req, NSData *data, NSError *err) {
         NSString* dok=[req codingData:NSUTF8StringEncoding];
@@ -113,6 +113,7 @@
         XCTAssert([dok isEqual:@"OK"],"response error");
         XCTAssert(req.statusCode==200,"response code is not 200");
         _ec++;
+        NSDLog(@"%@", req.sdata);
     };
     req.onstart=^(URLRequester *req, NSMutableURLRequest *request){
         NSLog(@"onReqStart");
@@ -125,6 +126,7 @@
     };
     req.delegate=self;
     req.method=@"POST";
+    NSDLog(@"%@,%@", req.sdata,[req codingData:NSUTF8StringEncoding]);
     [req start];
 }
 - (void)dopost2:(NSString*)hc{

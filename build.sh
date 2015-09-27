@@ -6,7 +6,7 @@ driver="iPhone 6"
 ##
 PWD=`pwd`
 rm -rf reports
-xcodebuild -configuration Debug -scheme $scheme clean test -destination name=$driver
+xcodebuild -configuration Debug -scheme $scheme clean test -destination name="$driver"
 odir=`cat object_file_dir`
 mkdir reports
 mkdir reports/html

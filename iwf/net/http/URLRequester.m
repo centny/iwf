@@ -35,7 +35,7 @@ const NSString* HC_KEY=@"_hc_";
         _res_h			= [NSMutableDictionary dictionary];
         _policy         = [NSString stringWithFormat:@"%@",HC_N];
         _policy_        = NSURLRequestUseProtocolCachePolicy;
-        _multipart      = [[MultipartBuilder alloc]initWithBound:nuuid()];
+        _multipart      = [MultipartBuilder builder];
     }
     
     return self;
@@ -75,7 +75,7 @@ const NSString* HC_KEY=@"_hc_";
 }
 - (NSString *)codingData:(NSStringEncoding)coding
 {
-    if (self.res_d) {
+    if (self.res_d && self.res_d.length) {
         return [[NSString alloc] initWithData:self.res_d encoding:coding];
     } else {
         return @"";
@@ -91,11 +91,7 @@ const NSString* HC_KEY=@"_hc_";
             if (rg.length < 1) {
                 self.url = [NSString stringWithFormat:@"%@?%@", self.url, [self.args stringByURLQuery]];
             } else {
-                if (rg.location < self.url.length - 1) {
-                    self.url = [NSString stringWithFormat:@"%@&%@", self.url, [self.args stringByURLQuery]];
-                } else {
-                    self.url = [NSString stringWithFormat:@"%@%@", self.url, [self.args stringByURLQuery]];
-                }
+                self.url = [NSString stringWithFormat:@"%@&%@", self.url, [self.args stringByURLQuery]];
             }
         }
         NSDLog(@"GET %@",self.url);
@@ -111,7 +107,6 @@ const NSString* HC_KEY=@"_hc_";
             NSInputStream* is=[self.multipart build];
             if(is){
                 [self.request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@",self.multipart.bound] forHTTPHeaderField:@"Content-Type"];
-//                self.request.HTTPBodyStream=[[NSInputStream alloc]initWithData:toData(is)];
                 self.request.HTTPBodyStream=is;
             }else{
                 [self.request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -203,6 +198,7 @@ const NSString* HC_KEY=@"_hc_";
 {
     NSDLog(@"%@ %@ err:%@", self.method,self.url,error);
     [self onReqCompleted:self.res_d err:error];
+    [self cancel];
 }
 
 - (void)onReqCompleted:(NSData*)data err:(NSError*)err{

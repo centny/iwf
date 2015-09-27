@@ -93,5 +93,15 @@
     NSDLog(@"%@", [a valueForKeyPath:@"data.x1"]);
     NSDLog(@"%@", [a valueForKeyPath:@"data.x2"]);
 }
-
+- (void)testFail{
+    self.excepted=1;
+    self.ec=0;
+    [H doGet:@"ssfs" completed:^(URLRequester *req, NSData *data, NSError *err) {
+        if(err==nil){
+            XCTAssert(false,@"not error");
+        }
+        self.ec++;
+    }];
+    XCTAssert(RunLoopx(self), @"Timeout");
+}
 @end
