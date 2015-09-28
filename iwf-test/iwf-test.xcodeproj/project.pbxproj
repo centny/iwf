@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1792D0851BB8EE52000B7D16 /* ForTestTextFieldVCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D0831BB8EE52000B7D16 /* ForTestTextFieldVCtl.m */; settings = {ASSET_TAGS = (); }; };
+		1792D0861BB8EE52000B7D16 /* ForTestTextFieldVCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D0831BB8EE52000B7D16 /* ForTestTextFieldVCtl.m */; settings = {ASSET_TAGS = (); }; };
+		1792D0871BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1792D0841BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib */; settings = {ASSET_TAGS = (); }; };
+		1792D0881BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1792D0841BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib */; settings = {ASSET_TAGS = (); }; };
+		1792D08B1BB8EFC7000B7D16 /* ForTestTextFieldVCtlTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D08A1BB8EFC7000B7D16 /* ForTestTextFieldVCtlTest.m */; settings = {ASSET_TAGS = (); }; };
 		C31E49781BA937100016195E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E49771BA937100016195E /* main.m */; };
 		C31E497B1BA937100016195E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E497A1BA937100016195E /* AppDelegate.m */; };
 		C31E497E1BA937100016195E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E497D1BA937100016195E /* ViewController.m */; };
@@ -138,6 +143,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1792D0821BB8EE52000B7D16 /* ForTestTextFieldVCtl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForTestTextFieldVCtl.h; sourceTree = "<group>"; };
+		1792D0831BB8EE52000B7D16 /* ForTestTextFieldVCtl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForTestTextFieldVCtl.m; sourceTree = "<group>"; };
+		1792D0841BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForTestTextFieldVCtl.xib; sourceTree = "<group>"; };
+		1792D08A1BB8EFC7000B7D16 /* ForTestTextFieldVCtlTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForTestTextFieldVCtlTest.m; sourceTree = "<group>"; };
 		C31E49721BA937100016195E /* iwf-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iwf-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C31E49761BA937100016195E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C31E49771BA937100016195E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -374,6 +383,9 @@
 				C31E49D81BA938820016195E /* TreeVCtl.m */,
 				C31E49D91BA938820016195E /* WebViewVCtl.h */,
 				C31E49DA1BA938820016195E /* WebViewVCtl.m */,
+				1792D0821BB8EE52000B7D16 /* ForTestTextFieldVCtl.h */,
+				1792D0831BB8EE52000B7D16 /* ForTestTextFieldVCtl.m */,
+				1792D0841BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib */,
 			);
 			path = vctl;
 			sourceTree = "<group>";
@@ -403,6 +415,7 @@
 			children = (
 				C31E4A2C1BA939300016195E /* ForTableViewTestVCtlTest.m */,
 				C31E4A2D1BA939300016195E /* ForTestActionVCtlTest.m */,
+				1792D08A1BB8EFC7000B7D16 /* ForTestTextFieldVCtlTest.m */,
 			);
 			name = vctl;
 			sourceTree = "<group>";
@@ -519,6 +532,7 @@
 				C31E49E61BA938820016195E /* Child-20.json in Resources */,
 				C31E49811BA937100016195E /* Main.storyboard in Resources */,
 				C31E49E21BA938820016195E /* Categories.json in Resources */,
+				1792D0871BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib in Resources */,
 				C31E4A0A1BA938820016195E /* ForTableViewTestVCtl.xib in Resources */,
 				C31E49EC1BA938820016195E /* Child-4.json in Resources */,
 				C31E4A061BA938820016195E /* FocusViewVCtl.xib in Resources */,
@@ -546,6 +560,7 @@
 				C31E49E71BA938820016195E /* Child-20.json in Resources */,
 				C31E49FB1BA938820016195E /* AutoLayoutVCtl.xib in Resources */,
 				C31E49ED1BA938820016195E /* Child-4.json in Resources */,
+				1792D0881BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib in Resources */,
 				C31E49E91BA938820016195E /* Child-21.json in Resources */,
 				C31E4A071BA938820016195E /* FocusViewVCtl.xib in Resources */,
 				C31E49E51BA938820016195E /* Child-1.json in Resources */,
@@ -593,6 +608,7 @@
 				C31E4A241BA938820016195E /* TableExtItemView.m in Sources */,
 				C31E49781BA937100016195E /* main.m in Sources */,
 				C31E4A1C1BA938820016195E /* TableExtXibVCtl.m in Sources */,
+				1792D0851BB8EE52000B7D16 /* ForTestTextFieldVCtl.m in Sources */,
 				C31E4A281BA938820016195E /* JSONKit.m in Sources */,
 				C31E4A081BA938820016195E /* ForTableViewTestVCtl.m in Sources */,
 				C31E4A181BA938820016195E /* StarViewVCtl.m in Sources */,
@@ -614,6 +630,7 @@
 			files = (
 				C31E4A231BA938820016195E /* WebViewVCtl.m in Sources */,
 				C31E49921BA937100016195E /* iwf_testTests.m in Sources */,
+				1792D08B1BB8EFC7000B7D16 /* ForTestTextFieldVCtlTest.m in Sources */,
 				C31E4A1D1BA938820016195E /* TableExtXibVCtl.m in Sources */,
 				C31E49FD1BA938820016195E /* BoundsImageVCtl.m in Sources */,
 				C31E4A171BA938820016195E /* NavRootVCtl.m in Sources */,
@@ -622,6 +639,7 @@
 				C31E49F91BA938820016195E /* AutoLayoutVCtl.m in Sources */,
 				C31E4A2F1BA939300016195E /* ForTestActionVCtlTest.m in Sources */,
 				C31E4A251BA938820016195E /* TableExtItemView.m in Sources */,
+				1792D0861BB8EE52000B7D16 /* ForTestTextFieldVCtl.m in Sources */,
 				C31E4A131BA938820016195E /* LeftPushEffectVCtl.m in Sources */,
 				C31E4A151BA938820016195E /* LineViewVCtl.m in Sources */,
 				C31E4A091BA938820016195E /* ForTableViewTestVCtl.m in Sources */,
