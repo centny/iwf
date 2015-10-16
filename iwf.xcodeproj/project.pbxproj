@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1792D08E1BBA33A8000B7D16 /* Util.h in Headers */ = {isa = PBXBuildFile; fileRef = 1792D08C1BBA33A8000B7D16 /* Util.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1792D08F1BBA33A8000B7D16 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D08D1BBA33A8000B7D16 /* Util.m */; settings = {ASSET_TAGS = (); }; };
+		1792D0901BBA33A8000B7D16 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D08D1BBA33A8000B7D16 /* Util.m */; settings = {ASSET_TAGS = (); }; };
 		C3313B561B902C4A007B5709 /* H.h in Headers */ = {isa = PBXBuildFile; fileRef = C3313B541B902C4A007B5709 /* H.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3313B571B902C4A007B5709 /* H.m in Sources */ = {isa = PBXBuildFile; fileRef = C3313B551B902C4A007B5709 /* H.m */; };
 		C3313B5C1B903237007B5709 /* HTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C3313B5B1B903237007B5709 /* HTest.m */; };
@@ -91,6 +94,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1792D08C1BBA33A8000B7D16 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		1792D08D1BBA33A8000B7D16 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		C3313B541B902C4A007B5709 /* H.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = H.h; path = net/http/H.h; sourceTree = "<group>"; };
 		C3313B551B902C4A007B5709 /* H.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = H.m; path = net/http/H.m; sourceTree = "<group>"; };
 		C3313B5B1B903237007B5709 /* HTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTest.m; path = net/http/HTest.m; sourceTree = "<group>"; };
@@ -394,6 +399,8 @@
 			isa = PBXGroup;
 			children = (
 				C3E4EEC31B8C417800B275D8 /* Util.swift */,
+				1792D08C1BBA33A8000B7D16 /* Util.h */,
+				1792D08D1BBA33A8000B7D16 /* Util.m */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -453,6 +460,7 @@
 				C3DBA98A1B93F1AD008E51C5 /* UIWebExtView.h in Headers */,
 				C3DBA9821B93F1AD008E51C5 /* UIRefreshViewDelegate.h in Headers */,
 				C3E4EED01B8C4D7C00B275D8 /* OcL.h in Headers */,
+				1792D08E1BBA33A8000B7D16 /* Util.h in Headers */,
 				C3373CE31B8EE30E0006A4A0 /* MultipartBuilder.h in Headers */,
 				C3373CF41B8F26390006A4A0 /* NSInputStreamWrapper.h in Headers */,
 				C3313B561B902C4A007B5709 /* H.h in Headers */,
@@ -508,7 +516,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Snows;
 				TargetAttributes = {
 					C3E4EE731B8C3F3D00B275D8 = {
@@ -581,6 +589,7 @@
 				C3DBA9731B93F1AD008E51C5 /* UIBorderView.m in Sources */,
 				C3DBA9751B93F1AD008E51C5 /* UIBoundsImageView.m in Sources */,
 				C3E4EEBE1B8C414C00B275D8 /* FLogWriter.swift in Sources */,
+				1792D08F1BBA33A8000B7D16 /* Util.m in Sources */,
 				C3DBA9771B93F1AD008E51C5 /* UIImgPageControl.m in Sources */,
 				C3373CDA1B8EA5E80006A4A0 /* URLRequester.m in Sources */,
 				C3DBA9791B93F1AD008E51C5 /* UIFocusView.m in Sources */,
@@ -617,6 +626,7 @@
 				C3373D091B8F36470006A4A0 /* OcLTest.m in Sources */,
 				C3FB0A071B944C0B0084C3A1 /* ClassExtTest.m in Sources */,
 				C3373D0A1B8F36470006A4A0 /* UtilTest.swift in Sources */,
+				1792D0901BBA33A8000B7D16 /* Util.m in Sources */,
 				C3313B5E1B90328B007B5709 /* URLRequesterTest.m in Sources */,
 				C3373D0D1B8F40FC0006A4A0 /* MultipartBuilderTest.m in Sources */,
 				C3373D0B1B8F36470006A4A0 /* iwfTests.swift in Sources */,
@@ -657,6 +667,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -737,6 +748,7 @@
 				INFOPLIST_FILE = iwf/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.vty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -755,6 +767,7 @@
 				INFOPLIST_FILE = iwf/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.vty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -774,6 +787,7 @@
 				);
 				INFOPLIST_FILE = iwfTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.vty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -788,6 +802,7 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				INFOPLIST_FILE = iwfTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.vty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

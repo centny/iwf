@@ -21,7 +21,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.viewLoaded=YES:
+    self.viewLoaded=YES;
 }
 
 - (void)didReceiveMemoryWarning {

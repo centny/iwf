@@ -22,6 +22,7 @@ public protocol Log {
 
 public protocol LogWriter{
     func write(data:String)
+    func flush()
 }
 
 
@@ -72,15 +73,19 @@ public class LogImpl:NSObject, Log {
             break
         }
         if log_writer_==nil{
-            println(data)
+            print(data+"\n")
         }else{
             log_writer_?.write(data)
         }
     }
+    class public func fpath(path:String)->(path:String,name:String) {
+        let url:NSURL=NSURL(fileURLWithPath:path)
+        return (url.URLByDeletingLastPathComponent!.path!,url.lastPathComponent!)
+    }
     class public func sdate(file:String,line:Int,function:String,level:String,log:String)->String{
-        var fmt:NSDateFormatter = NSDateFormatter()
+        let fmt:NSDateFormatter = NSDateFormatter()
         fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let fp = Util.fpath(file)
+        let fp = fpath(file)
         var fn:String=fp.name
         if LOG_LONGF{
             fn=file
@@ -114,4 +119,8 @@ var log_writer_:LogWriter?
 
 public func L (file:String=__FILE__,line:Int=__LINE__,function:String=__FUNCTION__)->Log{
     return LogImpl(file: file, line:line, function: function)
+}
+
+public func flush_log(){
+    log_writer_?.flush()
 }

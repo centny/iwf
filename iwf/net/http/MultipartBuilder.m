@@ -9,7 +9,7 @@
 #import "MultipartBuilder.h"
 #import "../../core/CoreMethod.h"
 #import <iwf/iwf.h>
-#import <iwf/iwf-Swift.h>
+//#import <iwf/iwf-Swift.h>
 
 @interface MultipartBuilder ()
 @end

@@ -25,8 +25,8 @@ class LogTest: XCTestCase {
     func testLog(){
         L().D("debug->%@,%@", "abc","xx")
         L().D(NSString(format: "s->%f,%@",11.2,"ss") as String)
-        var str = NSString(format: "Hello, world %.2f", 42.12312312313)
-        println(str)
+        let str:NSString = NSString(format: "Hello, world %.2f", 42.12312312313)
+        print(str)
         InitDocWriter()
         L().D("debug->%@,%@", "D","xx")
         L().I("info->%@,%@", "I","xx")
@@ -40,11 +40,12 @@ class LogTest: XCTestCase {
         L().I("info->%@,%@", "I","xx")
         L().W("warn->%@,%@", "W","xx")
         L().E("error->%@,%@", "E","xx")
-        println("----->")
-        println("----->")
-        println("----->")
+        flush_log()
+        print("----->")
+        print("----->")
+        print("----->")
         let xx:String = Util.readf_("/log/t.log")!
-        println(xx)
+        print(xx)
     }
     
     func testPerformanceLog() {

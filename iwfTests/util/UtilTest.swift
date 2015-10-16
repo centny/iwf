@@ -23,16 +23,20 @@ class UtilTest: XCTestCase {
     }
 
     func testReadf() {
-        var res = Util.writef_("/xd/t.txt", str:"abc")
+        let res = Util.writef_("/xd/t.txt", str:"abc")
         XCTAssert(res, "writer error")
-        var a = Util.readf_("/ss/t.xt")
-        println(a)
-        var b = Util.readf_("/xd/t.txt")
+        let a = Util.readf_("/ss/t.xt")
+        if(a==nil){
+            print("is null")
+        }else{
+            print(a)
+        }
+        let b = Util.readf_("/xd/t.txt")
         if b==nil{
             XCTAssert(false, "data is nil")
         }else{
             let x:String=b!
-            println(x)
+            print(x)
         }
     }
 

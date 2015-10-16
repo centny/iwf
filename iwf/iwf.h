@@ -58,3 +58,5 @@ FOUNDATION_EXPORT const unsigned char iwfVersionString[];
 #import <iwf/UIPlaceHolderTextView.h>
 #import <iwf/UIWebExtView.h>
 #import <iwf/UIRefreshViewDelegate.h>
+
+#import <iwf/Util.h>

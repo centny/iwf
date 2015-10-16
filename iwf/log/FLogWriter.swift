@@ -29,15 +29,22 @@ class FLogWriter :LogWriter{
             return
         }
         self.buf=NSMutableData()
-        var err:NSErrorPointer=nil
-        var res=tbuf.writeToFile(self.path, options: NSDataWritingOptions.DataWritingFileProtectionComplete, error: err)
-        if !res{
-            println("write file err:"+err.debugDescription)
+        self.writeFile(tbuf)
+    }
+    func flush(){
+        let tbuf=self.buf
+        self.buf=NSMutableData()
+        self.writeFile(tbuf)
+    }
+    func writeFile(tbuf:NSMutableData){
+        do{
+            try tbuf.writeToFile(self.path, options: NSDataWritingOptions.DataWritingFileProtectionComplete)
+        }catch{
+            print("write file error")
         }
     }
     deinit{
-        var err:NSErrorPointer=nil
-        self.buf.writeToFile(self.path, options: NSDataWritingOptions.DataWritingFileProtectionComplete, error: err)
+        self.writeFile(self.buf);
     }
 }
 
@@ -52,7 +59,12 @@ public func InitDocWriter(){
     let logDir=homeDir+"/log"
     let fm=NSFileManager.defaultManager()
     if !fm.fileExistsAtPath(logDir){
-        fm.createDirectoryAtPath(logDir, withIntermediateDirectories: true, attributes: nil, error: nil)
+        do{
+            try fm.createDirectoryAtPath(logDir, withIntermediateDirectories: true, attributes: nil)
+        }catch{
+            print("create log directory error-->\n")
+            return
+        }
     }
     InitFLogWriter(logDir+"/t.log")
 }
