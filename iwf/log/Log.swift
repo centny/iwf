@@ -73,7 +73,7 @@ public class LogImpl:NSObject, Log {
             break
         }
         if log_writer_==nil{
-            print(data+"\n")
+            print(data)
         }else{
             log_writer_?.write(data)
         }
