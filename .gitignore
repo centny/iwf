@@ -14,8 +14,9 @@ iwf-test_b
 
 ObjectiveC.gcno
 
-iwf.xcodeproj/project.xcworkspace/xcuserdata/
+iwf.xcodeproj/project.xcworkspace/xcuserdata
 
 libs/protobuf-objc
 libs/cwf
 *.gcda
+
