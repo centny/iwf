@@ -49,7 +49,7 @@
             break;
         case V_CWF_NETW_SCK_EVN_CON_D:
             NSILog(@"%@",@"V_CWF_NETW_SCK_EVN_CON_D");
-            int* code=(int*)arga;
+            int* code=(int*)argb;
             if((*code)==0){
                 NSILog(@"connected->%d->OK", evn);
             }else{
