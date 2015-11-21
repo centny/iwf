@@ -19,6 +19,8 @@
 		1792D08E1BBA33A8000B7D16 /* Util.h in Headers */ = {isa = PBXBuildFile; fileRef = 1792D08C1BBA33A8000B7D16 /* Util.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1792D08F1BBA33A8000B7D16 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D08D1BBA33A8000B7D16 /* Util.m */; };
 		1792D0901BBA33A8000B7D16 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D08D1BBA33A8000B7D16 /* Util.m */; };
+		17E7ED3A1BFD640D006D4038 /* build.sh in Resources */ = {isa = PBXBuildFile; fileRef = 17E7ED381BFD640D006D4038 /* build.sh */; };
+		17E7ED3B1BFD640D006D4038 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 17E7ED391BFD640D006D4038 /* README.md */; };
 		17FAE5F11BFC31CC000DD842 /* NSImTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FAE5F01BFC31CC000DD842 /* NSImTest.m */; };
 		17FAE5F31BFC6BDA000DD842 /* init.sh in Resources */ = {isa = PBXBuildFile; fileRef = 17FAE5F21BFC6BDA000DD842 /* init.sh */; };
 		17FAE5FC1BFC6C31000DD842 /* cwf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17FAE5F91BFC6C0E000DD842 /* cwf.framework */; };
@@ -156,6 +158,8 @@
 		1739A2941BFB926300D86BD2 /* ProtocolBuffers.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ProtocolBuffers.xcodeproj; path = "libs/protobuf-objc/src/runtime/ProtocolBuffers.xcodeproj"; sourceTree = "<group>"; };
 		1792D08C1BBA33A8000B7D16 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		1792D08D1BBA33A8000B7D16 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		17E7ED381BFD640D006D4038 /* build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
+		17E7ED391BFD640D006D4038 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		17FAE5F01BFC31CC000DD842 /* NSImTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSImTest.m; path = im/NSImTest.m; sourceTree = "<group>"; };
 		17FAE5F21BFC6BDA000DD842 /* init.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = init.sh; path = libs/init.sh; sourceTree = "<group>"; };
 		17FAE5F41BFC6C0E000DD842 /* cwf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cwf.xcodeproj; path = libs/cwf/ios/cwf/cwf.xcodeproj; sourceTree = "<group>"; };
@@ -397,6 +401,8 @@
 		C3E4EE6A1B8C3F3D00B275D8 = {
 			isa = PBXGroup;
 			children = (
+				17E7ED381BFD640D006D4038 /* build.sh */,
+				17E7ED391BFD640D006D4038 /* README.md */,
 				C3E4EE761B8C3F3D00B275D8 /* iwf */,
 				C3E4EE831B8C3F3D00B275D8 /* iwfTests */,
 				C3E4EEAD1B8C3FBE00B275D8 /* libs */,
@@ -712,6 +718,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17FAE5F31BFC6BDA000DD842 /* init.sh in Resources */,
+				17E7ED3A1BFD640D006D4038 /* build.sh in Resources */,
 				1739A25E1BFB6E2500D86BD2 /* msg.proto in Resources */,
 				C3DBA9891B93F1AD008E51C5 /* UIWebExtView.dat in Resources */,
 			);
@@ -757,6 +764,7 @@
 				1792D08F1BBA33A8000B7D16 /* Util.m in Sources */,
 				C3DBA9771B93F1AD008E51C5 /* UIImgPageControl.m in Sources */,
 				C3373CDA1B8EA5E80006A4A0 /* URLRequester.m in Sources */,
+				17E7ED3B1BFD640D006D4038 /* README.md in Sources */,
 				C3DBA9791B93F1AD008E51C5 /* UIFocusView.m in Sources */,
 				C3E4EEC01B8C414C00B275D8 /* Log.swift in Sources */,
 				C3373CE41B8EE30E0006A4A0 /* MultipartBuilder.m in Sources */,

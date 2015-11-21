@@ -25,12 +25,22 @@ int NSIm_on_cmd_nim_(v_cwf_im* im, v_cwf_netw_cmd* cmd) {
     }
 }
 
+void NSIm_on_cmd_nim_sck_evn_h(v_cwf_netw_sck_c* sck, int evn, void* arga,
+                             void* argb){
+    v_cwf_im* im=sck->info;
+    NSIm* tim=(__bridge NSIm *)(im->info);
+    if(tim.delegate&&[tim.delegate respondsToSelector:@selector(onSckEvn:evn:arga:argb:)]){
+        [tim.delegate onSckEvn:tim evn:evn arga:arga argb:argb];
+    }
+}
+
 @implementation NSIm
 
 -(id)initWith:(NSString*)addr port:(short)port{
     if(self=[super init]){
         _im=v_cwf_im_n([addr UTF8String], port, NSIm_on_cmd_nim_);
         _im->info=(__bridge void *)(self);
+        _im->sck->evnh=NSIm_on_cmd_nim_sck_evn_h;
     }
     return self;
 }

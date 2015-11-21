@@ -20,7 +20,10 @@
 @class NSIm;
 
 @protocol NSImH <NSObject>
+@required
 -(int)onMsg:(NSIm*)im msg:(ImMsg*) msg;
+@optional
+-(void)onSckEvn:(NSIm*)im evn:(int)evn arga:(void*)arga argb:(void*)argb;
 @end
 
 @interface NSIm : NSObject

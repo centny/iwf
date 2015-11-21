@@ -36,7 +36,36 @@
     self.imc++;
     return 0;
 }
-
+-(void)onSckEvn:(NSIm *)im evn:(int)evn arga:(void *)arga argb:(void *)argb{
+    switch (evn) {
+        case V_CWF_NETW_SCK_EVN_RUN:
+            NSILog(@"start runner->%d", evn);
+            break;
+        case V_CWF_NETW_SCK_EVN_CLOSED:
+            NSILog(@"socket closed->%d", evn);
+            break;
+        case V_CWF_NETW_SCK_EVN_CON_S:
+            NSILog(@"start connect->%d", evn);
+            break;
+        case V_CWF_NETW_SCK_EVN_CON_D:
+            NSILog(@"%@",@"V_CWF_NETW_SCK_EVN_CON_D");
+            int* code=(int*)arga;
+            if((*code)==0){
+                NSILog(@"connected->%d->OK", evn);
+            }else{
+                NSILog(@"connected->%d->error", evn);
+            }
+            break;
+        case V_CWF_NETW_SCK_EVN_LR_S:
+            NSILog(@"start loop read->%d", evn);
+            break;
+        case V_CWF_NETW_SCK_EVN_LR_D:
+            NSILog(@"loop read done->%d", evn);
+            break;
+        default:
+            break;
+    }
+}
 - (void)tearDown {
     [super tearDown];
     [self.im close];
