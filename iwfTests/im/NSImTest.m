@@ -8,14 +8,19 @@
 
 #import <XCTest/XCTest.h>
 #import <iwf/iwf.h>
-@interface NSImTest : XCTestCase<NSImH>
+@interface NSImTest : XCTestCase<NSImH,NSBoolable>
 @property(retain) NSIm* im;
 @property(retain) NSThread* thr;
 @property(assign) int imc;
+@property(assign) int done;
+@property(retain) NSDictionary* lres;
 @end
 
 @implementation NSImTest
 
+- (BOOL)boolValue{
+    return self.done<1;
+}
 - (void)setUp {
     [super setUp];
     self.im=[[NSIm alloc]initWith:@"127.0.0.1" port:9891];
@@ -47,12 +52,23 @@
             break;
         case V_CWF_NETW_SCK_EVN_CON_D:
             NSILog(@"%@",@"V_CWF_NETW_SCK_EVN_CON_D");
+        {
             int* code=(int*)argb;
             if((*code)==0){
                 NSILog(@"connected->%d->OK", evn);
+                NSError* err=0;
+                self.lres=[self.im login:[NSDictionary dictionaryWithObjectsAndKeys:@"abc",@"token", nil] err:&err];
+                if(err){
+                    XCTFail("%@",err);
+                    self.done--;
+                    return;
+                }
+                [self tIm_r];
             }else{
                 NSILog(@"connected->%d->error", evn);
+                self.done--;
             }
+        }
             break;
         case V_CWF_NETW_SCK_EVN_LR_S:
             NSILog(@"start loop read->%d", evn);
@@ -71,19 +87,22 @@
 }
 
 - (void)testIm {
-    sleep(1);
+    self.done=1;
+    XCTAssert(RunLoopv(self),@"timeout");
+}
+- (void)tIm_t{
+    NSThread *thr=[[NSThread alloc]initWithTarget:self selector:@selector(tIm_r) object:nil];
+    [thr start];
+}
+- (void)tIm_r {
     NSError* err=0;
-    NSDictionary* lres=[self.im login:[NSDictionary dictionaryWithObjectsAndKeys:@"abc",@"token", nil] err:&err];
-    if(err){
-        XCTFail("%@",err);
-        return;
-    }
     [self.im ur:nil err:&err];
     if(err){
         XCTFail("%@",err);
+        self.done--;
         return;
     }
-    NSString* r=[lres objectForKey:@"r"];
+    NSString* r=[self.lres objectForKey:@"r"];
     NSDLog(@"login success to R:%@", r);
     for (int i=0; i<1000; i++) {
         NSString* ss=[NSString stringWithFormat:@"xxxx->%d",i];
@@ -92,6 +111,7 @@
         int code=[self.im sms:[mb build]];
         if(code!=0){
             XCTFail("return code->%d",code);
+            self.done--;
             return;
         }
     }
@@ -101,8 +121,10 @@
     [self.im logout:nil err:&err];
     if(err){
         XCTFail("%@",err);
+        self.done--;
         return;
     }
+    self.done--;
 }
 
 @end

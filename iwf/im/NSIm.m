@@ -8,6 +8,14 @@
 
 #import <iwf/iwf.h>
 
+typedef void (^ NSIMRunner)();
+
+@interface NSIm()
+-(void)runMain:(NSIMRunner)run;
+@end
+
+
+
 int NSIm_on_cmd_nim_(v_cwf_im* im, v_cwf_netw_cmd* cmd) {
     ImMsg* msg=[ImMsg parseFromData:[NSData dataWithBytes:(cmd->hb+cmd->off) length:cmd->len]];
     if(msg==nil){
@@ -16,11 +24,13 @@ int NSIm_on_cmd_nim_(v_cwf_im* im, v_cwf_netw_cmd* cmd) {
     }
     NSIm* tim=(__bridge NSIm *)(im->info);
     if(tim.delegate){
-        return [tim.delegate onMsg:tim msg:msg];
+//        [tim performSelectorOnMainThread:@selector(runMain:) withObject:^(){
+        [tim.delegate onMsg:tim msg:msg];
+//        }waitUntilDone:NO];
     }else{
         NSWLog(@"NSIm is not having delegate to handle msg(%@->%@)",msg.s,[msg.c UTF8String]);
-        return 0;
     }
+    return 0;
 }
 
 void NSIm_on_cmd_nim_sck_evn_h(v_cwf_netw_sck_c* sck, int evn, void* arga,
@@ -28,7 +38,9 @@ void NSIm_on_cmd_nim_sck_evn_h(v_cwf_netw_sck_c* sck, int evn, void* arga,
     v_cwf_im* im=sck->info;
     NSIm* tim=(__bridge NSIm *)(im->info);
     if(tim.delegate&&[tim.delegate respondsToSelector:@selector(onSckEvn:evn:arga:argb:)]){
-        [tim.delegate onSckEvn:tim evn:evn arga:arga argb:argb];
+        [tim performSelectorOnMainThread:@selector(runMain:) withObject:^(){
+            [tim.delegate onSckEvn:tim evn:evn arga:arga argb:argb];
+        }waitUntilDone:NO];
     }
 }
 
@@ -39,8 +51,12 @@ void NSIm_on_cmd_nim_sck_evn_h(v_cwf_netw_sck_c* sck, int evn, void* arga,
         _im=v_cwf_im_n([addr UTF8String], port, NSIm_on_cmd_nim_);
         _im->info=(__bridge void *)(self);
         _im->sck->evnh=NSIm_on_cmd_nim_sck_evn_h;
+        
     }
     return self;
+}
+-(void)runMain:(NSIMRunner)run{
+    run();
 }
 -(int)run:(int)erc{
     return v_cwf_im_run(_im, erc);
