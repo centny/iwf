@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		1739A25E1BFB6E2500D86BD2 /* msg.proto in Resources */ = {isa = PBXBuildFile; fileRef = 1739A25A1BFB6E2500D86BD2 /* msg.proto */; };
 		1739A25F1BFB6E2500D86BD2 /* msg.proto in Resources */ = {isa = PBXBuildFile; fileRef = 1739A25A1BFB6E2500D86BD2 /* msg.proto */; };
-		1739A2751BFB89FE00D86BD2 /* Msg.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 1739A2731BFB89FE00D86BD2 /* Msg.pb.h */; };
+		1739A2751BFB89FE00D86BD2 /* Msg.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 1739A2731BFB89FE00D86BD2 /* Msg.pb.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1739A2761BFB89FE00D86BD2 /* Msg.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 1739A2741BFB89FE00D86BD2 /* Msg.pb.m */; };
 		1739A2771BFB89FE00D86BD2 /* Msg.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 1739A2741BFB89FE00D86BD2 /* Msg.pb.m */; };
-		1739A27A1BFB8C2E00D86BD2 /* NSIm.h in Headers */ = {isa = PBXBuildFile; fileRef = 1739A2781BFB8C2E00D86BD2 /* NSIm.h */; };
+		1739A27A1BFB8C2E00D86BD2 /* NSIm.h in Headers */ = {isa = PBXBuildFile; fileRef = 1739A2781BFB8C2E00D86BD2 /* NSIm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1739A27B1BFB8C2E00D86BD2 /* NSIm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1739A2791BFB8C2E00D86BD2 /* NSIm.m */; };
 		1739A27C1BFB8C2E00D86BD2 /* NSIm.m in Sources */ = {isa = PBXBuildFile; fileRef = 1739A2791BFB8C2E00D86BD2 /* NSIm.m */; };
 		1739A2AB1BFB98FE00D86BD2 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1739A29F1BFB926300D86BD2 /* ProtocolBuffers.framework */; };
@@ -573,7 +573,6 @@
 				C3DBA9851B93F1AD008E51C5 /* UITableExtView.h in Headers */,
 				C3DBA9871B93F1AD008E51C5 /* UITreeView.h in Headers */,
 				C3DBA9701B93F1AD008E51C5 /* NSRefreshProxy.h in Headers */,
-				1739A27A1BFB8C2E00D86BD2 /* NSIm.h in Headers */,
 				C3DBA96E1B93F1AD008E51C5 /* LineDrawer.h in Headers */,
 				C3DBA9801B93F1AD008E51C5 /* UIRefreshView.h in Headers */,
 				C3DBA9781B93F1AD008E51C5 /* UIFocusView.h in Headers */,
@@ -587,6 +586,7 @@
 				C3373CE31B8EE30E0006A4A0 /* MultipartBuilder.h in Headers */,
 				C3373CF41B8F26390006A4A0 /* NSInputStreamWrapper.h in Headers */,
 				C3313B561B902C4A007B5709 /* H.h in Headers */,
+				1739A27A1BFB8C2E00D86BD2 /* NSIm.h in Headers */,
 				1739A2751BFB89FE00D86BD2 /* Msg.pb.h in Headers */,
 				C3E4EEA71B8C3F8400B275D8 /* NSGImage.h in Headers */,
 				C35D94E01B9310B5002C41F1 /* NSDataInputStream.h in Headers */,

@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <cwf/cwf.h>
-#import "pb/Msg.pb.h"
 
 #define MK_NIM 0
 #define MK_NMR 2
@@ -17,7 +16,7 @@
 #define MK_NRC_LO 20
 #define MK_NRC_UR 30
 
-@class NSIm;
+@class NSIm,ImMsg;
 
 @protocol NSImH <NSObject>
 @required

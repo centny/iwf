@@ -60,3 +60,7 @@ FOUNDATION_EXPORT const unsigned char iwfVersionString[];
 #import <iwf/UIRefreshViewDelegate.h>
 
 #import <iwf/Util.h>
+
+//IM
+#import <iwf/NSIm.h>
+#import <iwf/Msg.pb.h>
