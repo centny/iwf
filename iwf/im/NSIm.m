@@ -6,10 +6,7 @@
 //  Copyright © 2015 Snows. All rights reserved.
 //
 
-#import "NSIm.h"
-#import "OcL.h"
-#import "ClassExt.h"
-#import "pb/Msg.pb.h"
+#import <iwf/iwf.h>
 
 int NSIm_on_cmd_nim_(v_cwf_im* im, v_cwf_netw_cmd* cmd) {
     ImMsg* msg=[ImMsg parseFromData:[NSData dataWithBytes:(cmd->hb+cmd->off) length:cmd->len]];

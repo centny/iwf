@@ -7,9 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "NSIm.h"
-#import "OcL.h"
-#import "ClassExt.h"
+#import <iwf/iwf.h>
 @interface NSImTest : XCTestCase<NSImH>
 @property(retain) NSIm* im;
 @property(retain) NSThread* thr;
