@@ -13,6 +13,7 @@
 @property(retain) NSThread* thr;
 @property(assign) int imc;
 @property(assign) int done;
+@property(retain) NSString* token;
 @property(retain) NSDictionary* lres;
 @end
 
@@ -23,11 +24,11 @@
 }
 - (void)setUp {
     [super setUp];
-    self.im=[[NSIm alloc]initWith:@"127.0.0.1" port:9891];
+    self.im=[[NSIm alloc]initWith:@"14.23.162.172" port:19990];
     self.im.delegate=self;
     self.imc=0;
     self.thr=[[NSThread alloc]initWithTarget:self selector:@selector(run_im) object:nil];
-    [self.thr start];
+//    [self.thr start];
 }
 - (void)run_im{
     NSILog(@"%@",@"the im thread start");
@@ -56,8 +57,8 @@
             int* code=(int*)argb;
             if((*code)==0){
                 NSILog(@"connected->%d->OK", evn);
-                NSError* err=0;
-                self.lres=[self.im login:[NSDictionary dictionaryWithObjectsAndKeys:@"abc",@"token", nil] err:&err];
+                NSError* err;
+                self.lres=[self.im login:[NSDictionary dictionaryWithObjectsAndKeys:self.token,@"token", nil] err:&err];
                 if(err){
                     XCTFail("%@",err);
                     self.done--;
@@ -65,7 +66,7 @@
                 }
                 [self tIm_r];
             }else{
-                NSILog(@"connected->%d->error", evn);
+                NSILog(@"connected->%d->error-%d", evn,*code);
                 self.done--;
             }
         }
@@ -80,6 +81,7 @@
             break;
     }
 }
+
 - (void)tearDown {
     [super tearDown];
     [self.im close];
@@ -88,6 +90,20 @@
 
 - (void)testIm {
     self.done=1;
+    [H doGetj:^(URLRequester *req, NSData *data, NSDictionary *json, NSError *err) {
+        if(err){
+            XCTFail(@"login error->%@", err);
+            self.done--;
+            return;
+        }
+        if([[json objectForKey:@"code"]intValue]!=0){
+            XCTFail(@"login error by code->%@", [json objectForKey:@"code"]);
+            self.done--;
+            return;
+        }
+        self.token=[[json objectForKey:@"data"] objectForKey:@"token"];
+        [self.thr start];
+    } url:@"http://sso.dev.jxzy.com/sso/api/login?usr=%@&pwd=%@",@"testing",@"123"];
     XCTAssert(RunLoopv(self),@"timeout");
 }
 - (void)tIm_t{
@@ -118,13 +134,23 @@
     while (self.imc<1001) {
         sleep(1);
     }
-    [self.im logout:nil err:&err];
+    [self.im logout:[NSDictionary dictionaryWithObjectsAndKeys:self.token,@"token", nil] err:&err];
     if(err){
         XCTFail("%@",err);
         self.done--;
         return;
     }
     self.done--;
+}
+
+-(void)testChar{
+    char a[2];
+    a[1]=200;
+    unsigned char xx=a[1];
+    int x=xx;
+    if(x!=200){
+        XCTFail(@"error");
+    }
 }
 
 @end

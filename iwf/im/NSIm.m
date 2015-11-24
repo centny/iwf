@@ -10,10 +10,6 @@
 
 typedef void (^ NSIMRunner)();
 
-@interface NSIm()
--(void)runMain:(NSIMRunner)run;
-@end
-
 
 
 int NSIm_on_cmd_nim_(v_cwf_im* im, v_cwf_netw_cmd* cmd) {
@@ -38,9 +34,9 @@ void NSIm_on_cmd_nim_sck_evn_h(v_cwf_netw_sck_c* sck, int evn, void* arga,
     v_cwf_im* im=sck->info;
     NSIm* tim=(__bridge NSIm *)(im->info);
     if(tim.delegate&&[tim.delegate respondsToSelector:@selector(onSckEvn:evn:arga:argb:)]){
-        [tim performSelectorOnMainThread:@selector(runMain:) withObject:^(){
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [tim.delegate onSckEvn:tim evn:evn arga:arga argb:argb];
-        }waitUntilDone:NO];
+        });
     }
 }
 
@@ -54,9 +50,6 @@ void NSIm_on_cmd_nim_sck_evn_h(v_cwf_netw_sck_c* sck, int evn, void* arga,
         
     }
     return self;
-}
--(void)runMain:(NSIMRunner)run{
-    run();
 }
 -(int)run:(int)erc{
     return v_cwf_im_run(_im, erc);
