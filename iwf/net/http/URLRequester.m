@@ -11,6 +11,45 @@
 //#import "FPis.h"
 #import <iwf/iwf.h>
 #import <iwf/iwf-Swift.h>
+
+NSMutableDictionary *_pending_=nil;
+BOOL pending_on_add(URLRequester *req){
+    if (_pending_==nil) {
+        _pending_=[NSMutableDictionary dictionary];
+    }
+    @synchronized(_pending_){
+        NSString* url=req.fullUrl;
+        NSMutableArray *pd=[_pending_ objectForKey:url];
+        if (pd==nil) {
+            pd=[NSMutableArray array];
+        }
+        [pd addObject:req];
+        [_pending_ setObject:pd forKey:url];
+        return pd.count<2;
+    }
+}
+void pending_on_done(URLRequester *req,NSData* data,NSError* err){
+    if (_pending_==nil) {
+        NSELog(@"%@",@"the _pending_ is null, do you calling pending_on_done by yourself");
+        return;
+    }
+    @synchronized(_pending_){
+        NSString* url=req.fullUrl;
+        NSMutableArray *pd=[_pending_ objectForKey:url];
+        if (pd==nil) {
+            NSELog(@"the _pending_ list for url(%@) is null, do you calling pending_on_done by yourself",url);
+            return;
+        }
+        for (URLRequester *r in pd) {
+            if(r==req){
+                continue;
+            }
+            [r onReqCompleted:data err:err];
+        }
+        [pd removeAllObjects];
+        [_pending_ removeObjectForKey:url];
+    }
+}
 //
 const NSString* HC_C=@"C"; //cache only.
 const NSString* HC_CN=@"CN"; //cache first.
@@ -82,22 +121,27 @@ const NSString* HC_KEY=@"_hc_";
     }
 }
 
+-(NSString*) fullUrl{
+    NSRange rg = [self.url rangeOfString:@"?"];
+    
+    if (rg.length < 1) {
+        return [NSString stringWithFormat:@"%@?%@", self.url, [self.args stringByURLQuery]];
+    } else {
+        return [NSString stringWithFormat:@"%@&%@", self.url, [self.args stringByURLQuery]];
+    }
+}
+
 - (void)start
 {
+    NSString* log;
     if ([@"GET" isEqualToString : self.method]) {
         if (self.args.count) {
-            NSRange rg = [self.url rangeOfString:@"?"];
-            
-            if (rg.length < 1) {
-                self.url = [NSString stringWithFormat:@"%@?%@", self.url, [self.args stringByURLQuery]];
-            } else {
-                self.url = [NSString stringWithFormat:@"%@&%@", self.url, [self.args stringByURLQuery]];
-            }
+            self.url=self.fullUrl;
         }
-        NSDLog(@"GET %@",self.url);
+        log=[NSString stringWithFormat:@"GET %@",self.url];
         _request = [self createRequest];
     } else {
-        NSDLog(@"POST %@->%@", self.url, [self.args stringByURLQuery]);
+        log=[NSString stringWithFormat:@"POST %@->%@", self.url, [self.args stringByURLQuery]];
         _request = [self createRequest];
         if(self.streamBody){
             self.request.HTTPBodyStream=self.streamBody;
@@ -119,9 +163,11 @@ const NSString* HC_KEY=@"_hc_";
         [self.request setValue:[[self.req_h objectForKey:key]stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] forHTTPHeaderField:key];
     }
     [self onReqStart:self.request];
-    _connection = [[NSURLConnection alloc]initWithRequest:self.request delegate:self startImmediately:YES];
+    if(pending_on_add(self)){
+        NSDLog(@"%@", log);
+        _connection = [[NSURLConnection alloc]initWithRequest:self.request delegate:self startImmediately:YES];
+    }
 }
-
 - (void)cancel
 {
     [self.connection cancel];
@@ -192,6 +238,7 @@ const NSString* HC_KEY=@"_hc_";
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     [self onReqCompleted:self.res_d err:nil];
+    pending_on_done(self, self.res_d, nil);
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -199,6 +246,7 @@ const NSString* HC_KEY=@"_hc_";
     NSDLog(@"%@ %@ err:%@", self.method,self.url,error);
     [self onReqCompleted:self.res_d err:error];
     [self cancel];
+    pending_on_done(self, self.res_d, error);
 }
 
 - (void)onReqCompleted:(NSData*)data err:(NSError*)err{

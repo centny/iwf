@@ -576,6 +576,9 @@ const NSString* IV_HTTP_URL=@"HTTP_URL";
         self.loading=self.image;
     }
     [H doGet:url args:[NSDictionary dictionaryWithObject:HC_I forKey:HC_KEY] completed:^(URLRequester *req, NSData *data, NSError *err) {
+        if (![url isEqualToString:self.url]) {
+            return;
+        }
         if(err){
             objc_setAssociatedObject(self, (__bridge const void *)(IV_LOAD_ERR), err, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         }else{
