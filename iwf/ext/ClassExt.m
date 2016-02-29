@@ -566,6 +566,10 @@ const NSString* IV_HTTP_URL=@"HTTP_URL";
     return objc_getAssociatedObject(self, (__bridge const void *)(IV_HTTP_URL));
 }
 -(void)setUrl:(NSString *)url{
+    if (url==nil || [url isEmptyOrWhiteSpace]) {
+        self.image=self.loading;
+        return;
+    }
     if([url isEqualToString:self.url]&&self.err==nil){
         return;
     }
