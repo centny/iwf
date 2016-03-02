@@ -566,18 +566,18 @@ const NSString* IV_HTTP_URL=@"HTTP_URL";
     return objc_getAssociatedObject(self, (__bridge const void *)(IV_HTTP_URL));
 }
 -(void)setUrl:(NSString *)url{
-    if (url==nil || [url isEmptyOrWhiteSpace]) {
-        self.image=self.loading;
-        return;
-    }
-    if([url isEqualToString:self.url]&&self.err==nil){
-        return;
-    }
-    objc_setAssociatedObject(self, (__bridge const void *)(IV_HTTP_URL), url, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    if(self.loading){
-        self.image=self.loading;
-    }else{
-        self.loading=self.image;
+    @synchronized(self) {
+        if(!self.loading){
+            self.loading=self.image;
+        }
+        if(url!=nil&&[url isEqualToString:self.url]&&self.err==nil){
+            return;
+        }
+        objc_setAssociatedObject(self, (__bridge const void *)(IV_HTTP_URL), url, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        if (url==nil || [url isEmptyOrWhiteSpace]) {
+            self.image=self.loading;
+            return;
+        }
     }
     [H doGet:url args:[NSDictionary dictionaryWithObject:HC_I forKey:HC_KEY] completed:^(URLRequester *req, NSData *data, NSError *err) {
         if (![url isEqualToString:self.url]) {
@@ -585,6 +585,7 @@ const NSString* IV_HTTP_URL=@"HTTP_URL";
         }
         if(err){
             objc_setAssociatedObject(self, (__bridge const void *)(IV_LOAD_ERR), err, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            self.image=self.loading;
         }else{
             objc_setAssociatedObject(self, (__bridge const void *)(IV_LOAD_ERR), nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             self.image=[UIImage imageWithData:data];
