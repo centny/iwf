@@ -583,12 +583,19 @@ const NSString* IV_HTTP_URL=@"HTTP_URL";
         if (![url isEqualToString:self.url]) {
             return;
         }
+        UIImage* img=nil;
+        if(err==nil){
+            img=[UIImage imageWithData:data];
+            if(img==nil){
+                err=[NSError errorWithDomain:@"UIImageView" code:1 userInfo:[NSDictionary dictionaryWithObject:@"pasing data to image fail" forKey:@"msg"]];
+            }
+        }
         if(err){
             objc_setAssociatedObject(self, (__bridge const void *)(IV_LOAD_ERR), err, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
             self.image=self.loading;
         }else{
             objc_setAssociatedObject(self, (__bridge const void *)(IV_LOAD_ERR), nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-            self.image=[UIImage imageWithData:data];
+            self.image=img;
         }
     }];
 }
