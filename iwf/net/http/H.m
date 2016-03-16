@@ -76,21 +76,28 @@
     }];
 }
 + (void)doPost:(NSString *)url json:(NSDictionary*)data completed:(URLReqCompleted)finished{
-    [H doPost:url data:[data toJson:nil] completed:finished];
+    [H doPost:url data:[data toJson:nil] type:@"application/json" completed:finished];
 }
 + (void)doPost:(NSString *)url data:(NSData*)data completed:(URLReqCompleted)finished{
+    [H doPost:url data:data type:@"application/octet-stream" completed:finished];
+}
++ (void)doPost:(NSString *)url data:(NSData*)data type:(NSString*)type completed:(URLReqCompleted)finished{
     URLRequester *req = [[URLRequester alloc]init];
     req.url		= url;
     req.method	= @"POST";
+    [req.req_h setObject:type forKey:@"Content-Type"];
     req.body=data;
     req.completed = finished;
     [req start];
 }
 + (void)doPost:(NSString *)url json:(NSDictionary*)data json:(URLReqJsonCompleted)finished{
-    [H doPost:url data:[data toJson:nil] json:finished];
+    [H doPost:url data:[data toJson:nil] type:@"application/json" json:finished];
 }
 + (void)doPost:(NSString *)url data:(NSData*)data json:(URLReqJsonCompleted)finished{
-    [H doPost:url data:data completed:^(URLRequester *req, NSData *data, NSError *err) {
+    [H doPost:url data:data type:@"application/octet-stream" json:finished];
+}
++ (void)doPost:(NSString *)url data:(NSData*)data type:(NSString*)type json:(URLReqJsonCompleted)finished{
+    [H doPost:url data:data type:type completed:^(URLRequester *req, NSData *data, NSError *err) {
         NSDictionary* dict=nil;
         if(err==nil){
             dict=[data toJsonObject:&err];
