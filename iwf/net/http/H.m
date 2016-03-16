@@ -75,7 +75,29 @@
         finished(req,data,dict,err);
     }];
 }
-
++ (void)doPost:(NSString *)url json:(NSDictionary*)data completed:(URLReqCompleted)finished{
+    [H doPost:url data:[data toJson:nil] completed:finished];
+}
++ (void)doPost:(NSString *)url data:(NSData*)data completed:(URLReqCompleted)finished{
+    URLRequester *req = [[URLRequester alloc]init];
+    req.url		= url;
+    req.method	= @"POST";
+    req.body=data;
+    req.completed = finished;
+    [req start];
+}
++ (void)doPost:(NSString *)url json:(NSDictionary*)data json:(URLReqJsonCompleted)finished{
+    [H doPost:url data:[data toJson:nil] json:finished];
+}
++ (void)doPost:(NSString *)url data:(NSData*)data json:(URLReqJsonCompleted)finished{
+    [H doPost:url data:data completed:^(URLRequester *req, NSData *data, NSError *err) {
+        NSDictionary* dict=nil;
+        if(err==nil){
+            dict=[data toJsonObject:&err];
+        }
+        finished(req,data,dict,err);
+    }];
+}
 + (void)doPost:(NSString *)url sargs:(NSString *)args completed:(URLReqCompleted)finished
 {
     URLRequester *req = [[URLRequester alloc]init];

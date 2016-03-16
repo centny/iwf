@@ -83,6 +83,27 @@
     XCTAssert(RunLoopx(self), @"Timeout");
 }
 
+- (void)testPostJson{
+    self.excepted=1;
+    self.ec=0;
+    URLReqJsonCompleted completed=^(URLRequester *req, NSData *data, NSDictionary* json, NSError *err) {
+        if(err){
+            NSELog(@"response err:%@", err);
+            XCTAssert(false,"having error");
+            self.ec++;
+            return;
+        }
+        NSDLog(@"response json:%@", [data UTF8String]);
+        XCTAssert([[json objectForKey:@"v1"]isEqual:@"a"],"code error");
+        XCTAssert([[json objectForKey:@"v2"]isEqual:[NSNumber numberWithInt:1]],"code error");
+        NSDLog(@"response data:%@", [json objectForKey:@"S"]);
+        self.ec++;
+    };
+    NSDictionary *data=[NSDictionary dictionaryWithObjectsAndKeys:@"a",@"v1",[NSNumber numberWithInt:1],@"v2",nil];
+    [H doPost:[NSString stringWithFormat:@"%@/data_j",TS_SRV] json:data json:completed];
+    XCTAssert(RunLoopx(self), @"Timeout");
+}
+
 - (void)testJson{
     NSMutableDictionary* a=[NSMutableDictionary dictionary];
     NSMutableDictionary* b=[NSMutableDictionary dictionary];
