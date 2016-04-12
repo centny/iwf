@@ -142,10 +142,11 @@
     if(!self.refreshing){
         return;
     }
+    self.refreshing=NO;
     [UIView animateWithDuration:0.5 animations:^{
         scrollView.contentInset = [self insetByRefreshing:scrollView.contentInset refreshing:NO];
     } completion:^(BOOL f) {
-        self.refreshing=NO;
+        //self.refreshing=NO;
         if ([_rdelegate respondsToSelector:@selector(onDidRefresh:)]) {
             [_rdelegate onDidRefresh:scrollView];
         }
