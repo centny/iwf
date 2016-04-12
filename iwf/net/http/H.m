@@ -105,6 +105,46 @@
         finished(req,data,dict,err);
     }];
 }
++ (void)doPost:(NSString *)url stream:(NSInputStream *)stream name:(NSString*)name filename:(NSString*)filename type:(NSString *)type fields:(NSDictionary*)fields  completed:(URLReqCompleted)finished{
+    URLRequester *req = [[URLRequester alloc]init];
+    req.url		= url;
+    req.method	= @"POST";
+    [req.multipart buildStream:stream name:name filename:filename type:type];
+    if(fields){
+        [req.multipart addArgs:fields];
+    }
+    req.completed = finished;
+    [req start];
+}
++ (void)doPost:(NSString *)url data:(NSData *)data name:(NSString*)name filename:(NSString*)filename type:(NSString *)type fields:(NSDictionary*)fields  completed:(URLReqCompleted)finished{
+    URLRequester *req = [[URLRequester alloc]init];
+    req.url		= url;
+    req.method	= @"POST";
+    [req.multipart buildData:data name:name filename:filename type:type];
+    if(fields){
+        [req.multipart addArgs:fields];
+    }
+    req.completed = finished;
+    [req start];
+}
++ (void)doPost:(NSString *)url stream:(NSInputStream *)stream name:(NSString*)name filename:(NSString*)filename type:(NSString *)type fields:(NSDictionary*)fields  json:(URLReqJsonCompleted)finished{
+    [H doPost:url stream:stream name:name filename:filename type:type fields:nil completed:^(URLRequester *req, NSData *data, NSError *err) {
+        NSDictionary* dict=nil;
+        if(err==nil){
+            dict=[data toJsonObject:&err];
+        }
+        finished(req,data,dict,err);
+    }];
+}
++ (void)doPost:(NSString *)url data:(NSData *)data name:(NSString*)name filename:(NSString*)filename type:(NSString *)type fields:(NSDictionary*)fields  json:(URLReqJsonCompleted)finished{
+    [H doPost:url data:data name:name filename:filename type:type fields:nil completed:^(URLRequester *req, NSData *data, NSError *err) {
+        NSDictionary* dict=nil;
+        if(err==nil){
+            dict=[data toJsonObject:&err];
+        }
+        finished(req,data,dict,err);
+    }];
+}
 + (void)doPost:(NSString *)url sargs:(NSString *)args completed:(URLReqCompleted)finished
 {
     URLRequester *req = [[URLRequester alloc]init];

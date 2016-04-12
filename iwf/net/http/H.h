@@ -32,6 +32,13 @@ typedef void (^ URLReqJsonCompleted)(URLRequester *req,NSData* data, NSDictionar
 //post stream.
 //+ (void)doPost:(NSString *)url stream:(NSInputStream*)stream completed:(URLReqCompleted)finished;
 //+ (void)doPost:(NSString *)url stream:(NSInputStream*)stream json:(URLReqJsonCompleted)finished;
+//post file
++ (void)doPost:(NSString *)url stream:(NSInputStream *)stream name:(NSString*)name filename:(NSString*)filename type:(NSString *)type fields:(NSDictionary*)fields  completed:(URLReqCompleted)finished;
++ (void)doPost:(NSString *)url data:(NSData *)data name:(NSString*)name filename:(NSString*)filename type:(NSString *)type fields:(NSDictionary*)fields  completed:(URLReqCompleted)finished;
++ (void)doPost:(NSString *)url stream:(NSInputStream *)stream name:(NSString*)name filename:(NSString*)filename type:(NSString *)type fields:(NSDictionary*)fields  json:(URLReqJsonCompleted)finished;
++ (void)doPost:(NSString *)url data:(NSData *)data name:(NSString*)name filename:(NSString*)filename type:(NSString *)type fields:(NSDictionary*)fields  json:(URLReqJsonCompleted)finished;
+//+ (void)doPost:(NSString *)url file:(NSInputStream *)data key:(NSString*)key type:(NSString *)type fields:(NSDictionary*)fields json:(URLReqJsonCompleted)finished;
+
 //post application/x-www-form-urlencoded
 + (void)doPost:(NSString *)url sargs:(NSString *)args completed:(URLReqCompleted)finished;
 + (void)doPost:(NSString *)url sargs:(NSString *)args json:(URLReqJsonCompleted)finished;

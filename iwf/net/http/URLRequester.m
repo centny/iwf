@@ -142,17 +142,29 @@ const NSString* HC_KEY=@"_hc_";
         _request = [self createRequest];
     } else {
         log=[NSString stringWithFormat:@"POST %@->%@", self.url, [self.args stringByURLQuery]];
-        _request = [self createRequest];
         if(self.streamBody){
+            if (self.args.count) {
+                self.url=self.fullUrl;
+            }
+            _request = [self createRequest];
             self.request.HTTPBodyStream=self.streamBody;
         }else if(self.body){
+            if (self.args.count) {
+                self.url=self.fullUrl;
+            }
+            _request = [self createRequest];
             self.request.HTTPBody=self.body;
         }else{
             NSInputStream* is=[self.multipart build];
             if(is){
+                if (self.args.count) {
+                    self.url=self.fullUrl;
+                }
+                _request = [self createRequest];
                 [self.request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@",self.multipart.bound] forHTTPHeaderField:@"Content-Type"];
                 self.request.HTTPBodyStream=is;
             }else{
+                _request = [self createRequest];
                 [self.request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
                 self.request.HTTPBody=[[self.args stringByURLQuery]dataUsingEncoding:self.encoding];
             }

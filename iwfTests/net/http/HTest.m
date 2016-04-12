@@ -146,6 +146,52 @@
     XCTAssert(RunLoopx(self), @"Timeout");
 }
 
+- (void)testPostDataF{
+    self.excepted=1;
+    self.ec=0;
+    URLReqJsonCompleted completed=^(URLRequester *req, NSData *data, NSDictionary* json, NSError *err) {
+        if(err){
+            NSELog(@"response err:%@", err);
+            NSELog(@"abc->%@", [data UTF8String]);
+            XCTAssert(false,"having error");
+            self.ec++;
+            return;
+        }
+        NSDLog(@"response json:%@", [data UTF8String]);
+        XCTAssert([[json objectForKey:@"code"]isEqual:[NSNumber numberWithInt:0]],"code error");
+        XCTAssert([[json objectForKey:@"data"] length]>0,"code error");
+        NSDLog(@"response data:%@", [json objectForKey:@"S"]);
+        self.ec++;
+    };
+    //    NSDictionary *data=[NSDictionary dictionaryWithObjectsAndKeys:@"a",@"v1",[NSNumber numberWithInt:1],@"v2",nil];
+    NSData* data=[@"abcdd" dataUsingEncoding:NSUTF8StringEncoding];
+    [H doPost:@"http://fs.dev.gdy.io/usr/api/uload?token=570C6D3FBC9A3419370A60A1&pub=1" data:data name:@"file" filename:@"abc.txt" type:@"text/plain" fields:nil json:completed];
+    XCTAssert(RunLoopx(self), @"Timeout");
+}
+
+- (void)testPostStreamF{
+    self.excepted=1;
+    self.ec=0;
+    URLReqJsonCompleted completed=^(URLRequester *req, NSData *data, NSDictionary* json, NSError *err) {
+        if(err){
+            NSELog(@"response err:%@", err);
+            NSELog(@"abc->%@", [data UTF8String]);
+            XCTAssert(false,"having error");
+            self.ec++;
+            return;
+        }
+        NSDLog(@"response json:%@", [data UTF8String]);
+        XCTAssert([[json objectForKey:@"code"]isEqual:[NSNumber numberWithInt:0]],"code error");
+        XCTAssert([[json objectForKey:@"data"] length]>0,"code error");
+        NSDLog(@"response data:%@", [json objectForKey:@"S"]);
+        self.ec++;
+    };
+    //    NSDictionary *data=[NSDictionary dictionaryWithObjectsAndKeys:@"a",@"v1",[NSNumber numberWithInt:1],@"v2",nil];
+    NSData* data=[@"abxcdd" dataUsingEncoding:NSUTF8StringEncoding];
+    NSInputStream* stream=[NSInputStream inputStreamWithData:data];
+    [H doPost:@"http://fs.dev.gdy.io/usr/api/uload?token=570C6D3FBC9A3419370A60A1&pub=1" stream:stream name:@"file" filename:@"abc.txt" type:@"text/plain" fields:nil json:completed];
+    XCTAssert(RunLoopx(self), @"Timeout");
+}
 - (void)testJson{
     NSMutableDictionary* a=[NSMutableDictionary dictionary];
     NSMutableDictionary* b=[NSMutableDictionary dictionary];

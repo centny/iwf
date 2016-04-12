@@ -49,6 +49,12 @@
     self.type=type;
     self.data=data;
 }
+- (void)buildStream:(NSInputStream*)stream name:(NSString*)name filename:(NSString*)filename type:(NSString*)type{
+    self.name=name;
+    self.filename=filename;
+    self.type=type;
+    self.stream=stream;
+}
 - (NSInputStream*)build{
     if(self.datas.count<1 &&self.name==nil){
         return nil;
@@ -69,11 +75,13 @@
         [dis appendStr:[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n",self.type] end:false];
         if(self.data){
             [dis appendData:self.data end:false];
-            [dis appendStr:[NSString stringWithFormat:@"\r\n--%@--\r\n",self.bound] end:false];
+        }else if(self.stream){
+            dis.base=self.stream;
         }else{
             dis.base=[[NSInputStream alloc]initWithFileAtPath:self.path];
-            [dis appendStr:[NSString stringWithFormat:@"\r\n--%@--\r\n",self.bound] end:true];
         }
+        [dis appendStr:[NSString stringWithFormat:@"\r\n--%@--\r\n",self.bound] end:false];
+        
     }else{
         [dis appendStr:[NSString stringWithFormat:@"--%@--\r\n",self.bound] end:false];
     }

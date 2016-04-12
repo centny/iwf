@@ -15,6 +15,7 @@
 @property(nonatomic,readonly)NSMutableDictionary *datas;
 //
 @property(nonatomic,retain)NSData*   data;
+@property(nonatomic,retain)NSInputStream* stream;
 @property(nonatomic,retain)NSString* path;
 @property(nonatomic,retain)NSString* type;
 @property(nonatomic,retain)NSString* name;
@@ -25,6 +26,7 @@
 - (void)addArgs:(NSDictionary*)args;
 - (void)buildPath:(NSString*)path name:(NSString*)name;
 - (void)buildData:(NSData*)data name:(NSString*)name filename:(NSString*)filename type:(NSString*)type;
+- (void)buildStream:(NSInputStream*)stream name:(NSString*)name filename:(NSString*)filename type:(NSString*)type;
 - (NSInputStream*)build;
 
 + (MultipartBuilder*)builder;
