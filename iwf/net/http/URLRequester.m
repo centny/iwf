@@ -53,6 +53,7 @@ void pending_on_done(URLRequester *req,NSData* data,NSError* err){
 //
 const NSString* HC_C=@"C"; //cache only.
 const NSString* HC_CN=@"CN"; //cache first.
+const NSString* HC_NC=@"NC"; //http first.
 const NSString* HC_N=@"N"; //normal http cache.
 const NSString* HC_I=@"I"; //image cache.
 const NSString* HC_NO=@"NO"; //image cache.
@@ -140,6 +141,13 @@ const NSString* HC_KEY=@"_hc_";
         }
         log=[NSString stringWithFormat:@"GET %@",self.url];
         _request = [self createRequest];
+        if([HC_I isEqualToString:self.policy]||[HC_CN isEqualToString:self.policy]){
+            NSCachedURLResponse* res=[[NSURLCache sharedURLCache]cachedResponseForRequest:self.request];
+            if (res){
+                [self onReqCompleted:res.data err:nil];
+                return;
+            }
+        }
     } else {
         log=[NSString stringWithFormat:@"POST %@->%@", self.url, [self.args stringByURLQuery]];
         if(self.streamBody){
@@ -265,9 +273,15 @@ const NSString* HC_KEY=@"_hc_";
     if (self.delegate && [self.delegate respondsToSelector:@selector(onReqCompleted:data:err:)]) {
         [self.delegate onReqCompleted:self data:data err:err];
     }
-    if (self.completed) {
+    if ((self.completed&&err==nil)||![HC_NC isEqualToString:self.policy]) {
         self.completed(self,data,err);
+        return;
     }
+    NSCachedURLResponse* res=[[NSURLCache sharedURLCache]cachedResponseForRequest:self.request];
+    if (res){
+        data=res.data;
+    }
+    self.completed(self,data,err);
 }
 - (void)onReqStart:(NSMutableURLRequest*) request{
     if (self.delegate && [self.delegate respondsToSelector:@selector(onReqStart:request:)]) {

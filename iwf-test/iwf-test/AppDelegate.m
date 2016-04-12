@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <iwf/iwf.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    NSDLog(@"%@", DocumentDirectory());
+    [NSURLCache setSharedURLCache:[[NSURLCache alloc]initWithMemoryCapacity:0 diskCapacity:1024000000 diskPath:@"cache.dat"]];
+    [H doGet:@"http://pes.dev.gdy.io/usr/api/page/GetPage?keys=[{\"key\":\"courselist\"},{\"key\":\"m_scroll\"},{\"key\":\"m_classifi\"}]&_hc_=NC" args:nil json:^(URLRequester *req, NSData *data, NSDictionary *json, NSError *err) {
+        NSDLog(@"str->%@", [data UTF8String]);
+        NSDLog(@"data->%@", json);
+        NSELog(@"err->%@", err);
+    }];
     return YES;
 }
 

@@ -12,6 +12,7 @@
 typedef void (^ URLReqJsonCompleted)(URLRequester *req,NSData* data, NSDictionary* json, NSError *err);
 
 @interface H : NSObject
++ (URLReqCompleted)CovJson:(URLReqJsonCompleted)finished;
 + (void)doGet:(NSString *)url completed:(URLReqCompleted)finished;
 + (void)doGet:(NSString *)url json:(URLReqJsonCompleted)finished;
 + (void)doGet:(URLReqCompleted)finished url:(NSString*)format,...;

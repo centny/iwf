@@ -579,6 +579,7 @@ const NSString* IV_HTTP_URL=@"HTTP_URL";
             return;
         }
     }
+    self.image=self.loading;
     [H doGet:url args:[NSDictionary dictionaryWithObject:HC_I forKey:HC_KEY] completed:^(URLRequester *req, NSData *data, NSError *err) {
         if (![url isEqualToString:self.url]) {
             return;

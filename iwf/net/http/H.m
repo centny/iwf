@@ -11,19 +11,25 @@
 @implementation H
 
 //////
-
++ (URLReqCompleted)CovJson:(URLReqJsonCompleted)finished{
+    return ^(URLRequester *req, NSData *data, NSError *err) {
+        NSDictionary* dict=nil;
+        NSError* terr=nil;
+        if(data){
+            dict=[data toJsonObject:&terr];
+        }
+        if(err==nil){
+            err=terr;
+        }
+        finished(req,data,dict,err);
+    };
+}
 + (void)doGet:(NSString *)url completed:(URLReqCompleted)finished
 {
     [H doGet:url args:nil completed:finished];
 }
 + (void)doGet:(NSString *)url json:(URLReqJsonCompleted)finished{
-    [H doGet:url completed:^(URLRequester *req, NSData *data, NSError *err) {
-        NSDictionary* dict=nil;
-        if(err==nil){
-            dict=[data toJsonObject:&err];
-        }
-        finished(req,data,dict,err);
-    }];
+    [H doGet:url completed:[H CovJson:finished]];
 }
 + (void)doGet:(URLReqCompleted)finished url:(NSString*)format,...{
     va_list args;
@@ -50,13 +56,7 @@
     [req start];
 }
 + (void)doGet:(NSString *)url args:(NSDictionary *)args json:(URLReqJsonCompleted)finished{
-    [H doGet:url args:args completed:^(URLRequester *req, NSData *data, NSError *err) {
-        NSDictionary* dict=nil;
-        if(err==nil){
-            dict=[data toJsonObject:&err];
-        }
-        finished(req,data,dict,err);
-    }];
+    [H doGet:url args:args completed:[H CovJson:finished]];
 }
 + (void)doPost:(NSString *)url completed:(URLReqCompleted)finished
 {
@@ -67,13 +67,7 @@
     [req start];
 }
 + (void)doPost:(NSString *)url json:(URLReqJsonCompleted)finished{
-    [H doPost:url completed:^(URLRequester *req, NSData *data, NSError *err) {
-        NSDictionary* dict=nil;
-        if(err==nil){
-            dict=[data toJsonObject:&err];
-        }
-        finished(req,data,dict,err);
-    }];
+    [H doPost:url completed:[H CovJson:finished]];
 }
 + (void)doPost:(NSString *)url json:(NSDictionary*)data completed:(URLReqCompleted)finished{
     [H doPost:url data:[data toJson:nil] type:@"application/json" completed:finished];
@@ -97,13 +91,7 @@
     [H doPost:url data:data type:@"application/octet-stream" json:finished];
 }
 + (void)doPost:(NSString *)url data:(NSData*)data type:(NSString*)type json:(URLReqJsonCompleted)finished{
-    [H doPost:url data:data type:type completed:^(URLRequester *req, NSData *data, NSError *err) {
-        NSDictionary* dict=nil;
-        if(err==nil){
-            dict=[data toJsonObject:&err];
-        }
-        finished(req,data,dict,err);
-    }];
+    [H doPost:url data:data type:type completed:[H CovJson:finished]];
 }
 + (void)doPost:(NSString *)url stream:(NSInputStream *)stream name:(NSString*)name filename:(NSString*)filename type:(NSString *)type fields:(NSDictionary*)fields  completed:(URLReqCompleted)finished{
     URLRequester *req = [[URLRequester alloc]init];
@@ -128,22 +116,10 @@
     [req start];
 }
 + (void)doPost:(NSString *)url stream:(NSInputStream *)stream name:(NSString*)name filename:(NSString*)filename type:(NSString *)type fields:(NSDictionary*)fields  json:(URLReqJsonCompleted)finished{
-    [H doPost:url stream:stream name:name filename:filename type:type fields:nil completed:^(URLRequester *req, NSData *data, NSError *err) {
-        NSDictionary* dict=nil;
-        if(err==nil){
-            dict=[data toJsonObject:&err];
-        }
-        finished(req,data,dict,err);
-    }];
+    [H doPost:url stream:stream name:name filename:filename type:type fields:nil completed:[H CovJson:finished]];
 }
 + (void)doPost:(NSString *)url data:(NSData *)data name:(NSString*)name filename:(NSString*)filename type:(NSString *)type fields:(NSDictionary*)fields  json:(URLReqJsonCompleted)finished{
-    [H doPost:url data:data name:name filename:filename type:type fields:nil completed:^(URLRequester *req, NSData *data, NSError *err) {
-        NSDictionary* dict=nil;
-        if(err==nil){
-            dict=[data toJsonObject:&err];
-        }
-        finished(req,data,dict,err);
-    }];
+    [H doPost:url data:data name:name filename:filename type:type fields:nil completed:[H CovJson:finished]];
 }
 + (void)doPost:(NSString *)url sargs:(NSString *)args completed:(URLReqCompleted)finished
 {
@@ -156,13 +132,7 @@
 }
 
 + (void)doPost:(NSString *)url sargs:(NSString *)args json:(URLReqJsonCompleted)finished{
-    [H doPost:url sargs:args completed:^(URLRequester *req, NSData *data, NSError *err) {
-        NSDictionary* dict=nil;
-        if(err==nil){
-            dict=[data toJsonObject:&err];
-        }
-        finished(req,data,dict,err);
-    }];
+    [H doPost:url sargs:args completed:[H CovJson:finished]];
 }
 + (void)doPost:(NSString *)url json:(URLReqJsonCompleted)finished sargs:(NSString*)format,...{
     va_list args;
@@ -181,13 +151,7 @@
     [req start];
 }
 + (void)doPost:(NSString *)url dargs:(NSDictionary *)dargs json:(URLReqJsonCompleted)finished{
-    [H doPost:url dargs:dargs completed:^(URLRequester *req, NSData *data, NSError *err) {
-        NSDictionary* dict=nil;
-        if(err==nil){
-            dict=[data toJsonObject:&err];
-        }
-        finished(req,data,dict,err);
-    }];
+    [H doPost:url dargs:dargs completed:[H CovJson:finished]];
 }
 + (void)doPost:(NSString *)url dargs:(NSDictionary *)args sreq:(URLReqStart)sreq completed:(URLReqCompleted)finished
 {
@@ -200,12 +164,6 @@
     [req start];
 }
 + (void)doPost:(NSString *)url dargs:(NSDictionary *)dargs sreq:(URLReqStart)sreq json:(URLReqJsonCompleted)finished{
-    [H doPost:url dargs:dargs sreq:sreq completed:^(URLRequester *req, NSData *data, NSError *err) {
-        NSDictionary* dict=nil;
-        if(err==nil){
-            dict=[data toJsonObject:&err];
-        }
-        finished(req,data,dict,err);
-    }];
+    [H doPost:url dargs:dargs sreq:sreq completed:[H CovJson:finished]];
 }
 @end

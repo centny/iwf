@@ -21,6 +21,7 @@
     UITableViewXibCell* cell=[tableView newOrReuseCellWithClass:[TableExtItemView class]];
     TableExtItemView * eiv=cell.xview;
     eiv.text.text=[@"Cell" stringByAppendingFormat:@"-%ld",indexPath.item];
+    eiv.img.loading=[UIImage imageNamed:@"star"];
     eiv.img.url=[NSString stringWithFormat:@"http://pb.dev.jxzy.com/img/F1%04ld.jpg",indexPath.item];
     return cell;
 }

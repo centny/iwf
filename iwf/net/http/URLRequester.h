@@ -14,6 +14,7 @@
 //
 FOUNDATION_EXPORT NSString* HC_C; //cache only.
 FOUNDATION_EXPORT NSString* HC_CN; //cache first.
+FOUNDATION_EXPORT NSString* HC_NC; //http first.
 FOUNDATION_EXPORT NSString* HC_N; //normal http cache.
 FOUNDATION_EXPORT NSString* HC_I; //image cache.
 FOUNDATION_EXPORT NSString* HC_NO; //no cache.
