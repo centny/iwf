@@ -18,6 +18,9 @@ BOOL pending_on_add(URLRequester *req){
         _pending_=[NSMutableDictionary dictionary];
     }
     @synchronized(_pending_){
+        if([req.method isEqualToString:@"POST"]){
+            return true;
+        }
         NSString* url=req.fullUrl;
         NSMutableArray *pd=[_pending_ objectForKey:url];
         if (pd==nil) {
@@ -29,6 +32,9 @@ BOOL pending_on_add(URLRequester *req){
     }
 }
 void pending_on_done(URLRequester *req,NSData* data,NSError* err){
+    if([req.method isEqualToString:@"POST"]){
+        return;
+    }
     if (_pending_==nil) {
         NSELog(@"%@",@"the _pending_ is null, do you calling pending_on_done by yourself");
         return;
