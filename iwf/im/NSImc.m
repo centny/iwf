@@ -9,8 +9,8 @@
 #import "NSImc.h"
 
 @implementation NSImc
--(id)initWith:(NSString *)ip port:(short)port{
-    if(self=[super initWith:nil addr:ip port:port]){
+-(id)initWith:(NSString *)ip port:(NSString*)port{
+    if(self=[super initWith:ip port:port]){
         self.delegate=self;
     }
     return self;

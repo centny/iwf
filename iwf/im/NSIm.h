@@ -31,7 +31,7 @@
 @property(assign,readonly)v_cwf_im* im;
 @property(assign)id<NSImH> delegate;
 @property(retain,readonly)NSThread* thr;
--(id)initWith:(NSString*)host addr:(NSString*)addr port:(short)port;
+-(id)initWith:(NSString*)addr port:(NSString*)port;
 
 -(int)run:(int)erc;
 -(void)close;

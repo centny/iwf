@@ -21,8 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.im=[[NSIm alloc]initWith:nil addr:@"192.168.2.57" port:4001];
-    self.im=[[NSIm alloc]initWith:nil addr:@"192.168.2.57" port:4001];
+//    self.im=[[NSIm alloc]initWith:@"192.168.2.57" port:@"4001"];
+    self.im=[[NSIm alloc]initWith:@"rcp.dev.gdy.io" port:@"14001"];
     self.im.delegate=self;
     self.imc=0;
     [self testIm];
@@ -113,26 +113,26 @@
     }
     NSString* r=[self.lres objectForKey:@"r"];
     NSDLog(@"login success to R:%@", r);
-//    for (int i=0; i<1000; i++) {
-//        NSString* ss=[NSString stringWithFormat:@"xxxx->%d",i];
-//        ImMsgBuilder* mb=[ImMsgBuilder new];
-//        [[[mb setRArray:[NSArray arrayWithObjects:@"S-Robot->xx", nil]]setT:0]setC:[ss dataUsingEncoding:NSUTF8StringEncoding]];
-//        int code=[self.im sms:[mb build]];
-//        if(code!=0){
-//            NSELog(@"return code->%d",code);
+    for (int i=0; i<1000; i++) {
+        NSString* ss=[NSString stringWithFormat:@"xxxx->%d",i];
+        ImMsgBuilder* mb=[ImMsgBuilder new];
+        [[[mb setRArray:[NSArray arrayWithObjects:@"S-Robot->xx", nil]]setT:0]setC:[ss dataUsingEncoding:NSUTF8StringEncoding]];
+        int code=[self.im sms:[mb build]];
+        if(code!=0){
+            NSELog(@"return code->%d",code);
+            self.done--;
+            return;
+        }
+    }
+    while (self.imc<1000) {
+        sleep(1);
+    }
+//        [self.im logout:[NSDictionary dictionaryWithObjectsAndKeys:self.token,@"token", nil] err:&err];
+//        if(err){
+//            XCTFail("%@",err);
 //            self.done--;
 //            return;
 //        }
-//    }
-//    while (self.imc<1000) {
-//        sleep(1);
-//    }
-    //    [self.im logout:[NSDictionary dictionaryWithObjectsAndKeys:self.token,@"token", nil] err:&err];
-    //    if(err){
-    //        XCTFail("%@",err);
-    //        self.done--;
-    //        return;
-    //    }
     self.done--;
 }
 -(IBAction)clkSend:(id)sender{

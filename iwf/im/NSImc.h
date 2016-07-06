@@ -13,6 +13,6 @@ typedef void (^ NSImcEvnh)(NSIm* im, int evn, void* arga, void*argb);
 @interface NSImc : NSIm <NSImH>
 @property(nonatomic,readonly) int msgc;
 @property(retain,readonly)NSDictionary* lres;
--(id)initWith:(NSString*)ip port:(short)port;
+-(id)initWith:(NSString*)ip port:(NSString*)port;
 -(void)run:(NSImcEvnh)evnh;
 @end

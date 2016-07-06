@@ -42,9 +42,9 @@ void NSIm_on_cmd_nim_sck_evn_h(v_cwf_netw_sck_c* sck, int evn, void* arga,
 
 @implementation NSIm
 
--(id)initWith:(NSString*)host addr:(NSString*)addr port:(short)port{
+-(id)initWith:(NSString*)addr port:(NSString*)port{
     if(self=[super init]){
-        _im=v_cwf_im_n([host UTF8String], [addr UTF8String], port, NSIm_on_cmd_nim_);
+        _im=v_cwf_im_n([addr UTF8String], [port UTF8String], NSIm_on_cmd_nim_);
         _im->info=(__bridge void *)(self);
         _im->sck->evnh=NSIm_on_cmd_nim_sck_evn_h;
         
