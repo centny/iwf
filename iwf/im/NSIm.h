@@ -30,7 +30,8 @@
 @property(assign)short port;
 @property(assign,readonly)v_cwf_im* im;
 @property(assign)id<NSImH> delegate;
--(id)initWith:(NSString*)ip port:(short)port;
+@property(retain,readonly)NSThread* thr;
+-(id)initWith:(NSString*)host addr:(NSString*)addr port:(short)port;
 
 -(int)run:(int)erc;
 -(void)close;
@@ -39,4 +40,7 @@
 -(NSDictionary*)ur:(NSDictionary*)args err:(NSError**)err;
 -(int)sms:(ImMsg*)msg;
 -(int)mr:(NSString*)a mids:(NSString*)mids;
+//
+-(void)start;
+-(void)stop;
 @end

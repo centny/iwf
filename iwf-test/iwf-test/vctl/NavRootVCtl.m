@@ -21,6 +21,7 @@
 #import "FocusViewVCtl.h"
 #import "HttpCancelVCtl.h"
 #import "AutoLayoutVCtl.h"
+#import "ImVCtl.h"
 @interface NavRootVCtl ()
 
 @end
@@ -99,9 +100,14 @@
     [self.navigationController pushViewController:cvct animated:YES];
     //    [cvct release];
 }
+-(void)testIM:(id)sender{
+    ImVCtl* cvct=[[ImVCtl alloc]initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:cvct animated:YES];
+    //    [cvct release];
+}
 -(void)loadView{
     UIScrollView *_sv=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 320, 460)];
-    _sv.contentSize=CGSizeMake(320, 600);
+    _sv.contentSize=CGSizeMake(320, 2400);
     self.view=_sv;
 }
 - (void)viewDidLoad
@@ -184,7 +190,13 @@
     [btn setTitle:@"AutoLayout" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(testAutoLayout:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    btn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btn.frame=CGRectMake((FRAM_W(self.view)-200)/2, 610, 200, 30);
+    [btn setTitle:@"IM" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(testIM:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
 }
+
 
 - (void)didReceiveMemoryWarning
 {

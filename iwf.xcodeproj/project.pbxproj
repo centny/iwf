@@ -19,6 +19,9 @@
 		1792D08E1BBA33A8000B7D16 /* Util.h in Headers */ = {isa = PBXBuildFile; fileRef = 1792D08C1BBA33A8000B7D16 /* Util.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1792D08F1BBA33A8000B7D16 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D08D1BBA33A8000B7D16 /* Util.m */; };
 		1792D0901BBA33A8000B7D16 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D08D1BBA33A8000B7D16 /* Util.m */; };
+		17CD6A041C0557C900DCC395 /* NSImc.h in Headers */ = {isa = PBXBuildFile; fileRef = 17CD6A021C0557C900DCC395 /* NSImc.h */; };
+		17CD6A051C0557C900DCC395 /* NSImc.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CD6A031C0557C900DCC395 /* NSImc.m */; };
+		17CD6A061C0557C900DCC395 /* NSImc.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CD6A031C0557C900DCC395 /* NSImc.m */; };
 		17E7ED3A1BFD640D006D4038 /* build.sh in Resources */ = {isa = PBXBuildFile; fileRef = 17E7ED381BFD640D006D4038 /* build.sh */; };
 		17E7ED3B1BFD640D006D4038 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 17E7ED391BFD640D006D4038 /* README.md */; };
 		17FAE5F11BFC31CC000DD842 /* NSImTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FAE5F01BFC31CC000DD842 /* NSImTest.m */; };
@@ -158,6 +161,8 @@
 		1739A2941BFB926300D86BD2 /* ProtocolBuffers.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ProtocolBuffers.xcodeproj; path = "libs/protobuf-objc/src/runtime/ProtocolBuffers.xcodeproj"; sourceTree = "<group>"; };
 		1792D08C1BBA33A8000B7D16 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		1792D08D1BBA33A8000B7D16 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		17CD6A021C0557C900DCC395 /* NSImc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSImc.h; sourceTree = "<group>"; };
+		17CD6A031C0557C900DCC395 /* NSImc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSImc.m; sourceTree = "<group>"; };
 		17E7ED381BFD640D006D4038 /* build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
 		17E7ED391BFD640D006D4038 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		17FAE5F01BFC31CC000DD842 /* NSImTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSImTest.m; path = im/NSImTest.m; sourceTree = "<group>"; };
@@ -270,6 +275,8 @@
 				1739A25A1BFB6E2500D86BD2 /* msg.proto */,
 				1739A2781BFB8C2E00D86BD2 /* NSIm.h */,
 				1739A2791BFB8C2E00D86BD2 /* NSIm.m */,
+				17CD6A021C0557C900DCC395 /* NSImc.h */,
+				17CD6A031C0557C900DCC395 /* NSImc.m */,
 				1739A25B1BFB6E2500D86BD2 /* pb */,
 			);
 			path = im;
@@ -582,6 +589,7 @@
 				C3DBA98A1B93F1AD008E51C5 /* UIWebExtView.h in Headers */,
 				C3DBA9821B93F1AD008E51C5 /* UIRefreshViewDelegate.h in Headers */,
 				C3E4EED01B8C4D7C00B275D8 /* OcL.h in Headers */,
+				17CD6A041C0557C900DCC395 /* NSImc.h in Headers */,
 				1792D08E1BBA33A8000B7D16 /* Util.h in Headers */,
 				C3373CE31B8EE30E0006A4A0 /* MultipartBuilder.h in Headers */,
 				C3373CF41B8F26390006A4A0 /* NSInputStreamWrapper.h in Headers */,
@@ -757,6 +765,7 @@
 			files = (
 				1739A2761BFB89FE00D86BD2 /* Msg.pb.m in Sources */,
 				C3DBA9881B93F1AD008E51C5 /* UITreeView.m in Sources */,
+				17CD6A051C0557C900DCC395 /* NSImc.m in Sources */,
 				C3DBA97B1B93F1AD008E51C5 /* UILineView.m in Sources */,
 				C3DBA9731B93F1AD008E51C5 /* UIBorderView.m in Sources */,
 				C3DBA9751B93F1AD008E51C5 /* UIBoundsImageView.m in Sources */,
@@ -795,6 +804,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17CD6A061C0557C900DCC395 /* NSImc.m in Sources */,
 				C3373D081B8F36470006A4A0 /* LogTest.swift in Sources */,
 				1739A2771BFB89FE00D86BD2 /* Msg.pb.m in Sources */,
 				C3313B5C1B903237007B5709 /* HTest.m in Sources */,
@@ -949,6 +959,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.vty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
 			};
 			name = Debug;
 		};
@@ -973,6 +984,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.vty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 armv7 armv7s i386";
 			};
 			name = Release;
 		};
