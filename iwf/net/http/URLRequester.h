@@ -82,7 +82,7 @@ typedef void (^ URLReqProcDown)(URLRequester *req, NSData * recv, NSInteger tota
 @property(nonatomic, readonly)NSString              *fullUrl;
 
 //
-
++ (void)setQueue:(NSOperationQueue*)queue;
 //
 - (void)addURLArgs:(NSString *)args;
 - (void)addDictArgs:(NSDictionary *)dict;

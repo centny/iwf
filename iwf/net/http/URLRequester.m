@@ -12,6 +12,7 @@
 #import <iwf/iwf.h>
 #import <iwf/iwf-Swift.h>
 
+NSOperationQueue *_queue_=nil;
 NSMutableDictionary *_pending_=nil;
 BOOL pending_on_add(URLRequester *req){
     if (_pending_==nil) {
@@ -66,6 +67,9 @@ const NSString* HC_NO=@"NO"; //image cache.
 const NSString* HC_KEY=@"_hc_";
 
 @implementation URLRequester
++ (void)setQueue:(NSOperationQueue*)queue{
+    _queue_=queue;
+}
 - (id)init
 {
     self = [super init];
@@ -191,7 +195,9 @@ const NSString* HC_KEY=@"_hc_";
     [self onReqStart:self.request];
     if(pending_on_add(self)){
         NSDLog(@"%@", log);
-        _connection = [[NSURLConnection alloc]initWithRequest:self.request delegate:self startImmediately:YES];
+        _connection = [[NSURLConnection alloc]initWithRequest:self.request delegate:self startImmediately:false];
+        [_connection setDelegateQueue:_queue_];
+        [_connection start];
     }
 }
 - (void)cancel
