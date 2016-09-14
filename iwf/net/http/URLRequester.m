@@ -77,6 +77,7 @@ const NSString* HC_KEY=@"_hc_";
     if (self) {
         self.encoding	= NSUTF8StringEncoding;
         self.method		= @"GET";
+        self.main       = YES;
         _timeout		= URL_TIME_OUT;
         _clength        = 0;
         _res_d			= [NSMutableData data];
@@ -196,7 +197,9 @@ const NSString* HC_KEY=@"_hc_";
     if(pending_on_add(self)){
         NSDLog(@"%@", log);
         _connection = [[NSURLConnection alloc]initWithRequest:self.request delegate:self startImmediately:false];
-        [_connection setDelegateQueue:_queue_];
+        if(_queue_){
+            [_connection setDelegateQueue:_queue_];
+        }
         [_connection start];
     }
 }
@@ -293,7 +296,14 @@ const NSString* HC_KEY=@"_hc_";
     if (res){
         data=res.data;
     }
-    self.completed(self,data,err);
+    if(self.main){
+        [self performSelectorOnMainThread:@selector(onReqCompletedMain:) withObject:[NSArray arrayWithObjects:data,err, nil] waitUntilDone:NO];
+    }else{
+        self.completed(self,data,err);
+    }
+}
+-(void)onReqCompletedMain:(NSArray*)args{
+    self.completed(self,[args objectAtIndex:0],[args objectAtIndex:1]);
 }
 - (void)onReqStart:(NSMutableURLRequest*) request{
     if (self.delegate && [self.delegate respondsToSelector:@selector(onReqStart:request:)]) {

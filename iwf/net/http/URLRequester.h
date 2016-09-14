@@ -80,6 +80,7 @@ typedef void (^ URLReqProcDown)(URLRequester *req, NSData * recv, NSInteger tota
 @property(nonatomic, copy) URLReqProcUp                 onup;
 @property(nonatomic, copy) URLReqProcDown               ondown;
 @property(nonatomic, readonly)NSString              *fullUrl;
+@property(nonatomic)BOOL main;
 
 //
 + (void)setQueue:(NSOperationQueue*)queue;
