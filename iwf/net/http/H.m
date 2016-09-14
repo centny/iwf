@@ -55,6 +55,17 @@
     req.completed	= finished;
     [req start];
 }
++ (void)doGetThread:(NSString *)url args:(NSDictionary *)args completed:(URLReqCompleted)finished{
+    URLRequester *req = [[URLRequester alloc]init];
+    if(args){
+        [req addDictArgs:args];
+    }
+    req.url			= url;
+    req.method		= @"GET";
+    req.completed	= finished;
+    req.main        = NO;
+    [req start];
+}
 + (void)doGet:(NSString *)url args:(NSDictionary *)args json:(URLReqJsonCompleted)finished{
     [H doGet:url args:args completed:[H CovJson:finished]];
 }

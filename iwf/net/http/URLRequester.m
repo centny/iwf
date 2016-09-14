@@ -289,13 +289,16 @@ const NSString* HC_KEY=@"_hc_";
         [self.delegate onReqCompleted:self data:data err:err];
     }
     if ((self.completed&&err==nil)||![HC_NC isEqualToString:self.policy]) {
-        self.completed(self,data,err);
+        [self doReqCompleted:data err:err];
         return;
     }
     NSCachedURLResponse* res=[[NSURLCache sharedURLCache]cachedResponseForRequest:self.request];
     if (res){
         data=res.data;
     }
+    [self doReqCompleted:data err:err];
+}
+-(void)doReqCompleted:(NSData*)data err:(NSError*)err{
     if(self.main){
         [self performSelectorOnMainThread:@selector(onReqCompletedMain:) withObject:[NSArray arrayWithObjects:data,err, nil] waitUntilDone:NO];
     }else{
@@ -303,7 +306,11 @@ const NSString* HC_KEY=@"_hc_";
     }
 }
 -(void)onReqCompletedMain:(NSArray*)args{
-    self.completed(self,[args objectAtIndex:0],[args objectAtIndex:1]);
+    NSError* err=nil;
+    if(args.count>1){
+        err=[args objectAtIndex:1];
+    }
+    self.completed(self,[args objectAtIndex:0],err);
 }
 - (void)onReqStart:(NSMutableURLRequest*) request{
     if (self.delegate && [self.delegate respondsToSelector:@selector(onReqStart:request:)]) {

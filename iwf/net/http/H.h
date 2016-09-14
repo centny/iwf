@@ -18,6 +18,7 @@ typedef void (^ URLReqJsonCompleted)(URLRequester *req,NSData* data, NSDictionar
 + (void)doGet:(URLReqCompleted)finished url:(NSString*)format,...;
 + (void)doGetj:(URLReqJsonCompleted)finished url:(NSString*)format,...;
 + (void)doGet:(NSString *)url args:(NSDictionary *)args completed:(URLReqCompleted)finished;
++ (void)doGetThread:(NSString *)url args:(NSDictionary *)args completed:(URLReqCompleted)finished;
 + (void)doGet:(NSString *)url args:(NSDictionary *)args json:(URLReqJsonCompleted)finished;
 //
 //post
