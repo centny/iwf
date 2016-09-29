@@ -84,6 +84,7 @@ typedef void (^ URLReqProcDown)(URLRequester *req, NSData * recv, NSInteger tota
 
 //
 + (void)setQueue:(NSOperationQueue*)queue;
++ (void)setHTTPShouldHandleCookies:(BOOL)should;
 //
 - (void)addURLArgs:(NSString *)args;
 - (void)addDictArgs:(NSDictionary *)dict;

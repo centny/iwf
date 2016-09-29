@@ -12,6 +12,7 @@
 #import <iwf/iwf.h>
 #import <iwf/iwf-Swift.h>
 
+BOOL HTTPShouldHandleCookies_=YES;
 NSOperationQueue *_queue_=nil;
 NSMutableDictionary *_pending_=nil;
 BOOL pending_on_add(URLRequester *req){
@@ -69,6 +70,9 @@ const NSString* HC_KEY=@"_hc_";
 @implementation URLRequester
 + (void)setQueue:(NSOperationQueue*)queue{
     _queue_=queue;
+}
++ (void)setHTTPShouldHandleCookies:(BOOL)should{
+    HTTPShouldHandleCookies_=should;
 }
 - (id)init
 {
@@ -247,6 +251,7 @@ const NSString* HC_KEY=@"_hc_";
     NSURL				*url = [self parsePolicy];
     NSMutableURLRequest *request;
     request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:self.policy_ timeoutInterval:self.timeout];
+    request.HTTPShouldHandleCookies=HTTPShouldHandleCookies_;
     [request setHTTPMethod:self.method];
     return request;
 }
