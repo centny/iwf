@@ -132,7 +132,16 @@ void NSIm_on_cmd_nim_sck_evn_h(v_cwf_netw_sck_c* sck, int evn, void* arga,
 }
 -(NSDictionary*)ur:(NSDictionary*)args err:(NSError**)err{
     *err=nil;
-    v_cwf_netw_cmd* targ=v_cwf_netw_cmd_n2("{}",2);
+    NSData* data;
+    if(args){
+        data=[args toJson:err];
+        if(*err){
+            return nil;
+        }
+    }else{
+        data=[NSData dataWithBytes:"{}" length:2];
+    }
+    v_cwf_netw_cmd* targ=v_cwf_netw_cmd_n2((char*)data.bytes, (unsigned int)data.length);
     v_cwf_netw_cmd* ocmd;
     int res=v_cwf_im_ur(_im, &targ, 1, &ocmd);
     v_cwf_netw_cmd_f(&targ);
