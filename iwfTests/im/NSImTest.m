@@ -24,8 +24,8 @@
 }
 - (void)setUp {
     [super setUp];
-    self.im=[[NSIm alloc]initWith:nil addr:@"192.168.2.57" port:4001];
-    self.im=[[NSIm alloc]initWith:@"rcp.dev.gdy.io" addr:nil port:4001];
+//    self.im=[[NSIm alloc]initWith:nil addr:@"192.168.2.57" port:4001];
+//    self.im=[[NSIm alloc]initWith:@"rcp.dev.gdy.io" addr:nil port:4001];
     self.im.delegate=self;
     self.imc=0;
 //    self.thr=[[NSThread alloc]initWithTarget:self selector:@selector(run_im) object:nil];

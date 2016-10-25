@@ -18,13 +18,13 @@ class FLogWriter :LogWriter{
         self.path=path
         self.blen=1024
     }
-    func write(data:String){
+    func write(_ data:String){
         if self.console>0{
             print(data)
         }
         let tdata=data+"\n"
         let tbuf=self.buf
-        tbuf.appendData(tdata.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!)
+        tbuf.append(tdata.data(using: String.Encoding.utf8, allowLossyConversion: true)!)
         if tbuf.length < self.blen{
             return
         }
@@ -36,9 +36,9 @@ class FLogWriter :LogWriter{
         self.buf=NSMutableData()
         self.writeFile(tbuf)
     }
-    func writeFile(tbuf:NSMutableData){
+    func writeFile(_ tbuf:NSMutableData){
         do{
-            try tbuf.writeToFile(self.path, options: NSDataWritingOptions.DataWritingFileProtectionComplete)
+            try tbuf.write(toFile: self.path, options: NSData.WritingOptions.completeFileProtection)
         }catch{
             print("write file error")
         }
@@ -48,7 +48,7 @@ class FLogWriter :LogWriter{
     }
 }
 
-public func InitFLogWriter(path:String,blen:Int=1024){
+public func InitFLogWriter(_ path:String,blen:Int=1024){
     if log_writer_==nil{
         log_writer_=FLogWriter(path: path,blen:blen)
     }
@@ -57,10 +57,10 @@ public func InitFLogWriter(path:String,blen:Int=1024){
 public func InitDocWriter(){
     let homeDir = NSHomeDirectory() as String
     let logDir=homeDir+"/log"
-    let fm=NSFileManager.defaultManager()
-    if !fm.fileExistsAtPath(logDir){
+    let fm=FileManager.default
+    if !fm.fileExists(atPath: logDir){
         do{
-            try fm.createDirectoryAtPath(logDir, withIntermediateDirectories: true, attributes: nil)
+            try fm.createDirectory(atPath: logDir, withIntermediateDirectories: true, attributes: nil)
         }catch{
             print("create log directory error-->\n")
             return

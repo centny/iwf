@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1792D0851BB8EE52000B7D16 /* ForTestTextFieldVCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D0831BB8EE52000B7D16 /* ForTestTextFieldVCtl.m */; settings = {ASSET_TAGS = (); }; };
-		1792D0861BB8EE52000B7D16 /* ForTestTextFieldVCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D0831BB8EE52000B7D16 /* ForTestTextFieldVCtl.m */; settings = {ASSET_TAGS = (); }; };
-		1792D0871BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1792D0841BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib */; settings = {ASSET_TAGS = (); }; };
-		1792D0881BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1792D0841BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib */; settings = {ASSET_TAGS = (); }; };
-		1792D08B1BB8EFC7000B7D16 /* ForTestTextFieldVCtlTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D08A1BB8EFC7000B7D16 /* ForTestTextFieldVCtlTest.m */; settings = {ASSET_TAGS = (); }; };
+		17702D711D2CE7EF00CAB7E4 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17702D701D2CE7EF00CAB7E4 /* ProtocolBuffers.framework */; };
+		17702D721D2CE7EF00CAB7E4 /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17702D701D2CE7EF00CAB7E4 /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1792D0851BB8EE52000B7D16 /* ForTestTextFieldVCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D0831BB8EE52000B7D16 /* ForTestTextFieldVCtl.m */; };
+		1792D0861BB8EE52000B7D16 /* ForTestTextFieldVCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D0831BB8EE52000B7D16 /* ForTestTextFieldVCtl.m */; };
+		1792D0871BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1792D0841BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib */; };
+		1792D0881BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1792D0841BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib */; };
+		1792D08B1BB8EFC7000B7D16 /* ForTestTextFieldVCtlTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D08A1BB8EFC7000B7D16 /* ForTestTextFieldVCtlTest.m */; };
+		17CD69F51C04021A00DCC395 /* ImVCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CD69F31C04021A00DCC395 /* ImVCtl.m */; };
+		17CD69F61C04021A00DCC395 /* ImVCtl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17CD69F41C04021A00DCC395 /* ImVCtl.xib */; };
 		C31E49781BA937100016195E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E49771BA937100016195E /* main.m */; };
 		C31E497B1BA937100016195E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E497A1BA937100016195E /* AppDelegate.m */; };
 		C31E497E1BA937100016195E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E497D1BA937100016195E /* ViewController.m */; };
@@ -135,6 +139,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				17702D721D2CE7EF00CAB7E4 /* ProtocolBuffers.framework in Embed Frameworks */,
 				C31E4A311BA939A70016195E /* iwf.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -143,10 +148,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		17702D701D2CE7EF00CAB7E4 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = ProtocolBuffers.framework; path = "/Users/vty/Library/Developer/Xcode/DerivedData/iwf-test-eubsetaccfhbxjazzcfkyurlenna/Build/Products/Debug-iphoneos/ProtocolBuffers.framework"; sourceTree = "<absolute>"; };
 		1792D0821BB8EE52000B7D16 /* ForTestTextFieldVCtl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForTestTextFieldVCtl.h; sourceTree = "<group>"; };
 		1792D0831BB8EE52000B7D16 /* ForTestTextFieldVCtl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForTestTextFieldVCtl.m; sourceTree = "<group>"; };
 		1792D0841BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForTestTextFieldVCtl.xib; sourceTree = "<group>"; };
 		1792D08A1BB8EFC7000B7D16 /* ForTestTextFieldVCtlTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForTestTextFieldVCtlTest.m; sourceTree = "<group>"; };
+		17CD69F21C04021A00DCC395 /* ImVCtl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImVCtl.h; sourceTree = "<group>"; };
+		17CD69F31C04021A00DCC395 /* ImVCtl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImVCtl.m; sourceTree = "<group>"; };
+		17CD69F41C04021A00DCC395 /* ImVCtl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImVCtl.xib; sourceTree = "<group>"; };
 		C31E49721BA937100016195E /* iwf-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iwf-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C31E49761BA937100016195E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C31E49771BA937100016195E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -226,6 +235,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17702D711D2CE7EF00CAB7E4 /* ProtocolBuffers.framework in Frameworks */,
 				C31E4A301BA939A70016195E /* iwf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,6 +253,7 @@
 		C31E49691BA937100016195E = {
 			isa = PBXGroup;
 			children = (
+				17702D701D2CE7EF00CAB7E4 /* ProtocolBuffers.framework */,
 				C31E49741BA937100016195E /* iwf-test */,
 				C31E498E1BA937100016195E /* iwf-testTests */,
 				C31E499B1BA937260016195E /* libs */,
@@ -386,6 +397,9 @@
 				1792D0821BB8EE52000B7D16 /* ForTestTextFieldVCtl.h */,
 				1792D0831BB8EE52000B7D16 /* ForTestTextFieldVCtl.m */,
 				1792D0841BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib */,
+				17CD69F21C04021A00DCC395 /* ImVCtl.h */,
+				17CD69F31C04021A00DCC395 /* ImVCtl.m */,
+				17CD69F41C04021A00DCC395 /* ImVCtl.xib */,
 			);
 			path = vctl;
 			sourceTree = "<group>";
@@ -472,6 +486,7 @@
 				TargetAttributes = {
 					C31E49711BA937100016195E = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 78TPHVCJDH;
 					};
 					C31E498A1BA937100016195E = {
 						CreatedOnToolsVersion = 6.4;
@@ -546,6 +561,7 @@
 				C31E49F61BA938820016195E /* taobaolevel.txt in Resources */,
 				C31E49FA1BA938820016195E /* AutoLayoutVCtl.xib in Resources */,
 				C31E49F01BA938820016195E /* Commodities.json in Resources */,
+				17CD69F61C04021A00DCC395 /* ImVCtl.xib in Resources */,
 				C31E49EE1BA938820016195E /* Child-6.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,6 +624,7 @@
 				C31E4A241BA938820016195E /* TableExtItemView.m in Sources */,
 				C31E49781BA937100016195E /* main.m in Sources */,
 				C31E4A1C1BA938820016195E /* TableExtXibVCtl.m in Sources */,
+				17CD69F51C04021A00DCC395 /* ImVCtl.m in Sources */,
 				1792D0851BB8EE52000B7D16 /* ForTestTextFieldVCtl.m in Sources */,
 				C31E4A281BA938820016195E /* JSONKit.m in Sources */,
 				C31E4A081BA938820016195E /* ForTableViewTestVCtl.m in Sources */,
@@ -710,6 +727,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -755,6 +773,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -779,12 +798,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = "iwf-test/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -795,12 +818,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = "iwf-test/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;

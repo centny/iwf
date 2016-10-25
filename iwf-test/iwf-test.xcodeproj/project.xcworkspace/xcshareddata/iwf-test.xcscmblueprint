@@ -5,24 +5,17 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "51A872BB0BDFC2BED16E7CAC1D79DD33282889E1" : 0,
-    "55E1F88EC7C3D30C0724BAC50578540F5DB66A3B" : 0,
-    "0188F2A2CDE1E23FB54BA7DEC720DB0076A94A2D" : 0
+    "55E1F88EC7C3D30C0724BAC50578540F5DB66A3B" : 0
   },
-  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D0B0D6E2-DB45-4862-838A-3CD70DBD7C7A",
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "04478185-FFBD-427F-889D-73FBA906F4B5",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "51A872BB0BDFC2BED16E7CAC1D79DD33282889E1" : "iwf\/libs\/cwf\/",
-    "55E1F88EC7C3D30C0724BAC50578540F5DB66A3B" : "iwf\/",
-    "0188F2A2CDE1E23FB54BA7DEC720DB0076A94A2D" : "iwf\/libs\/protobuf-objc\/"
+    "55E1F88EC7C3D30C0724BAC50578540F5DB66A3B" : "iwf"
   },
-  "DVTSourceControlWorkspaceBlueprintNameKey" : "iwf",
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "iwf-test",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "iwf.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "iwf-test\/iwf-test.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
-    {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/alexeyxo\/protobuf-objc",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0188F2A2CDE1E23FB54BA7DEC720DB0076A94A2D"
-    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Centny\/cwf.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",

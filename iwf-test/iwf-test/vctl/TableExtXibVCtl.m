@@ -29,7 +29,11 @@
     UITableViewXibCell* cell=[tableView newOrReuseCellWithClass:[TableExtItemView class]];
     TableExtItemView * eiv=cell.xview;
     eiv.text.text=identifier;
-    eiv.img.url=[NSString stringWithFormat:@"http://pb.dev.jxzy.com/img/F1%04ld.jpg",indexPath.item];
+    if (indexPath.row%4==0) {
+        eiv.img.url=[NSString stringWithFormat:@"http://pb.dev.jxzy.com/img/F1%04ld.jpg",indexPath.row];
+    }else{
+        eiv.img.url=nil;
+    }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

@@ -4,8 +4,16 @@
 
 // @@protoc_insertion_point(imports)
 
+@class DsMsg;
+@class DsMsgBuilder;
+@class Evn;
+@class EvnBuilder;
 @class ImMsg;
 @class ImMsgBuilder;
+@class KV;
+@class KVBuilder;
+@class RC;
+@class RCBuilder;
 
 
 
@@ -23,29 +31,23 @@
 #define ImMsg_c @"c"
 #define ImMsg_a @"a"
 #define ImMsg_time @"time"
-#define ImMsg_mark @"mark"
-#define ImMsg_subm @"subm"
-#define ImMsg_mid @"mid"
+#define ImMsg_status @"status"
 @interface ImMsg : PBGeneratedMessage<GeneratedMessageProtocol> {
 @private
   BOOL hasTime_:1;
-  BOOL hasMid_:1;
   BOOL hasI_:1;
   BOOL hasS_:1;
   BOOL hasD_:1;
   BOOL hasA_:1;
-  BOOL hasMark_:1;
-  BOOL hasSubm_:1;
+  BOOL hasStatus_:1;
   BOOL hasC_:1;
   BOOL hasT_:1;
   SInt64 time;
-  SInt64 mid;
   NSString* i;
   NSString* s;
   NSString* d;
   NSString* a;
-  NSString* mark;
-  NSString* subm;
+  NSString* status;
   NSData* c;
   UInt32 t;
   NSMutableArray * rArray;
@@ -57,9 +59,7 @@
 - (BOOL) hasC;
 - (BOOL) hasA;
 - (BOOL) hasTime;
-- (BOOL) hasMark;
-- (BOOL) hasSubm;
-- (BOOL) hasMid;
+- (BOOL) hasStatus;
 @property (readonly, strong) NSString* i;
 @property (readonly, strong) NSString* s;
 @property (readonly, strong) NSArray * r;
@@ -68,9 +68,7 @@
 @property (readonly, strong) NSData* c;
 @property (readonly, strong) NSString* a;
 @property (readonly) SInt64 time;
-@property (readonly, strong) NSString* mark;
-@property (readonly, strong) NSString* subm;
-@property (readonly) SInt64 mid;
+@property (readonly, strong) NSString* status;
 - (NSString*)rAtIndex:(NSUInteger)index;
 
 + (instancetype) defaultInstance;
@@ -149,20 +147,302 @@
 - (ImMsgBuilder*) setTime:(SInt64) value;
 - (ImMsgBuilder*) clearTime;
 
-- (BOOL) hasMark;
-- (NSString*) mark;
-- (ImMsgBuilder*) setMark:(NSString*) value;
-- (ImMsgBuilder*) clearMark;
+- (BOOL) hasStatus;
+- (NSString*) status;
+- (ImMsgBuilder*) setStatus:(NSString*) value;
+- (ImMsgBuilder*) clearStatus;
+@end
 
-- (BOOL) hasSubm;
-- (NSString*) subm;
-- (ImMsgBuilder*) setSubm:(NSString*) value;
-- (ImMsgBuilder*) clearSubm;
+#define RC_r @"r"
+#define RC_c @"c"
+#define RC_a @"a"
+@interface RC : PBGeneratedMessage<GeneratedMessageProtocol> {
+@private
+  BOOL hasR_:1;
+  BOOL hasC_:1;
+  BOOL hasA_:1;
+  NSString* r;
+  NSString* c;
+  NSString* a;
+}
+- (BOOL) hasR;
+- (BOOL) hasC;
+- (BOOL) hasA;
+@property (readonly, strong) NSString* r;
+@property (readonly, strong) NSString* c;
+@property (readonly, strong) NSString* a;
 
-- (BOOL) hasMid;
-- (SInt64) mid;
-- (ImMsgBuilder*) setMid:(SInt64) value;
-- (ImMsgBuilder*) clearMid;
++ (instancetype) defaultInstance;
+- (instancetype) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (RCBuilder*) builder;
++ (RCBuilder*) builder;
++ (RCBuilder*) builderWithPrototype:(RC*) prototype;
+- (RCBuilder*) toBuilder;
+
++ (RC*) parseFromData:(NSData*) data;
++ (RC*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (RC*) parseFromInputStream:(NSInputStream*) input;
++ (RC*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (RC*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (RC*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface RCBuilder : PBGeneratedMessageBuilder {
+@private
+  RC* resultRc;
+}
+
+- (RC*) defaultInstance;
+
+- (RCBuilder*) clear;
+- (RCBuilder*) clone;
+
+- (RC*) build;
+- (RC*) buildPartial;
+
+- (RCBuilder*) mergeFrom:(RC*) other;
+- (RCBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (RCBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasR;
+- (NSString*) r;
+- (RCBuilder*) setR:(NSString*) value;
+- (RCBuilder*) clearR;
+
+- (BOOL) hasC;
+- (NSString*) c;
+- (RCBuilder*) setC:(NSString*) value;
+- (RCBuilder*) clearC;
+
+- (BOOL) hasA;
+- (NSString*) a;
+- (RCBuilder*) setA:(NSString*) value;
+- (RCBuilder*) clearA;
+@end
+
+#define DsMsg_m @"m"
+#define DsMsg_rc @"rc"
+@interface DsMsg : PBGeneratedMessage<GeneratedMessageProtocol> {
+@private
+  BOOL hasM_:1;
+  ImMsg* m;
+  NSMutableArray * rcArray;
+}
+- (BOOL) hasM;
+@property (readonly, strong) ImMsg* m;
+@property (readonly, strong) NSArray * rc;
+- (RC*)rcAtIndex:(NSUInteger)index;
+
++ (instancetype) defaultInstance;
+- (instancetype) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (DsMsgBuilder*) builder;
++ (DsMsgBuilder*) builder;
++ (DsMsgBuilder*) builderWithPrototype:(DsMsg*) prototype;
+- (DsMsgBuilder*) toBuilder;
+
++ (DsMsg*) parseFromData:(NSData*) data;
++ (DsMsg*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (DsMsg*) parseFromInputStream:(NSInputStream*) input;
++ (DsMsg*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (DsMsg*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (DsMsg*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface DsMsgBuilder : PBGeneratedMessageBuilder {
+@private
+  DsMsg* resultDsMsg;
+}
+
+- (DsMsg*) defaultInstance;
+
+- (DsMsgBuilder*) clear;
+- (DsMsgBuilder*) clone;
+
+- (DsMsg*) build;
+- (DsMsg*) buildPartial;
+
+- (DsMsgBuilder*) mergeFrom:(DsMsg*) other;
+- (DsMsgBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (DsMsgBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasM;
+- (ImMsg*) m;
+- (DsMsgBuilder*) setM:(ImMsg*) value;
+- (DsMsgBuilder*) setMBuilder:(ImMsgBuilder*) builderForValue;
+- (DsMsgBuilder*) mergeM:(ImMsg*) value;
+- (DsMsgBuilder*) clearM;
+
+- (NSMutableArray *)rc;
+- (RC*)rcAtIndex:(NSUInteger)index;
+- (DsMsgBuilder *)addRc:(RC*)value;
+- (DsMsgBuilder *)setRcArray:(NSArray *)array;
+- (DsMsgBuilder *)clearRc;
+@end
+
+#define KV_key @"key"
+#define KV_val @"val"
+@interface KV : PBGeneratedMessage<GeneratedMessageProtocol> {
+@private
+  BOOL hasKey_:1;
+  BOOL hasVal_:1;
+  NSString* key;
+  NSString* val;
+}
+- (BOOL) hasKey;
+- (BOOL) hasVal;
+@property (readonly, strong) NSString* key;
+@property (readonly, strong) NSString* val;
+
++ (instancetype) defaultInstance;
+- (instancetype) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (KVBuilder*) builder;
++ (KVBuilder*) builder;
++ (KVBuilder*) builderWithPrototype:(KV*) prototype;
+- (KVBuilder*) toBuilder;
+
++ (KV*) parseFromData:(NSData*) data;
++ (KV*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (KV*) parseFromInputStream:(NSInputStream*) input;
++ (KV*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (KV*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (KV*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface KVBuilder : PBGeneratedMessageBuilder {
+@private
+  KV* resultKv;
+}
+
+- (KV*) defaultInstance;
+
+- (KVBuilder*) clear;
+- (KVBuilder*) clone;
+
+- (KV*) build;
+- (KV*) buildPartial;
+
+- (KVBuilder*) mergeFrom:(KV*) other;
+- (KVBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (KVBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasKey;
+- (NSString*) key;
+- (KVBuilder*) setKey:(NSString*) value;
+- (KVBuilder*) clearKey;
+
+- (BOOL) hasVal;
+- (NSString*) val;
+- (KVBuilder*) setVal:(NSString*) value;
+- (KVBuilder*) clearVal;
+@end
+
+#define Evn_uid @"uid"
+#define Evn_name @"name"
+#define Evn_action @"action"
+#define Evn_time @"time"
+#define Evn_type @"type"
+#define Evn_kvs @"kvs"
+@interface Evn : PBGeneratedMessage<GeneratedMessageProtocol> {
+@private
+  BOOL hasTime_:1;
+  BOOL hasType_:1;
+  BOOL hasUid_:1;
+  BOOL hasName_:1;
+  BOOL hasAction_:1;
+  SInt64 time;
+  SInt32 type;
+  NSString* uid;
+  NSString* name;
+  NSString* action;
+  NSMutableArray * kvsArray;
+}
+- (BOOL) hasUid;
+- (BOOL) hasName;
+- (BOOL) hasAction;
+- (BOOL) hasTime;
+- (BOOL) hasType;
+@property (readonly, strong) NSString* uid;
+@property (readonly, strong) NSString* name;
+@property (readonly, strong) NSString* action;
+@property (readonly) SInt64 time;
+@property (readonly) SInt32 type;
+@property (readonly, strong) NSArray * kvs;
+- (KV*)kvsAtIndex:(NSUInteger)index;
+
++ (instancetype) defaultInstance;
+- (instancetype) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (EvnBuilder*) builder;
++ (EvnBuilder*) builder;
++ (EvnBuilder*) builderWithPrototype:(Evn*) prototype;
+- (EvnBuilder*) toBuilder;
+
++ (Evn*) parseFromData:(NSData*) data;
++ (Evn*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (Evn*) parseFromInputStream:(NSInputStream*) input;
++ (Evn*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (Evn*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (Evn*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface EvnBuilder : PBGeneratedMessageBuilder {
+@private
+  Evn* resultEvn;
+}
+
+- (Evn*) defaultInstance;
+
+- (EvnBuilder*) clear;
+- (EvnBuilder*) clone;
+
+- (Evn*) build;
+- (Evn*) buildPartial;
+
+- (EvnBuilder*) mergeFrom:(Evn*) other;
+- (EvnBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (EvnBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasUid;
+- (NSString*) uid;
+- (EvnBuilder*) setUid:(NSString*) value;
+- (EvnBuilder*) clearUid;
+
+- (BOOL) hasName;
+- (NSString*) name;
+- (EvnBuilder*) setName:(NSString*) value;
+- (EvnBuilder*) clearName;
+
+- (BOOL) hasAction;
+- (NSString*) action;
+- (EvnBuilder*) setAction:(NSString*) value;
+- (EvnBuilder*) clearAction;
+
+- (BOOL) hasTime;
+- (SInt64) time;
+- (EvnBuilder*) setTime:(SInt64) value;
+- (EvnBuilder*) clearTime;
+
+- (BOOL) hasType;
+- (SInt32) type;
+- (EvnBuilder*) setType:(SInt32) value;
+- (EvnBuilder*) clearType;
+
+- (NSMutableArray *)kvs;
+- (KV*)kvsAtIndex:(NSUInteger)index;
+- (EvnBuilder *)addKvs:(KV*)value;
+- (EvnBuilder *)setKvsArray:(NSArray *)array;
+- (EvnBuilder *)clearKvs;
 @end
 
 

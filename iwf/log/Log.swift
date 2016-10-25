@@ -14,19 +14,19 @@ public let LOG_W:Int=30
 public let LOG_E:Int=40
 
 public protocol Log {
-    func D(format: String, _ args: CVarArgType...)
-    func I(format: String, _ args: CVarArgType...)
-    func W(format: String, _ args: CVarArgType...)
-    func E(format: String, _ args: CVarArgType...)
+    func D(_ format: String, _ args: CVarArg...)
+    func I(_ format: String, _ args: CVarArg...)
+    func W(_ format: String, _ args: CVarArg...)
+    func E(_ format: String, _ args: CVarArg...)
 }
 
 public protocol LogWriter{
-    func write(data:String)
+    func write(_ data:String)
     func flush()
 }
 
 
-public class LogImpl:NSObject, Log {
+open class LogImpl:NSObject, Log {
     var file:String
     var line:Int
     var function:String
@@ -37,23 +37,23 @@ public class LogImpl:NSObject, Log {
         self.function=function
     }
     
-    func dlog(level:Int,format: String, args: CVaListPointer){
+    func dlog(_ level:Int,format: String, args: CVaListPointer){
         let log:String=NSString(format: format, arguments:args) as String
         LogImpl.slog(self.file,line:self.line,function:self.function,level:level, log: log)
     }
-    public func D(format: String, _ args: CVarArgType...){
+    open func D(_ format: String, _ args: CVarArg...){
         self.dlog(LOG_D, format: format, args: getVaList(args))
     }
-    public func I(format: String, _ args: CVarArgType...){
+    open func I(_ format: String, _ args: CVarArg...){
         self.dlog(LOG_I, format: format, args: getVaList(args))
     }
-    public func W(format: String, _ args: CVarArgType...){
+    open func W(_ format: String, _ args: CVarArg...){
         self.dlog(LOG_W, format: format, args: getVaList(args))
     }
-    public func E(format: String, _ args: CVarArgType...){
+    open func E(_ format: String, _ args: CVarArg...){
         self.dlog(LOG_E, format: format, args: getVaList(args))
     }
-    class public func slog(file:String,line:Int,function:String,level:Int,log:String){
+    class open func slog(_ file:String,line:Int,function:String,level:Int,log:String){
         if level<LOG_LEVEL{
             return
         }
@@ -78,24 +78,24 @@ public class LogImpl:NSObject, Log {
             log_writer_?.write(data)
         }
     }
-    class public func fpath(path:String)->(path:String,name:String) {
-        let url:NSURL=NSURL(fileURLWithPath:path)
-        return (url.URLByDeletingLastPathComponent!.path!,url.lastPathComponent!)
+    class open func fpath(_ path:String)->(path:String,name:String) {
+        let url:URL=URL(fileURLWithPath:path)
+        return (url.deletingLastPathComponent().path,url.lastPathComponent)
     }
-    class public func sdate(file:String,line:Int,function:String,level:String,log:String)->String{
-        let fmt:NSDateFormatter = NSDateFormatter()
+    class open func sdate(_ file:String,line:Int,function:String,level:String,log:String)->String{
+        let fmt:DateFormatter = DateFormatter()
         fmt.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let fp = fpath(file)
         var fn:String=fp.name
         if LOG_LONGF{
             fn=file
         }
-        return NSString(format: "%@ %@:%d %@ - %@", fmt.stringFromDate(NSDate()),fn,line,level,log) as String
+        return NSString(format: "%@ %@:%d %@ - %@", fmt.string(from: Date()),fn,line,level,log) as String
     }
-    class public func newl(file:String,line:Int,function:String)->LogImpl{
+    class open func newl(_ file:String,line:Int,function:String)->LogImpl{
         return LogImpl(file: file, line: line, function: function)
     }
-    public static var Level:Int{
+    open static var Level:Int{
         get{
             return LOG_LEVEL
         }
@@ -103,7 +103,7 @@ public class LogImpl:NSObject, Log {
             LOG_LEVEL=val
         }
     }
-    public static var Longf:Bool{
+    open static var Longf:Bool{
         get{
             return LOG_LONGF
         }
@@ -117,7 +117,7 @@ public var LOG_LEVEL:Int=LOG_D
 var LOG_LONGF=false
 var log_writer_:LogWriter?
 
-public func L (file:String=__FILE__,line:Int=__LINE__,function:String=__FUNCTION__)->Log{
+public func L (_ file:String=#file,line:Int=#line,function:String=#function)->Log{
     return LogImpl(file: file, line:line, function: function)
 }
 

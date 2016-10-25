@@ -29,9 +29,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @property (strong) NSData* c;
 @property (strong) NSString* a;
 @property SInt64 time;
-@property (strong) NSString* mark;
-@property (strong) NSString* subm;
-@property SInt64 mid;
+@property (strong) NSString* status;
 @end
 
 @implementation ImMsg
@@ -87,27 +85,13 @@ static PBExtensionRegistry* extensionRegistry = nil;
   hasTime_ = !!_value_;
 }
 @synthesize time;
-- (BOOL) hasMark {
-  return !!hasMark_;
+- (BOOL) hasStatus {
+  return !!hasStatus_;
 }
-- (void) setHasMark:(BOOL) _value_ {
-  hasMark_ = !!_value_;
+- (void) setHasStatus:(BOOL) _value_ {
+  hasStatus_ = !!_value_;
 }
-@synthesize mark;
-- (BOOL) hasSubm {
-  return !!hasSubm_;
-}
-- (void) setHasSubm:(BOOL) _value_ {
-  hasSubm_ = !!_value_;
-}
-@synthesize subm;
-- (BOOL) hasMid {
-  return !!hasMid_;
-}
-- (void) setHasMid:(BOOL) _value_ {
-  hasMid_ = !!_value_;
-}
-@synthesize mid;
+@synthesize status;
 - (instancetype) init {
   if ((self = [super init])) {
     self.i = @"";
@@ -117,9 +101,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
     self.c = [NSData data];
     self.a = @"";
     self.time = 0L;
-    self.mark = @"";
-    self.subm = @"";
-    self.mid = 0L;
+    self.status = @"";
   }
   return self;
 }
@@ -175,14 +157,8 @@ static ImMsg* defaultImMsgInstance = nil;
   if (self.hasTime) {
     [output writeInt64:8 value:self.time];
   }
-  if (self.hasMark) {
-    [output writeString:9 value:self.mark];
-  }
-  if (self.hasSubm) {
-    [output writeString:10 value:self.subm];
-  }
-  if (self.hasMid) {
-    [output writeInt64:11 value:self.mid];
+  if (self.hasStatus) {
+    [output writeString:9 value:self.status];
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
@@ -223,14 +199,8 @@ static ImMsg* defaultImMsgInstance = nil;
   if (self.hasTime) {
     size_ += computeInt64Size(8, self.time);
   }
-  if (self.hasMark) {
-    size_ += computeStringSize(9, self.mark);
-  }
-  if (self.hasSubm) {
-    size_ += computeStringSize(10, self.subm);
-  }
-  if (self.hasMid) {
-    size_ += computeInt64Size(11, self.mid);
+  if (self.hasStatus) {
+    size_ += computeStringSize(9, self.status);
   }
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -291,14 +261,8 @@ static ImMsg* defaultImMsgInstance = nil;
   if (self.hasTime) {
     [output appendFormat:@"%@%@: %@\n", indent, @"time", [NSNumber numberWithLongLong:self.time]];
   }
-  if (self.hasMark) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"mark", self.mark];
-  }
-  if (self.hasSubm) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"subm", self.subm];
-  }
-  if (self.hasMid) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"mid", [NSNumber numberWithLongLong:self.mid]];
+  if (self.hasStatus) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"status", self.status];
   }
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
@@ -325,14 +289,8 @@ static ImMsg* defaultImMsgInstance = nil;
   if (self.hasTime) {
     [dictionary setObject: [NSNumber numberWithLongLong:self.time] forKey: @"time"];
   }
-  if (self.hasMark) {
-    [dictionary setObject: self.mark forKey: @"mark"];
-  }
-  if (self.hasSubm) {
-    [dictionary setObject: self.subm forKey: @"subm"];
-  }
-  if (self.hasMid) {
-    [dictionary setObject: [NSNumber numberWithLongLong:self.mid] forKey: @"mid"];
+  if (self.hasStatus) {
+    [dictionary setObject: self.status forKey: @"status"];
   }
   [self.unknownFields storeInDictionary:dictionary];
 }
@@ -360,12 +318,8 @@ static ImMsg* defaultImMsgInstance = nil;
       (!self.hasA || [self.a isEqual:otherMessage.a]) &&
       self.hasTime == otherMessage.hasTime &&
       (!self.hasTime || self.time == otherMessage.time) &&
-      self.hasMark == otherMessage.hasMark &&
-      (!self.hasMark || [self.mark isEqual:otherMessage.mark]) &&
-      self.hasSubm == otherMessage.hasSubm &&
-      (!self.hasSubm || [self.subm isEqual:otherMessage.subm]) &&
-      self.hasMid == otherMessage.hasMid &&
-      (!self.hasMid || self.mid == otherMessage.mid) &&
+      self.hasStatus == otherMessage.hasStatus &&
+      (!self.hasStatus || [self.status isEqual:otherMessage.status]) &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 - (NSUInteger) hash {
@@ -394,14 +348,8 @@ static ImMsg* defaultImMsgInstance = nil;
   if (self.hasTime) {
     hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.time] hash];
   }
-  if (self.hasMark) {
-    hashCode = hashCode * 31 + [self.mark hash];
-  }
-  if (self.hasSubm) {
-    hashCode = hashCode * 31 + [self.subm hash];
-  }
-  if (self.hasMid) {
-    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.mid] hash];
+  if (self.hasStatus) {
+    hashCode = hashCode * 31 + [self.status hash];
   }
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -474,14 +422,8 @@ static ImMsg* defaultImMsgInstance = nil;
   if (other.hasTime) {
     [self setTime:other.time];
   }
-  if (other.hasMark) {
-    [self setMark:other.mark];
-  }
-  if (other.hasSubm) {
-    [self setSubm:other.subm];
-  }
-  if (other.hasMid) {
-    [self setMid:other.mid];
+  if (other.hasStatus) {
+    [self setStatus:other.status];
   }
   [self mergeUnknownFields:other.unknownFields];
   return self;
@@ -537,15 +479,7 @@ static ImMsg* defaultImMsgInstance = nil;
         break;
       }
       case 74: {
-        [self setMark:[input readString]];
-        break;
-      }
-      case 82: {
-        [self setSubm:[input readString]];
-        break;
-      }
-      case 88: {
-        [self setMid:[input readInt64]];
+        [self setStatus:[input readString]];
         break;
       }
     }
@@ -684,52 +618,1391 @@ static ImMsg* defaultImMsgInstance = nil;
   resultImMsg.time = 0L;
   return self;
 }
-- (BOOL) hasMark {
-  return resultImMsg.hasMark;
+- (BOOL) hasStatus {
+  return resultImMsg.hasStatus;
 }
-- (NSString*) mark {
-  return resultImMsg.mark;
+- (NSString*) status {
+  return resultImMsg.status;
 }
-- (ImMsgBuilder*) setMark:(NSString*) value {
-  resultImMsg.hasMark = YES;
-  resultImMsg.mark = value;
+- (ImMsgBuilder*) setStatus:(NSString*) value {
+  resultImMsg.hasStatus = YES;
+  resultImMsg.status = value;
   return self;
 }
-- (ImMsgBuilder*) clearMark {
-  resultImMsg.hasMark = NO;
-  resultImMsg.mark = @"";
+- (ImMsgBuilder*) clearStatus {
+  resultImMsg.hasStatus = NO;
+  resultImMsg.status = @"";
   return self;
 }
-- (BOOL) hasSubm {
-  return resultImMsg.hasSubm;
+@end
+
+@interface RC ()
+@property (strong) NSString* r;
+@property (strong) NSString* c;
+@property (strong) NSString* a;
+@end
+
+@implementation RC
+
+- (BOOL) hasR {
+  return !!hasR_;
 }
-- (NSString*) subm {
-  return resultImMsg.subm;
+- (void) setHasR:(BOOL) _value_ {
+  hasR_ = !!_value_;
 }
-- (ImMsgBuilder*) setSubm:(NSString*) value {
-  resultImMsg.hasSubm = YES;
-  resultImMsg.subm = value;
+@synthesize r;
+- (BOOL) hasC {
+  return !!hasC_;
+}
+- (void) setHasC:(BOOL) _value_ {
+  hasC_ = !!_value_;
+}
+@synthesize c;
+- (BOOL) hasA {
+  return !!hasA_;
+}
+- (void) setHasA:(BOOL) _value_ {
+  hasA_ = !!_value_;
+}
+@synthesize a;
+- (instancetype) init {
+  if ((self = [super init])) {
+    self.r = @"";
+    self.c = @"";
+    self.a = @"";
+  }
   return self;
 }
-- (ImMsgBuilder*) clearSubm {
-  resultImMsg.hasSubm = NO;
-  resultImMsg.subm = @"";
+static RC* defaultRCInstance = nil;
++ (void) initialize {
+  if (self == [RC class]) {
+    defaultRCInstance = [[RC alloc] init];
+  }
+}
++ (instancetype) defaultInstance {
+  return defaultRCInstance;
+}
+- (instancetype) defaultInstance {
+  return defaultRCInstance;
+}
+- (BOOL) isInitialized {
+  if (!self.hasR) {
+    return NO;
+  }
+  if (!self.hasC) {
+    return NO;
+  }
+  if (!self.hasA) {
+    return NO;
+  }
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasR) {
+    [output writeString:1 value:self.r];
+  }
+  if (self.hasC) {
+    [output writeString:2 value:self.c];
+  }
+  if (self.hasA) {
+    [output writeString:3 value:self.a];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasR) {
+    size_ += computeStringSize(1, self.r);
+  }
+  if (self.hasC) {
+    size_ += computeStringSize(2, self.c);
+  }
+  if (self.hasA) {
+    size_ += computeStringSize(3, self.a);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (RC*) parseFromData:(NSData*) data {
+  return (RC*)[[[RC builder] mergeFromData:data] build];
+}
++ (RC*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (RC*)[[[RC builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (RC*) parseFromInputStream:(NSInputStream*) input {
+  return (RC*)[[[RC builder] mergeFromInputStream:input] build];
+}
++ (RC*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (RC*)[[[RC builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (RC*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (RC*)[[[RC builder] mergeFromCodedInputStream:input] build];
+}
++ (RC*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (RC*)[[[RC builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (RCBuilder*) builder {
+  return [[RCBuilder alloc] init];
+}
++ (RCBuilder*) builderWithPrototype:(RC*) prototype {
+  return [[RC builder] mergeFrom:prototype];
+}
+- (RCBuilder*) builder {
+  return [RC builder];
+}
+- (RCBuilder*) toBuilder {
+  return [RC builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasR) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"r", self.r];
+  }
+  if (self.hasC) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"c", self.c];
+  }
+  if (self.hasA) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"a", self.a];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (void) storeInDictionary:(NSMutableDictionary *)dictionary {
+  if (self.hasR) {
+    [dictionary setObject: self.r forKey: @"r"];
+  }
+  if (self.hasC) {
+    [dictionary setObject: self.c forKey: @"c"];
+  }
+  if (self.hasA) {
+    [dictionary setObject: self.a forKey: @"a"];
+  }
+  [self.unknownFields storeInDictionary:dictionary];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[RC class]]) {
+    return NO;
+  }
+  RC *otherMessage = other;
+  return
+      self.hasR == otherMessage.hasR &&
+      (!self.hasR || [self.r isEqual:otherMessage.r]) &&
+      self.hasC == otherMessage.hasC &&
+      (!self.hasC || [self.c isEqual:otherMessage.c]) &&
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || [self.a isEqual:otherMessage.a]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasR) {
+    hashCode = hashCode * 31 + [self.r hash];
+  }
+  if (self.hasC) {
+    hashCode = hashCode * 31 + [self.c hash];
+  }
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [self.a hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface RCBuilder()
+@property (strong) RC* resultRc;
+@end
+
+@implementation RCBuilder
+@synthesize resultRc;
+- (instancetype) init {
+  if ((self = [super init])) {
+    self.resultRc = [[RC alloc] init];
+  }
   return self;
 }
-- (BOOL) hasMid {
-  return resultImMsg.hasMid;
+- (PBGeneratedMessage*) internalGetResult {
+  return resultRc;
 }
-- (SInt64) mid {
-  return resultImMsg.mid;
-}
-- (ImMsgBuilder*) setMid:(SInt64) value {
-  resultImMsg.hasMid = YES;
-  resultImMsg.mid = value;
+- (RCBuilder*) clear {
+  self.resultRc = [[RC alloc] init];
   return self;
 }
-- (ImMsgBuilder*) clearMid {
-  resultImMsg.hasMid = NO;
-  resultImMsg.mid = 0L;
+- (RCBuilder*) clone {
+  return [RC builderWithPrototype:resultRc];
+}
+- (RC*) defaultInstance {
+  return [RC defaultInstance];
+}
+- (RC*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (RC*) buildPartial {
+  RC* returnMe = resultRc;
+  self.resultRc = nil;
+  return returnMe;
+}
+- (RCBuilder*) mergeFrom:(RC*) other {
+  if (other == [RC defaultInstance]) {
+    return self;
+  }
+  if (other.hasR) {
+    [self setR:other.r];
+  }
+  if (other.hasC) {
+    [self setC:other.c];
+  }
+  if (other.hasA) {
+    [self setA:other.a];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (RCBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (RCBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 10: {
+        [self setR:[input readString]];
+        break;
+      }
+      case 18: {
+        [self setC:[input readString]];
+        break;
+      }
+      case 26: {
+        [self setA:[input readString]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasR {
+  return resultRc.hasR;
+}
+- (NSString*) r {
+  return resultRc.r;
+}
+- (RCBuilder*) setR:(NSString*) value {
+  resultRc.hasR = YES;
+  resultRc.r = value;
+  return self;
+}
+- (RCBuilder*) clearR {
+  resultRc.hasR = NO;
+  resultRc.r = @"";
+  return self;
+}
+- (BOOL) hasC {
+  return resultRc.hasC;
+}
+- (NSString*) c {
+  return resultRc.c;
+}
+- (RCBuilder*) setC:(NSString*) value {
+  resultRc.hasC = YES;
+  resultRc.c = value;
+  return self;
+}
+- (RCBuilder*) clearC {
+  resultRc.hasC = NO;
+  resultRc.c = @"";
+  return self;
+}
+- (BOOL) hasA {
+  return resultRc.hasA;
+}
+- (NSString*) a {
+  return resultRc.a;
+}
+- (RCBuilder*) setA:(NSString*) value {
+  resultRc.hasA = YES;
+  resultRc.a = value;
+  return self;
+}
+- (RCBuilder*) clearA {
+  resultRc.hasA = NO;
+  resultRc.a = @"";
+  return self;
+}
+@end
+
+@interface DsMsg ()
+@property (strong) ImMsg* m;
+@property (strong) NSMutableArray * rcArray;
+@end
+
+@implementation DsMsg
+
+- (BOOL) hasM {
+  return !!hasM_;
+}
+- (void) setHasM:(BOOL) _value_ {
+  hasM_ = !!_value_;
+}
+@synthesize m;
+@synthesize rcArray;
+@dynamic rc;
+- (instancetype) init {
+  if ((self = [super init])) {
+    self.m = [ImMsg defaultInstance];
+  }
+  return self;
+}
+static DsMsg* defaultDsMsgInstance = nil;
++ (void) initialize {
+  if (self == [DsMsg class]) {
+    defaultDsMsgInstance = [[DsMsg alloc] init];
+  }
+}
++ (instancetype) defaultInstance {
+  return defaultDsMsgInstance;
+}
+- (instancetype) defaultInstance {
+  return defaultDsMsgInstance;
+}
+- (NSArray *)rc {
+  return rcArray;
+}
+- (RC*)rcAtIndex:(NSUInteger)index {
+  return [rcArray objectAtIndex:index];
+}
+- (BOOL) isInitialized {
+  if (!self.hasM) {
+    return NO;
+  }
+  if (!self.m.isInitialized) {
+    return NO;
+  }
+  __block BOOL isInitrc = YES;
+   [self.rc enumerateObjectsUsingBlock:^(RC *element, NSUInteger idx, BOOL *stop) {
+    if (!element.isInitialized) {
+      isInitrc = NO;
+      *stop = YES;
+    }
+  }];
+  if (!isInitrc) return isInitrc;
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasM) {
+    [output writeMessage:1 value:self.m];
+  }
+  [self.rcArray enumerateObjectsUsingBlock:^(RC *element, NSUInteger idx, BOOL *stop) {
+    [output writeMessage:2 value:element];
+  }];
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasM) {
+    size_ += computeMessageSize(1, self.m);
+  }
+  [self.rcArray enumerateObjectsUsingBlock:^(RC *element, NSUInteger idx, BOOL *stop) {
+    size_ += computeMessageSize(2, element);
+  }];
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (DsMsg*) parseFromData:(NSData*) data {
+  return (DsMsg*)[[[DsMsg builder] mergeFromData:data] build];
+}
++ (DsMsg*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (DsMsg*)[[[DsMsg builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (DsMsg*) parseFromInputStream:(NSInputStream*) input {
+  return (DsMsg*)[[[DsMsg builder] mergeFromInputStream:input] build];
+}
++ (DsMsg*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (DsMsg*)[[[DsMsg builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (DsMsg*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (DsMsg*)[[[DsMsg builder] mergeFromCodedInputStream:input] build];
+}
++ (DsMsg*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (DsMsg*)[[[DsMsg builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (DsMsgBuilder*) builder {
+  return [[DsMsgBuilder alloc] init];
+}
++ (DsMsgBuilder*) builderWithPrototype:(DsMsg*) prototype {
+  return [[DsMsg builder] mergeFrom:prototype];
+}
+- (DsMsgBuilder*) builder {
+  return [DsMsg builder];
+}
+- (DsMsgBuilder*) toBuilder {
+  return [DsMsg builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasM) {
+    [output appendFormat:@"%@%@ {\n", indent, @"m"];
+    [self.m writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.rcArray enumerateObjectsUsingBlock:^(RC *element, NSUInteger idx, BOOL *stop) {
+    [output appendFormat:@"%@%@ {\n", indent, @"rc"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }];
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (void) storeInDictionary:(NSMutableDictionary *)dictionary {
+  if (self.hasM) {
+   NSMutableDictionary *messageDictionary = [NSMutableDictionary dictionary]; 
+   [self.m storeInDictionary:messageDictionary];
+   [dictionary setObject:[NSDictionary dictionaryWithDictionary:messageDictionary] forKey:@"m"];
+  }
+  for (RC* element in self.rcArray) {
+    NSMutableDictionary *elementDictionary = [NSMutableDictionary dictionary];
+    [element storeInDictionary:elementDictionary];
+    [dictionary setObject:[NSDictionary dictionaryWithDictionary:elementDictionary] forKey:@"rc"];
+  }
+  [self.unknownFields storeInDictionary:dictionary];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[DsMsg class]]) {
+    return NO;
+  }
+  DsMsg *otherMessage = other;
+  return
+      self.hasM == otherMessage.hasM &&
+      (!self.hasM || [self.m isEqual:otherMessage.m]) &&
+      [self.rcArray isEqualToArray:otherMessage.rcArray] &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasM) {
+    hashCode = hashCode * 31 + [self.m hash];
+  }
+  [self.rcArray enumerateObjectsUsingBlock:^(RC *element, NSUInteger idx, BOOL *stop) {
+    hashCode = hashCode * 31 + [element hash];
+  }];
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface DsMsgBuilder()
+@property (strong) DsMsg* resultDsMsg;
+@end
+
+@implementation DsMsgBuilder
+@synthesize resultDsMsg;
+- (instancetype) init {
+  if ((self = [super init])) {
+    self.resultDsMsg = [[DsMsg alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return resultDsMsg;
+}
+- (DsMsgBuilder*) clear {
+  self.resultDsMsg = [[DsMsg alloc] init];
+  return self;
+}
+- (DsMsgBuilder*) clone {
+  return [DsMsg builderWithPrototype:resultDsMsg];
+}
+- (DsMsg*) defaultInstance {
+  return [DsMsg defaultInstance];
+}
+- (DsMsg*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (DsMsg*) buildPartial {
+  DsMsg* returnMe = resultDsMsg;
+  self.resultDsMsg = nil;
+  return returnMe;
+}
+- (DsMsgBuilder*) mergeFrom:(DsMsg*) other {
+  if (other == [DsMsg defaultInstance]) {
+    return self;
+  }
+  if (other.hasM) {
+    [self mergeM:other.m];
+  }
+  if (other.rcArray.count > 0) {
+    if (resultDsMsg.rcArray == nil) {
+      resultDsMsg.rcArray = [[NSMutableArray alloc] initWithArray:other.rcArray];
+    } else {
+      [resultDsMsg.rcArray addObjectsFromArray:other.rcArray];
+    }
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (DsMsgBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (DsMsgBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 10: {
+        ImMsgBuilder* subBuilder = [ImMsg builder];
+        if (self.hasM) {
+          [subBuilder mergeFrom:self.m];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setM:[subBuilder buildPartial]];
+        break;
+      }
+      case 18: {
+        RCBuilder* subBuilder = [RC builder];
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self addRc:[subBuilder buildPartial]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasM {
+  return resultDsMsg.hasM;
+}
+- (ImMsg*) m {
+  return resultDsMsg.m;
+}
+- (DsMsgBuilder*) setM:(ImMsg*) value {
+  resultDsMsg.hasM = YES;
+  resultDsMsg.m = value;
+  return self;
+}
+- (DsMsgBuilder*) setMBuilder:(ImMsgBuilder*) builderForValue {
+  return [self setM:[builderForValue build]];
+}
+- (DsMsgBuilder*) mergeM:(ImMsg*) value {
+  if (resultDsMsg.hasM &&
+      resultDsMsg.m != [ImMsg defaultInstance]) {
+    resultDsMsg.m =
+      [[[ImMsg builderWithPrototype:resultDsMsg.m] mergeFrom:value] buildPartial];
+  } else {
+    resultDsMsg.m = value;
+  }
+  resultDsMsg.hasM = YES;
+  return self;
+}
+- (DsMsgBuilder*) clearM {
+  resultDsMsg.hasM = NO;
+  resultDsMsg.m = [ImMsg defaultInstance];
+  return self;
+}
+- (NSMutableArray *)rc {
+  return resultDsMsg.rcArray;
+}
+- (RC*)rcAtIndex:(NSUInteger)index {
+  return [resultDsMsg rcAtIndex:index];
+}
+- (DsMsgBuilder *)addRc:(RC*)value {
+  if (resultDsMsg.rcArray == nil) {
+    resultDsMsg.rcArray = [[NSMutableArray alloc]init];
+  }
+  [resultDsMsg.rcArray addObject:value];
+  return self;
+}
+- (DsMsgBuilder *)setRcArray:(NSArray *)array {
+  resultDsMsg.rcArray = [[NSMutableArray alloc]initWithArray:array];
+  return self;
+}
+- (DsMsgBuilder *)clearRc {
+  resultDsMsg.rcArray = nil;
+  return self;
+}
+@end
+
+@interface KV ()
+@property (strong) NSString* key;
+@property (strong) NSString* val;
+@end
+
+@implementation KV
+
+- (BOOL) hasKey {
+  return !!hasKey_;
+}
+- (void) setHasKey:(BOOL) _value_ {
+  hasKey_ = !!_value_;
+}
+@synthesize key;
+- (BOOL) hasVal {
+  return !!hasVal_;
+}
+- (void) setHasVal:(BOOL) _value_ {
+  hasVal_ = !!_value_;
+}
+@synthesize val;
+- (instancetype) init {
+  if ((self = [super init])) {
+    self.key = @"";
+    self.val = @"";
+  }
+  return self;
+}
+static KV* defaultKVInstance = nil;
++ (void) initialize {
+  if (self == [KV class]) {
+    defaultKVInstance = [[KV alloc] init];
+  }
+}
++ (instancetype) defaultInstance {
+  return defaultKVInstance;
+}
+- (instancetype) defaultInstance {
+  return defaultKVInstance;
+}
+- (BOOL) isInitialized {
+  if (!self.hasKey) {
+    return NO;
+  }
+  if (!self.hasVal) {
+    return NO;
+  }
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasKey) {
+    [output writeString:1 value:self.key];
+  }
+  if (self.hasVal) {
+    [output writeString:2 value:self.val];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasKey) {
+    size_ += computeStringSize(1, self.key);
+  }
+  if (self.hasVal) {
+    size_ += computeStringSize(2, self.val);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (KV*) parseFromData:(NSData*) data {
+  return (KV*)[[[KV builder] mergeFromData:data] build];
+}
++ (KV*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (KV*)[[[KV builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (KV*) parseFromInputStream:(NSInputStream*) input {
+  return (KV*)[[[KV builder] mergeFromInputStream:input] build];
+}
++ (KV*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (KV*)[[[KV builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (KV*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (KV*)[[[KV builder] mergeFromCodedInputStream:input] build];
+}
++ (KV*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (KV*)[[[KV builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (KVBuilder*) builder {
+  return [[KVBuilder alloc] init];
+}
++ (KVBuilder*) builderWithPrototype:(KV*) prototype {
+  return [[KV builder] mergeFrom:prototype];
+}
+- (KVBuilder*) builder {
+  return [KV builder];
+}
+- (KVBuilder*) toBuilder {
+  return [KV builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasKey) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"key", self.key];
+  }
+  if (self.hasVal) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"val", self.val];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (void) storeInDictionary:(NSMutableDictionary *)dictionary {
+  if (self.hasKey) {
+    [dictionary setObject: self.key forKey: @"key"];
+  }
+  if (self.hasVal) {
+    [dictionary setObject: self.val forKey: @"val"];
+  }
+  [self.unknownFields storeInDictionary:dictionary];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[KV class]]) {
+    return NO;
+  }
+  KV *otherMessage = other;
+  return
+      self.hasKey == otherMessage.hasKey &&
+      (!self.hasKey || [self.key isEqual:otherMessage.key]) &&
+      self.hasVal == otherMessage.hasVal &&
+      (!self.hasVal || [self.val isEqual:otherMessage.val]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasKey) {
+    hashCode = hashCode * 31 + [self.key hash];
+  }
+  if (self.hasVal) {
+    hashCode = hashCode * 31 + [self.val hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface KVBuilder()
+@property (strong) KV* resultKv;
+@end
+
+@implementation KVBuilder
+@synthesize resultKv;
+- (instancetype) init {
+  if ((self = [super init])) {
+    self.resultKv = [[KV alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return resultKv;
+}
+- (KVBuilder*) clear {
+  self.resultKv = [[KV alloc] init];
+  return self;
+}
+- (KVBuilder*) clone {
+  return [KV builderWithPrototype:resultKv];
+}
+- (KV*) defaultInstance {
+  return [KV defaultInstance];
+}
+- (KV*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (KV*) buildPartial {
+  KV* returnMe = resultKv;
+  self.resultKv = nil;
+  return returnMe;
+}
+- (KVBuilder*) mergeFrom:(KV*) other {
+  if (other == [KV defaultInstance]) {
+    return self;
+  }
+  if (other.hasKey) {
+    [self setKey:other.key];
+  }
+  if (other.hasVal) {
+    [self setVal:other.val];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (KVBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (KVBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 10: {
+        [self setKey:[input readString]];
+        break;
+      }
+      case 18: {
+        [self setVal:[input readString]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasKey {
+  return resultKv.hasKey;
+}
+- (NSString*) key {
+  return resultKv.key;
+}
+- (KVBuilder*) setKey:(NSString*) value {
+  resultKv.hasKey = YES;
+  resultKv.key = value;
+  return self;
+}
+- (KVBuilder*) clearKey {
+  resultKv.hasKey = NO;
+  resultKv.key = @"";
+  return self;
+}
+- (BOOL) hasVal {
+  return resultKv.hasVal;
+}
+- (NSString*) val {
+  return resultKv.val;
+}
+- (KVBuilder*) setVal:(NSString*) value {
+  resultKv.hasVal = YES;
+  resultKv.val = value;
+  return self;
+}
+- (KVBuilder*) clearVal {
+  resultKv.hasVal = NO;
+  resultKv.val = @"";
+  return self;
+}
+@end
+
+@interface Evn ()
+@property (strong) NSString* uid;
+@property (strong) NSString* name;
+@property (strong) NSString* action;
+@property SInt64 time;
+@property SInt32 type;
+@property (strong) NSMutableArray * kvsArray;
+@end
+
+@implementation Evn
+
+- (BOOL) hasUid {
+  return !!hasUid_;
+}
+- (void) setHasUid:(BOOL) _value_ {
+  hasUid_ = !!_value_;
+}
+@synthesize uid;
+- (BOOL) hasName {
+  return !!hasName_;
+}
+- (void) setHasName:(BOOL) _value_ {
+  hasName_ = !!_value_;
+}
+@synthesize name;
+- (BOOL) hasAction {
+  return !!hasAction_;
+}
+- (void) setHasAction:(BOOL) _value_ {
+  hasAction_ = !!_value_;
+}
+@synthesize action;
+- (BOOL) hasTime {
+  return !!hasTime_;
+}
+- (void) setHasTime:(BOOL) _value_ {
+  hasTime_ = !!_value_;
+}
+@synthesize time;
+- (BOOL) hasType {
+  return !!hasType_;
+}
+- (void) setHasType:(BOOL) _value_ {
+  hasType_ = !!_value_;
+}
+@synthesize type;
+@synthesize kvsArray;
+@dynamic kvs;
+- (instancetype) init {
+  if ((self = [super init])) {
+    self.uid = @"";
+    self.name = @"";
+    self.action = @"";
+    self.time = 0L;
+    self.type = 0;
+  }
+  return self;
+}
+static Evn* defaultEvnInstance = nil;
++ (void) initialize {
+  if (self == [Evn class]) {
+    defaultEvnInstance = [[Evn alloc] init];
+  }
+}
++ (instancetype) defaultInstance {
+  return defaultEvnInstance;
+}
+- (instancetype) defaultInstance {
+  return defaultEvnInstance;
+}
+- (NSArray *)kvs {
+  return kvsArray;
+}
+- (KV*)kvsAtIndex:(NSUInteger)index {
+  return [kvsArray objectAtIndex:index];
+}
+- (BOOL) isInitialized {
+  if (!self.hasUid) {
+    return NO;
+  }
+  if (!self.hasName) {
+    return NO;
+  }
+  if (!self.hasAction) {
+    return NO;
+  }
+  if (!self.hasTime) {
+    return NO;
+  }
+  if (!self.hasType) {
+    return NO;
+  }
+  __block BOOL isInitkvs = YES;
+   [self.kvs enumerateObjectsUsingBlock:^(KV *element, NSUInteger idx, BOOL *stop) {
+    if (!element.isInitialized) {
+      isInitkvs = NO;
+      *stop = YES;
+    }
+  }];
+  if (!isInitkvs) return isInitkvs;
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasUid) {
+    [output writeString:1 value:self.uid];
+  }
+  if (self.hasName) {
+    [output writeString:2 value:self.name];
+  }
+  if (self.hasAction) {
+    [output writeString:3 value:self.action];
+  }
+  if (self.hasTime) {
+    [output writeInt64:4 value:self.time];
+  }
+  if (self.hasType) {
+    [output writeInt32:5 value:self.type];
+  }
+  [self.kvsArray enumerateObjectsUsingBlock:^(KV *element, NSUInteger idx, BOOL *stop) {
+    [output writeMessage:6 value:element];
+  }];
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasUid) {
+    size_ += computeStringSize(1, self.uid);
+  }
+  if (self.hasName) {
+    size_ += computeStringSize(2, self.name);
+  }
+  if (self.hasAction) {
+    size_ += computeStringSize(3, self.action);
+  }
+  if (self.hasTime) {
+    size_ += computeInt64Size(4, self.time);
+  }
+  if (self.hasType) {
+    size_ += computeInt32Size(5, self.type);
+  }
+  [self.kvsArray enumerateObjectsUsingBlock:^(KV *element, NSUInteger idx, BOOL *stop) {
+    size_ += computeMessageSize(6, element);
+  }];
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (Evn*) parseFromData:(NSData*) data {
+  return (Evn*)[[[Evn builder] mergeFromData:data] build];
+}
++ (Evn*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Evn*)[[[Evn builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (Evn*) parseFromInputStream:(NSInputStream*) input {
+  return (Evn*)[[[Evn builder] mergeFromInputStream:input] build];
+}
++ (Evn*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Evn*)[[[Evn builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (Evn*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (Evn*)[[[Evn builder] mergeFromCodedInputStream:input] build];
+}
++ (Evn*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Evn*)[[[Evn builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (EvnBuilder*) builder {
+  return [[EvnBuilder alloc] init];
+}
++ (EvnBuilder*) builderWithPrototype:(Evn*) prototype {
+  return [[Evn builder] mergeFrom:prototype];
+}
+- (EvnBuilder*) builder {
+  return [Evn builder];
+}
+- (EvnBuilder*) toBuilder {
+  return [Evn builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasUid) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"uid", self.uid];
+  }
+  if (self.hasName) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"name", self.name];
+  }
+  if (self.hasAction) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"action", self.action];
+  }
+  if (self.hasTime) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"time", [NSNumber numberWithLongLong:self.time]];
+  }
+  if (self.hasType) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"type", [NSNumber numberWithInteger:self.type]];
+  }
+  [self.kvsArray enumerateObjectsUsingBlock:^(KV *element, NSUInteger idx, BOOL *stop) {
+    [output appendFormat:@"%@%@ {\n", indent, @"kvs"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }];
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (void) storeInDictionary:(NSMutableDictionary *)dictionary {
+  if (self.hasUid) {
+    [dictionary setObject: self.uid forKey: @"uid"];
+  }
+  if (self.hasName) {
+    [dictionary setObject: self.name forKey: @"name"];
+  }
+  if (self.hasAction) {
+    [dictionary setObject: self.action forKey: @"action"];
+  }
+  if (self.hasTime) {
+    [dictionary setObject: [NSNumber numberWithLongLong:self.time] forKey: @"time"];
+  }
+  if (self.hasType) {
+    [dictionary setObject: [NSNumber numberWithInteger:self.type] forKey: @"type"];
+  }
+  for (KV* element in self.kvsArray) {
+    NSMutableDictionary *elementDictionary = [NSMutableDictionary dictionary];
+    [element storeInDictionary:elementDictionary];
+    [dictionary setObject:[NSDictionary dictionaryWithDictionary:elementDictionary] forKey:@"kvs"];
+  }
+  [self.unknownFields storeInDictionary:dictionary];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[Evn class]]) {
+    return NO;
+  }
+  Evn *otherMessage = other;
+  return
+      self.hasUid == otherMessage.hasUid &&
+      (!self.hasUid || [self.uid isEqual:otherMessage.uid]) &&
+      self.hasName == otherMessage.hasName &&
+      (!self.hasName || [self.name isEqual:otherMessage.name]) &&
+      self.hasAction == otherMessage.hasAction &&
+      (!self.hasAction || [self.action isEqual:otherMessage.action]) &&
+      self.hasTime == otherMessage.hasTime &&
+      (!self.hasTime || self.time == otherMessage.time) &&
+      self.hasType == otherMessage.hasType &&
+      (!self.hasType || self.type == otherMessage.type) &&
+      [self.kvsArray isEqualToArray:otherMessage.kvsArray] &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasUid) {
+    hashCode = hashCode * 31 + [self.uid hash];
+  }
+  if (self.hasName) {
+    hashCode = hashCode * 31 + [self.name hash];
+  }
+  if (self.hasAction) {
+    hashCode = hashCode * 31 + [self.action hash];
+  }
+  if (self.hasTime) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.time] hash];
+  }
+  if (self.hasType) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.type] hash];
+  }
+  [self.kvsArray enumerateObjectsUsingBlock:^(KV *element, NSUInteger idx, BOOL *stop) {
+    hashCode = hashCode * 31 + [element hash];
+  }];
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface EvnBuilder()
+@property (strong) Evn* resultEvn;
+@end
+
+@implementation EvnBuilder
+@synthesize resultEvn;
+- (instancetype) init {
+  if ((self = [super init])) {
+    self.resultEvn = [[Evn alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return resultEvn;
+}
+- (EvnBuilder*) clear {
+  self.resultEvn = [[Evn alloc] init];
+  return self;
+}
+- (EvnBuilder*) clone {
+  return [Evn builderWithPrototype:resultEvn];
+}
+- (Evn*) defaultInstance {
+  return [Evn defaultInstance];
+}
+- (Evn*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (Evn*) buildPartial {
+  Evn* returnMe = resultEvn;
+  self.resultEvn = nil;
+  return returnMe;
+}
+- (EvnBuilder*) mergeFrom:(Evn*) other {
+  if (other == [Evn defaultInstance]) {
+    return self;
+  }
+  if (other.hasUid) {
+    [self setUid:other.uid];
+  }
+  if (other.hasName) {
+    [self setName:other.name];
+  }
+  if (other.hasAction) {
+    [self setAction:other.action];
+  }
+  if (other.hasTime) {
+    [self setTime:other.time];
+  }
+  if (other.hasType) {
+    [self setType:other.type];
+  }
+  if (other.kvsArray.count > 0) {
+    if (resultEvn.kvsArray == nil) {
+      resultEvn.kvsArray = [[NSMutableArray alloc] initWithArray:other.kvsArray];
+    } else {
+      [resultEvn.kvsArray addObjectsFromArray:other.kvsArray];
+    }
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (EvnBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (EvnBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 10: {
+        [self setUid:[input readString]];
+        break;
+      }
+      case 18: {
+        [self setName:[input readString]];
+        break;
+      }
+      case 26: {
+        [self setAction:[input readString]];
+        break;
+      }
+      case 32: {
+        [self setTime:[input readInt64]];
+        break;
+      }
+      case 40: {
+        [self setType:[input readInt32]];
+        break;
+      }
+      case 50: {
+        KVBuilder* subBuilder = [KV builder];
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self addKvs:[subBuilder buildPartial]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasUid {
+  return resultEvn.hasUid;
+}
+- (NSString*) uid {
+  return resultEvn.uid;
+}
+- (EvnBuilder*) setUid:(NSString*) value {
+  resultEvn.hasUid = YES;
+  resultEvn.uid = value;
+  return self;
+}
+- (EvnBuilder*) clearUid {
+  resultEvn.hasUid = NO;
+  resultEvn.uid = @"";
+  return self;
+}
+- (BOOL) hasName {
+  return resultEvn.hasName;
+}
+- (NSString*) name {
+  return resultEvn.name;
+}
+- (EvnBuilder*) setName:(NSString*) value {
+  resultEvn.hasName = YES;
+  resultEvn.name = value;
+  return self;
+}
+- (EvnBuilder*) clearName {
+  resultEvn.hasName = NO;
+  resultEvn.name = @"";
+  return self;
+}
+- (BOOL) hasAction {
+  return resultEvn.hasAction;
+}
+- (NSString*) action {
+  return resultEvn.action;
+}
+- (EvnBuilder*) setAction:(NSString*) value {
+  resultEvn.hasAction = YES;
+  resultEvn.action = value;
+  return self;
+}
+- (EvnBuilder*) clearAction {
+  resultEvn.hasAction = NO;
+  resultEvn.action = @"";
+  return self;
+}
+- (BOOL) hasTime {
+  return resultEvn.hasTime;
+}
+- (SInt64) time {
+  return resultEvn.time;
+}
+- (EvnBuilder*) setTime:(SInt64) value {
+  resultEvn.hasTime = YES;
+  resultEvn.time = value;
+  return self;
+}
+- (EvnBuilder*) clearTime {
+  resultEvn.hasTime = NO;
+  resultEvn.time = 0L;
+  return self;
+}
+- (BOOL) hasType {
+  return resultEvn.hasType;
+}
+- (SInt32) type {
+  return resultEvn.type;
+}
+- (EvnBuilder*) setType:(SInt32) value {
+  resultEvn.hasType = YES;
+  resultEvn.type = value;
+  return self;
+}
+- (EvnBuilder*) clearType {
+  resultEvn.hasType = NO;
+  resultEvn.type = 0;
+  return self;
+}
+- (NSMutableArray *)kvs {
+  return resultEvn.kvsArray;
+}
+- (KV*)kvsAtIndex:(NSUInteger)index {
+  return [resultEvn kvsAtIndex:index];
+}
+- (EvnBuilder *)addKvs:(KV*)value {
+  if (resultEvn.kvsArray == nil) {
+    resultEvn.kvsArray = [[NSMutableArray alloc]init];
+  }
+  [resultEvn.kvsArray addObject:value];
+  return self;
+}
+- (EvnBuilder *)setKvsArray:(NSArray *)array {
+  resultEvn.kvsArray = [[NSMutableArray alloc]initWithArray:array];
+  return self;
+}
+- (EvnBuilder *)clearKvs {
+  resultEvn.kvsArray = nil;
   return self;
 }
 @end
