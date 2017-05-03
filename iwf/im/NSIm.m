@@ -33,14 +33,26 @@ void NSIm_on_cmd_nim_sck_evn_h(v_cwf_netw_sck_c* sck, int evn, void* arga,
                              void* argb){
     v_cwf_im* im=sck->info;
     NSIm* tim=(__bridge NSIm *)(im->info);
+    NSNumber* numa=nil;
+    NSNumber* numb=nil;
+    int *vala=(int*)arga;
+    numa=[NSNumber numberWithInt:*vala];
+    if(argb){
+        int *valb=(int*)argb;
+        numb=[NSNumber numberWithInt:*valb];
+    }
     if(tim.delegate&&[tim.delegate respondsToSelector:@selector(onSckEvn:evn:arga:argb:)]){
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [tim.delegate onSckEvn:tim evn:evn arga:arga argb:argb];
+            [tim.delegate onSckEvn:tim evn:evn arga:numa argb:numb];
         });
     }
 }
 
 @implementation NSIm
+
++(void)init{
+    signal(SIGPIPE, SIG_IGN);
+}
 
 -(id)initWith:(NSString*)addr port:(NSString*)port{
     if(self=[super init]){
@@ -69,16 +81,22 @@ void NSIm_on_cmd_nim_sck_evn_h(v_cwf_netw_sck_c* sck, int evn, void* arga,
         data=[NSData dataWithBytes:"{}" length:2];
     }
     v_cwf_netw_cmd* targ=v_cwf_netw_cmd_n2((char*)data.bytes, (unsigned int)data.length);
-    v_cwf_netw_cmd* ocmd;
+    v_cwf_netw_cmd* ocmd=nil;
     int res=v_cwf_im_li(_im, &targ, 1, &ocmd);
     v_cwf_netw_cmd_f(&targ);
     if(res!=0){
         *err=[NSError errorWithDomain:@"v_cwf_im_li" code:res userInfo:nil];
+        if(ocmd){
+            v_cwf_netw_cmd_f(&ocmd);
+        }
         return nil;
     }
     NSData* rdata=[NSData dataWithBytes:(ocmd->hb+ocmd->off) length:ocmd->len];
     NSDictionary* res_j=[rdata toJsonObject:err];
     if(*err){
+        if(ocmd){
+            v_cwf_netw_cmd_f(&ocmd);
+        }
         return nil;
     }
     v_cwf_netw_cmd_f(&ocmd);
@@ -106,15 +124,21 @@ void NSIm_on_cmd_nim_sck_evn_h(v_cwf_netw_sck_c* sck, int evn, void* arga,
         data=[NSData dataWithBytes:"{}" length:2];
     }
     v_cwf_netw_cmd* targ=v_cwf_netw_cmd_n2((char*)data.bytes, (unsigned int)data.length);
-    v_cwf_netw_cmd* ocmd;
+    v_cwf_netw_cmd* ocmd=nil;
     int res=v_cwf_im_lo(_im, &targ, 1, &ocmd);
     v_cwf_netw_cmd_f(&targ);
     if(res!=0){
         *err=[NSError errorWithDomain:@"v_cwf_im_lo" code:res userInfo:nil];
+        if(ocmd){
+            v_cwf_netw_cmd_f(&ocmd);
+        }
         return nil;
     }
     NSDictionary* res_j=[[NSData dataWithBytes:(ocmd->hb+ocmd->off) length:ocmd->len]toJsonObject:err];
     if(*err){
+        if(ocmd){
+            v_cwf_netw_cmd_f(&ocmd);
+        }
         return nil;
     }
     v_cwf_netw_cmd_f(&ocmd);
@@ -142,15 +166,21 @@ void NSIm_on_cmd_nim_sck_evn_h(v_cwf_netw_sck_c* sck, int evn, void* arga,
         data=[NSData dataWithBytes:"{}" length:2];
     }
     v_cwf_netw_cmd* targ=v_cwf_netw_cmd_n2((char*)data.bytes, (unsigned int)data.length);
-    v_cwf_netw_cmd* ocmd;
+    v_cwf_netw_cmd* ocmd=nil;
     int res=v_cwf_im_ur(_im, &targ, 1, &ocmd);
     v_cwf_netw_cmd_f(&targ);
     if(res!=0){
         *err=[NSError errorWithDomain:@"v_cwf_im_ur" code:res userInfo:nil];
+        if(ocmd){
+            v_cwf_netw_cmd_f(&ocmd);
+        }
         return nil;
     }
     NSDictionary* res_j=[[NSData dataWithBytes:(ocmd->hb+ocmd->off) length:ocmd->len]toJsonObject:err];
     if(*err){
+        if(ocmd){
+            v_cwf_netw_cmd_f(&ocmd);
+        }
         return nil;
     }
     v_cwf_netw_cmd_f(&ocmd);

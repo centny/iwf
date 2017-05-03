@@ -21,18 +21,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.im=[[NSIm alloc]initWith:@"192.168.2.57" port:@"4001"];
-    self.im=[[NSIm alloc]initWith:@"rcp.dev.gdy.io" port:@"14001"];
+    [NSIm init];
+    self.im=[[NSIm alloc]initWith:@"192.168.2.57" port:@"4001"];
+//    self.im=[[NSIm alloc]initWith:@"rcp.dev.gdy.io" port:@"14001"];
     self.im.delegate=self;
     self.imc=0;
     [self testIm];
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self.im stop];
 }
 -(int)onMsg:(NSIm*)im msg:(ImMsg*) msg{
     self.imc++;
     NSILog(@"receive message from %@->%@->%@->%d", msg.s, [msg.c UTF8String],[NSDate dateWithTimeIntervalSince1970:msg.time],self.imc);
     return 0;
 }
--(void)onSckEvn:(NSIm *)im evn:(int)evn arga:(void *)arga argb:(void *)argb{
+-(void)onSckEvn:(NSIm *)im evn:(int)evn arga:(id)arga argb:(id)argb{
     switch (evn) {
         case V_CWF_NETW_SCK_EVN_RUN:
             NSILog(@"start runner->%d", evn);
@@ -49,8 +54,8 @@
         case V_CWF_NETW_SCK_EVN_CON_D:
             NSILog(@"%@",@"V_CWF_NETW_SCK_EVN_CON_D");
         {
-            int* code=(int*)argb;
-            if((*code)==0){
+            int code=[argb intValue];
+            if(code==0){
                 NSILog(@"connected->%d->OK", evn);
                 NSError* err;
                 self.lres=[self.im login:[NSDictionary dictionaryWithObjectsAndKeys:self.token,@"token", nil] err:&err];
@@ -61,7 +66,7 @@
                 }
                 [self tIm_r];
             }else{
-                NSILog(@"connected->%d->error-%d", evn,*code);
+                NSILog(@"connected->%d->error-%d", evn,code);
                 self.done--;
             }
         }
@@ -92,7 +97,7 @@
         }
         self.token=[[json objectForKey:@"data"] objectForKey:@"token"];
         [self.im start];
-    } url:@"http://sso.dev.gdy.io/sso/api/login?usr=%@&pwd=%@",@"c1",@"123456"];
+    } url:@"http://sso.dev.gdy.io/sso/api/login?usr=%@&pwd=%@&source=PC",@"c1",@"123456"];
 //    XCTAssert(RunLoopx(self),@"timeout");
 //    close(self.im.im->sck->fd);
 //    self.done=1;
@@ -111,9 +116,9 @@
         self.done--;
         return;
     }
-    NSString* r=[self.lres objectForKey:@"r"];
+    NSString* r=[self.lres objectForKey:@"uid"];
     NSDLog(@"login success to R:%@", r);
-    for (int i=0; i<1000; i++) {
+    for (int i=0; i<10000; i++) {
         NSString* ss=[NSString stringWithFormat:@"xxxx->%d",i];
         ImMsgBuilder* mb=[ImMsgBuilder new];
         [[[mb setRArray:[NSArray arrayWithObjects:@"S-Robot->xx", nil]]setT:0]setC:[ss dataUsingEncoding:NSUTF8StringEncoding]];
@@ -134,11 +139,12 @@
 //            return;
 //        }
     self.done--;
+    NSDLog(@"test im done by R:%@", r);
 }
 -(IBAction)clkSend:(id)sender{
     NSString* ss=[NSString stringWithFormat:@"xxxx->%d",0];
     ImMsgBuilder* mb=[ImMsgBuilder new];
-    [[[mb setRArray:[NSArray arrayWithObjects:@"S-Robot->xx", nil]]setT:0]setC:[ss dataUsingEncoding:NSUTF8StringEncoding]];
+    [[[mb setRArray:[NSArray arrayWithObjects:@"u41651", nil]]setT:0]setC:[ss dataUsingEncoding:NSUTF8StringEncoding]];
     int code=[self.im sms:[mb build]];
     if(code!=0){
         NSELog(@"return code->%d",code);

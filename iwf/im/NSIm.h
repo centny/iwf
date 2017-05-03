@@ -22,7 +22,7 @@
 @required
 -(int)onMsg:(NSIm*)im msg:(ImMsg*) msg;
 @optional
--(void)onSckEvn:(NSIm*)im evn:(int)evn arga:(void*)arga argb:(void*)argb;
+-(void)onSckEvn:(NSIm*)im evn:(int)evn arga:(id)arga argb:(id)argb;
 @end
 
 @interface NSIm : NSObject
@@ -31,6 +31,7 @@
 @property(assign,readonly)v_cwf_im* im;
 @property(assign)id<NSImH> delegate;
 @property(retain,readonly)NSThread* thr;
++(void)init;
 -(id)initWith:(NSString*)addr port:(NSString*)port;
 
 -(int)run:(int)erc;

@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		17702D711D2CE7EF00CAB7E4 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17702D701D2CE7EF00CAB7E4 /* ProtocolBuffers.framework */; };
-		17702D721D2CE7EF00CAB7E4 /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17702D701D2CE7EF00CAB7E4 /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1792D0851BB8EE52000B7D16 /* ForTestTextFieldVCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D0831BB8EE52000B7D16 /* ForTestTextFieldVCtl.m */; };
 		1792D0861BB8EE52000B7D16 /* ForTestTextFieldVCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D0831BB8EE52000B7D16 /* ForTestTextFieldVCtl.m */; };
 		1792D0871BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1792D0841BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib */; };
 		1792D0881BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1792D0841BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib */; };
 		1792D08B1BB8EFC7000B7D16 /* ForTestTextFieldVCtlTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1792D08A1BB8EFC7000B7D16 /* ForTestTextFieldVCtlTest.m */; };
+		17C002011EB882C50028E7FE /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C002001EB882C50028E7FE /* ProtocolBuffers.framework */; };
+		17C002021EB882C50028E7FE /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 17C002001EB882C50028E7FE /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17CD69F51C04021A00DCC395 /* ImVCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CD69F31C04021A00DCC395 /* ImVCtl.m */; };
 		17CD69F61C04021A00DCC395 /* ImVCtl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17CD69F41C04021A00DCC395 /* ImVCtl.xib */; };
 		C31E49781BA937100016195E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C31E49771BA937100016195E /* main.m */; };
@@ -139,7 +139,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				17702D721D2CE7EF00CAB7E4 /* ProtocolBuffers.framework in Embed Frameworks */,
+				17C002021EB882C50028E7FE /* ProtocolBuffers.framework in Embed Frameworks */,
 				C31E4A311BA939A70016195E /* iwf.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -153,6 +153,7 @@
 		1792D0831BB8EE52000B7D16 /* ForTestTextFieldVCtl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForTestTextFieldVCtl.m; sourceTree = "<group>"; };
 		1792D0841BB8EE52000B7D16 /* ForTestTextFieldVCtl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForTestTextFieldVCtl.xib; sourceTree = "<group>"; };
 		1792D08A1BB8EFC7000B7D16 /* ForTestTextFieldVCtlTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForTestTextFieldVCtlTest.m; sourceTree = "<group>"; };
+		17C002001EB882C50028E7FE /* ProtocolBuffers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ProtocolBuffers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17CD69F21C04021A00DCC395 /* ImVCtl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImVCtl.h; sourceTree = "<group>"; };
 		17CD69F31C04021A00DCC395 /* ImVCtl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImVCtl.m; sourceTree = "<group>"; };
 		17CD69F41C04021A00DCC395 /* ImVCtl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImVCtl.xib; sourceTree = "<group>"; };
@@ -235,7 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17702D711D2CE7EF00CAB7E4 /* ProtocolBuffers.framework in Frameworks */,
+				17C002011EB882C50028E7FE /* ProtocolBuffers.framework in Frameworks */,
 				C31E4A301BA939A70016195E /* iwf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,6 +254,7 @@
 		C31E49691BA937100016195E = {
 			isa = PBXGroup;
 			children = (
+				17C002001EB882C50028E7FE /* ProtocolBuffers.framework */,
 				17702D701D2CE7EF00CAB7E4 /* ProtocolBuffers.framework */,
 				C31E49741BA937100016195E /* iwf-test */,
 				C31E498E1BA937100016195E /* iwf-testTests */,

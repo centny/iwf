@@ -104,9 +104,11 @@
         [self.im start];
     } url:@"http://sso.dev.gdy.io/sso/api/login?usr=%@&pwd=%@",@"c1",@"123456"];
     XCTAssert(RunLoopx(self),@"timeout");
-    close(self.im.im->sck->fd);
-    self.done=1;
-    XCTAssert(RunLoopx(self),@"timeout");
+    if(self.im){
+        close(self.im.im->sck->fd);
+        self.done=1;
+        XCTAssert(RunLoopx(self),@"timeout");
+    }
     
 }
 - (void)tIm_t{
