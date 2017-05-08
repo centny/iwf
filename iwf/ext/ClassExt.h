@@ -187,10 +187,13 @@
 
 @interface NSDictionary (JSON)
 -(NSData*)toJson:(NSError**)err;
+-(id)checkValueForKey:(NSString*)key;
 @end
 
 @interface NSMutableDictionary (JSON)
 -(NSData*)toJson:(NSError**)err;
+-(id)checkValueForKey:(NSString*)key;
+-(void)checkRemoveObjectForKey:(NSString*)key;
 @end
 
 

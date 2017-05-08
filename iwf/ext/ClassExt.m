@@ -465,7 +465,7 @@
             b	= (b / 15.0 * 255.0);
             val = [hex characterAtIndex:4];
             a	= strtoul(&val, 0, 16);
-            a	= (a / 15.0);
+            a	= (a / 15.0 * 255.0);
         }
             break;
             
@@ -499,14 +499,13 @@
             val[0]	= [hex characterAtIndex:7];
             val[1]	= [hex characterAtIndex:8];
             a		= strtoul(val, 0, 16);
-            a		= (a / 255.0);
         }
             break;
             
         default:
             return nil;
     }
-    return [UIColor colorWithRed:r green:g blue:b alpha:a];
+    return [UIColor colorWithR:r G:g B:b A:a];
 }
 
 @end
@@ -528,11 +527,30 @@
 -(NSData*)toJson:(NSError**)err{
     return [NSJSONSerialization dataWithJSONObject:self options:kNilOptions error:err];
 }
+-(id)checkValueForKey:(NSString*)key{
+    id val=[self valueForKey:key];
+    if([val isKindOfClass:[NSNull class]]){
+        return nil;
+    }
+    return val;
+}
 @end
 
 @implementation NSMutableDictionary (JSON)
 -(NSData*)toJson:(NSError**)err{
     return [NSJSONSerialization dataWithJSONObject:self options:kNilOptions error:err];
+}
+-(id)checkValueForKey:(NSString*)key{
+    id val=[self valueForKey:key];
+    if([val isKindOfClass:[NSNull class]]){
+        return nil;
+    }
+    return val;
+}
+-(void)checkRemoveObjectForKey:(NSString*)key{
+    if([self objectForKey:key]){
+        [self removeObjectForKey:key];
+    }
 }
 @end
 

@@ -382,17 +382,23 @@
 
 @implementation UITableView (RESUSE_CELL)
 - (id)newOrReuseCellWithXib:(NSString*)xib{
-    id view = [self dequeueReusableCellWithIdentifier:xib];
+    return [self newOrReuseCellWithXib:xib xid:xib];
+}
+- (id)newOrReuseCellWithXib:(NSString*)xib xid:(NSString*)xid{
+    id view = [self dequeueReusableCellWithIdentifier:xid];
     if (view ==nil){
-        view= [[UITableViewXibCell alloc]initWithXib:xib reuseIdentifier:xib];
+        view= [[UITableViewXibCell alloc]initWithXib:xib reuseIdentifier:xid];
     }
     return view;
 }
 - (id)newOrReuseCellWithClass:(Class)cls{
     NSString *identifier=NSStringFromClass(cls);
-    id view = [self dequeueReusableCellWithIdentifier:identifier];
+    return [self newOrReuseCellWithClass:cls xid:identifier];
+}
+- (id)newOrReuseCellWithClass:(Class)cls xid:(NSString*)xid{
+    id view = [self dequeueReusableCellWithIdentifier:xid];
     if (view ==nil){
-        view= [[UITableViewXibCell alloc]initWithClass:cls reuseIdentifier:identifier];
+        view= [[UITableViewXibCell alloc]initWithClass:cls reuseIdentifier:xid];
     }
     return view;
 }

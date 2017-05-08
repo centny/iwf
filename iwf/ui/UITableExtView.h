@@ -46,5 +46,7 @@
 
 @interface UITableView (RESUSE_CELL)
 - (id)newOrReuseCellWithXib:(NSString*)xib;
+- (id)newOrReuseCellWithXib:(NSString*)xib xid:(NSString*)xid;
 - (id)newOrReuseCellWithClass:(Class)cls;
+- (id)newOrReuseCellWithClass:(Class)cls xid:(NSString*)xid;
 @end
