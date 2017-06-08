@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1739A25E1BFB6E2500D86BD2 /* msg.proto in Resources */ = {isa = PBXBuildFile; fileRef = 1739A25A1BFB6E2500D86BD2 /* msg.proto */; };
 		1739A25F1BFB6E2500D86BD2 /* msg.proto in Resources */ = {isa = PBXBuildFile; fileRef = 1739A25A1BFB6E2500D86BD2 /* msg.proto */; };
 		1739A2751BFB89FE00D86BD2 /* Msg.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 1739A2731BFB89FE00D86BD2 /* Msg.pb.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1739A2761BFB89FE00D86BD2 /* Msg.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 1739A2741BFB89FE00D86BD2 /* Msg.pb.m */; };
@@ -22,10 +21,8 @@
 		17CD6A041C0557C900DCC395 /* NSImc.h in Headers */ = {isa = PBXBuildFile; fileRef = 17CD6A021C0557C900DCC395 /* NSImc.h */; };
 		17CD6A051C0557C900DCC395 /* NSImc.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CD6A031C0557C900DCC395 /* NSImc.m */; };
 		17CD6A061C0557C900DCC395 /* NSImc.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CD6A031C0557C900DCC395 /* NSImc.m */; };
-		17E7ED3A1BFD640D006D4038 /* build.sh in Resources */ = {isa = PBXBuildFile; fileRef = 17E7ED381BFD640D006D4038 /* build.sh */; };
 		17E7ED3B1BFD640D006D4038 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 17E7ED391BFD640D006D4038 /* README.md */; };
 		17FAE5F11BFC31CC000DD842 /* NSImTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 17FAE5F01BFC31CC000DD842 /* NSImTest.m */; };
-		17FAE5F31BFC6BDA000DD842 /* init.sh in Resources */ = {isa = PBXBuildFile; fileRef = 17FAE5F21BFC6BDA000DD842 /* init.sh */; };
 		17FAE5FC1BFC6C31000DD842 /* cwf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17FAE5F91BFC6C0E000DD842 /* cwf.framework */; };
 		C3313B561B902C4A007B5709 /* H.h in Headers */ = {isa = PBXBuildFile; fileRef = C3313B541B902C4A007B5709 /* H.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3313B571B902C4A007B5709 /* H.m in Sources */ = {isa = PBXBuildFile; fileRef = C3313B551B902C4A007B5709 /* H.m */; };
@@ -73,7 +70,6 @@
 		C3DBA9861B93F1AD008E51C5 /* UITableExtView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DBA9681B93F1AD008E51C5 /* UITableExtView.m */; };
 		C3DBA9871B93F1AD008E51C5 /* UITreeView.h in Headers */ = {isa = PBXBuildFile; fileRef = C3DBA9691B93F1AD008E51C5 /* UITreeView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3DBA9881B93F1AD008E51C5 /* UITreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DBA96A1B93F1AD008E51C5 /* UITreeView.m */; };
-		C3DBA9891B93F1AD008E51C5 /* UIWebExtView.dat in Resources */ = {isa = PBXBuildFile; fileRef = C3DBA96B1B93F1AD008E51C5 /* UIWebExtView.dat */; };
 		C3DBA98A1B93F1AD008E51C5 /* UIWebExtView.h in Headers */ = {isa = PBXBuildFile; fileRef = C3DBA96C1B93F1AD008E51C5 /* UIWebExtView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C3DBA98B1B93F1AD008E51C5 /* UIWebExtView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DBA96D1B93F1AD008E51C5 /* UIWebExtView.m */; };
 		C3E4EE7A1B8C3F3D00B275D8 /* iwf.h in Headers */ = {isa = PBXBuildFile; fileRef = C3E4EE791B8C3F3D00B275D8 /* iwf.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -142,6 +138,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 17C59B161BFB195E007EC7A6;
 			remoteInfo = cwf;
+		};
+		94BD20BB1D9BAFCE00DAF2E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1739A2941BFB926300D86BD2 /* ProtocolBuffers.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3F25B8131D41431E0023759A;
+			remoteInfo = UnitTests;
 		};
 		C3E4EE811B8C3F3D00B275D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -297,6 +300,7 @@
 				1739A29B1BFB926300D86BD2 /* libProtocolBuffers.a */,
 				1739A29D1BFB926300D86BD2 /* UnitTests.xctest */,
 				1739A29F1BFB926300D86BD2 /* ProtocolBuffers.framework */,
+				94BD20BC1D9BAFCE00DAF2E0 /* UnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -655,7 +659,9 @@
 				TargetAttributes = {
 					C3E4EE731B8C3F3D00B275D8 = {
 						CreatedOnToolsVersion = 6.4;
-						LastSwiftMigration = 0800;
+						DevelopmentTeam = 78TPHVCJDH;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Manual;
 					};
 					C3E4EE7E1B8C3F3D00B275D8 = {
 						CreatedOnToolsVersion = 6.4;
@@ -720,6 +726,13 @@
 			remoteRef = 17FAE5F81BFC6C0E000DD842 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		94BD20BC1D9BAFCE00DAF2E0 /* UnitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UnitTests.xctest;
+			remoteRef = 94BD20BB1D9BAFCE00DAF2E0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -727,10 +740,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17FAE5F31BFC6BDA000DD842 /* init.sh in Resources */,
-				17E7ED3A1BFD640D006D4038 /* build.sh in Resources */,
-				1739A25E1BFB6E2500D86BD2 /* msg.proto in Resources */,
-				C3DBA9891B93F1AD008E51C5 /* UIWebExtView.dat in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,7 +892,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libs/include";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/libs/lib";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -913,7 +922,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Guangzhou Dayang Information Technology Co., Ltd. (78TPHVCJDH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Guangzhou Dayang Information Technology Co., Ltd. (78TPHVCJDH)";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -928,7 +938,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/libs/include";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/libs/lib";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "-lprotobuf";
@@ -943,8 +953,10 @@
 		C3E4EE8B1B8C3F3D00B275D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEPLOYMENT_LOCATION = NO;
+				DEVELOPMENT_TEAM = 78TPHVCJDH;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -956,10 +968,12 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				INFOPLIST_FILE = iwf/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "-lprotobuf";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.vty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386";
@@ -969,8 +983,11 @@
 		C3E4EE8C1B8C3F3D00B275D8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Guangzhou Dayang Information Technology Co., Ltd. (78TPHVCJDH)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEFINES_MODULE = YES;
 				DEPLOYMENT_LOCATION = NO;
+				DEVELOPMENT_TEAM = 78TPHVCJDH;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -982,10 +999,12 @@
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = NO;
 				INFOPLIST_FILE = iwf/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "-lprotobuf";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.vty.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				VALID_ARCHS = "arm64 armv7 armv7s i386";

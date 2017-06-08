@@ -141,7 +141,7 @@
 
 + (UIColor *)colorWithR:(int)r G:(int)g B:(int)b A:(float)a
 {
-    return [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:a];
+    return [UIColor colorWithRed:((float)r) / 255.0 green:((float)g) / 255.0 blue:((float)b) / 255.0 alpha:a];
 }
 
 @end
@@ -433,8 +433,7 @@
     if (![@"#" isEqualToString :[hex substringToIndex:1]]) {
         return NULL;
     }
-    
-    float r, g, b, a = 255;
+    unsigned int r, g, b, a = 255;
     switch (hex.length) {
         case 4:
         {
@@ -471,16 +470,9 @@
             
         case 7:
         {
-            char val[2];
-            val[0]	= [hex characterAtIndex:1];
-            val[1]	= [hex characterAtIndex:2];
-            r		= strtoul(val, 0, 16);
-            val[0]	= [hex characterAtIndex:3];
-            val[1]	= [hex characterAtIndex:4];
-            g		= strtoul(val, 0, 16);
-            val[0]	= [hex characterAtIndex:5];
-            val[1]	= [hex characterAtIndex:6];
-            b		= strtoul(val, 0, 16);
+            [[NSScanner scannerWithString:[hex substringWithRange:NSMakeRange(1,2)]] scanHexInt:&r];
+            [[NSScanner scannerWithString:[hex substringWithRange:NSMakeRange(3,2)]] scanHexInt:&g];
+            [[NSScanner scannerWithString:[hex substringWithRange:NSMakeRange(5,2)]] scanHexInt:&b];
         }
             break;
             
