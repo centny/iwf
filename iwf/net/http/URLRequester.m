@@ -67,6 +67,8 @@ const NSString* HC_I=@"I"; //image cache.
 const NSString* HC_NO=@"NO"; //image cache.
 const NSString* HC_KEY=@"_hc_";
 
+const NSString* TIME_OUT=@"TIMEOUT";
+
 @implementation URLRequester
 + (void)setQueue:(NSOperationQueue*)queue{
     _queue_=queue;
@@ -243,6 +245,15 @@ const NSString* HC_KEY=@"_hc_";
     }else{
         _policy_ = NSURLRequestUseProtocolCachePolicy;
     }
+    
+    // 自定义超时时间
+    if ([self.args objectForKey:TIME_OUT]) {
+        self.timeout = [[self.args objectForKey:TIME_OUT] longLongValue];
+    }
+    if ([args objectForKey:TIME_OUT]) {
+        self.timeout = [[args objectForKey:TIME_OUT] longLongValue];
+    }
+    
     return url;
 }
 
